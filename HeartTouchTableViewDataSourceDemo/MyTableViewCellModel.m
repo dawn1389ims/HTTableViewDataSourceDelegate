@@ -10,4 +10,11 @@
 
 @implementation MyTableViewCellModel
 
++ (instancetype)modelWithTitle:(NSString *)title name:(NSString*)name
+{
+    MyTableViewCellModel * instance = [MyTableViewCellModel new];
+    instance.title = title;
+    instance.actionName = name;
+    return instance;
+}
 @end

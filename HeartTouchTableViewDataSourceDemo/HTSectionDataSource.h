@@ -6,8 +6,15 @@
 //  Copyright © 2016年 志强. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface HTSectionDataSource : NSObject
+
+- (NSInteger)section;
+
+- (NSInteger)itemCount;
+
+- (UITableViewCell *)tableView:(UITableView *)tableView
+             cellForRowAtIndex:(NSInteger)index;
 
 @end

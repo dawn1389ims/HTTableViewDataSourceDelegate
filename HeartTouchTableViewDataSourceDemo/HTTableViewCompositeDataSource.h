@@ -1,5 +1,5 @@
 //
-//  HTCompositeDataSource.h
+//  HTTableViewCompositeDataSource.h
 //  HeartTouchTableViewDataSourceDemo
 //
 //  Created by 志强 on 16/1/19.

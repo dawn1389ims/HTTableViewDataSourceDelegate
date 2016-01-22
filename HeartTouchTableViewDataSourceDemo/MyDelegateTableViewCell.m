@@ -7,7 +7,15 @@
 //
 
 #import "MyDelegateTableViewCell.h"
+#import "MyTableViewCellModel.h"
 
+@interface MyDelegateTableViewCell ()
+
+@property (weak, nonatomic) IBOutlet UIButton *btn1;
+@property (weak, nonatomic) IBOutlet UIButton *btn2;
+@property (weak, nonatomic) IBOutlet UIButton *btn3;
+
+@end
 @implementation MyDelegateTableViewCell
 
 - (void)awakeFromNib {
@@ -20,4 +28,22 @@
     // Configure the view for the selected state
 }
 
+-(void)setModel:(MyTableViewCellModel *)model
+{
+    _model = model;
+    [_btn1 setTitle:model.title forState:UIControlStateNormal];
+    [_btn1 addTarget:self action:@selector(pressBtn:) forControlEvents:UIControlEventTouchDown];
+    [_btn2 setTitle:model.actionName forState:UIControlStateNormal];
+    [_btn2 addTarget:self action:@selector(pressBtn:) forControlEvents:UIControlEventTouchDown];
+    NSString * additionString = [model.title stringByAppendingFormat:@" %@",model.actionName];
+    [_btn3 setTitle:additionString forState:UIControlStateNormal];
+    [_btn3 addTarget:self action:@selector(pressBtn:) forControlEvents:UIControlEventTouchDown];
+}
+
+-(IBAction)pressBtn:(UIButton *)sender
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(selectedButtonWithContent:)]) {
+        [_delegate selectedButtonWithContent:sender.titleLabel.text];
+    }
+}
 @end

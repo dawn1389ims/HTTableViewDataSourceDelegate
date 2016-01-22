@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol MyDelegateTableViewCellDelegate <NSObject>
+
+- (void)selectedButtonWithContent:(NSString *)content;
+
+@end
+
 @interface MyDelegateTableViewCell : UITableViewCell
+
+@property (nonatomic, strong) id model;
+
+@property (nonatomic, weak) id <MyDelegateTableViewCellDelegate> delegate;
 
 @end

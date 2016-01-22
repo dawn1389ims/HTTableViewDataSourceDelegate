@@ -7,7 +7,8 @@
 //
 
 #import "MyInterestList.h"
+#import "HTDataSourceDataModelProtocol.h"
 
-@interface MyInterestList (HTTableViewDataSource)
+@interface MyInterestList (HTTableViewDataSource) <HTTableViewDataSourceDataModelProtocol>
 
 @end

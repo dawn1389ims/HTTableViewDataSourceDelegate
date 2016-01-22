@@ -10,4 +10,10 @@
 
 @interface MyTableViewCellModel : NSObject
 
++ (instancetype)modelWithTitle:(NSString *)title name:(NSString*)name;
+
+@property (nonatomic, copy) NSString * title;
+
+@property (nonatomic, copy) NSString * actionName;
+
 @end

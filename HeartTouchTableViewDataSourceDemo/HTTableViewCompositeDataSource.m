@@ -1,5 +1,5 @@
 //
-//  HTCompositeDataSource.m
+//  HTTableViewCompositeDataSource.m
 //  HeartTouchTableViewDataSourceDemo
 //
 //  Created by 志强 on 16/1/19.
@@ -25,7 +25,7 @@ typedef id <UITableViewDataSource, UITableViewDelegate> HTDataSourceType;
 
 @end
 
-@implementation HTCompositeDataSource
+@implementation HTTableViewCompositeDataSource
 
 + (instancetype)dataSourceWithDataSources:(NSArray < HTDataSourceType > *)dataSources;
 {

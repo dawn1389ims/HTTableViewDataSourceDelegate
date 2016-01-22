@@ -6,8 +6,10 @@
 //  Copyright © 2016年 志强. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+@class HTSectionDataSource;
+@interface HTDemoTableViewDataSource : NSObject <UITableViewDelegate, UITableViewDataSource>
 
-@interface HTDemoTableViewDataSource : NSObject
-
+- (void)provideSectionDataSource:(HTSectionDataSource *) dataSource
+                     withSection:(NSInteger)sectionIndex;
 @end

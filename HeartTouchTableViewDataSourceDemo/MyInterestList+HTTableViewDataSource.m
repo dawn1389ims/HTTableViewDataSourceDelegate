@@ -7,7 +7,27 @@
 //
 
 #import "MyInterestList+HTTableViewDataSource.h"
+#import "MyTableViewCellModel.h"
+#import <objc/runtime.h>
+
 
 @implementation MyInterestList (HTTableViewDataSource)
+
+- (NSUInteger)sectionCount
+{
+    return [[self interestListDataArray] count];
+}
+
+- (NSUInteger)rowCountAtSectionIndex:(NSUInteger)section
+{
+    NSArray * list = [self interestListDataArray][section];
+    return list.count;
+}
+
+- (id)itemAtSection:(NSUInteger)section rowIndex:(NSUInteger)row
+{
+    return [self interestListDataArray][section][row];
+}
+
 
 @end

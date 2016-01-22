@@ -11,7 +11,7 @@
 /**
  *  一个可以展示为列表的对象需要满足的协议。
  */
-@protocol HTDataSourceDataModelProtocol <NSObject>
+@protocol HTTableViewDataSourceDataModelProtocol <NSObject>
 
 - (NSUInteger)sectionCount;
 

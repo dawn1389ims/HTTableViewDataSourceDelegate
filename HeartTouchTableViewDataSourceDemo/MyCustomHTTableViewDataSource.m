@@ -10,4 +10,10 @@
 
 @implementation MyCustomHTTableViewDataSource
 
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIButton * headerBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
+    [headerBtn setBackgroundColor:[UIColor brownColor]];
+    return headerBtn;
+}
 @end

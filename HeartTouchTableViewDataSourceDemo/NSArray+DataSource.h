@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HTTableViewDataSource.h"
 
-@interface NSArray (DataSource)
+@interface NSArray (DataSource) <HTTableViewDataSourceDataModelProtocol>
+
+/**
+ *  
+ */
+- (void)ht_check2DArray;
 
 @end
