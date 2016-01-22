@@ -13,10 +13,10 @@
  */
 @protocol HTTableViewDataSourceDataModelProtocol <NSObject>
 
-- (NSUInteger)sectionCount;
+- (NSUInteger)ht_sectionCount;
 
-- (NSUInteger)rowCountAtSectionIndex:(NSUInteger)section;
+- (NSUInteger)ht_rowCountAtSectionIndex:(NSUInteger)section;
 
-- (id)itemAtSection:(NSUInteger)section rowIndex:(NSUInteger)row;
+- (id)ht_itemAtSection:(NSUInteger)section rowIndex:(NSUInteger)row;
 
 @end

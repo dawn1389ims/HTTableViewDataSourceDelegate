@@ -30,13 +30,10 @@
     if (_dataList == nil) {
         //convert data to table view data list
         NSMutableArray * templateArray = [NSMutableArray new];
-        NSMutableArray * secondDArray;
         for (NSString * key in self.interestList) {
-            secondDArray = [NSMutableArray new];
             for (NSString * content in self.interestList[key]) {
-                [secondDArray addObject:[MyTableViewCellModel modelWithTitle:key name:content]];
+                [templateArray addObject:[MyTableViewCellModel modelWithTitle:key name:content]];
             }
-            [templateArray addObject:secondDArray];
         }
         _dataList = templateArray;
     }

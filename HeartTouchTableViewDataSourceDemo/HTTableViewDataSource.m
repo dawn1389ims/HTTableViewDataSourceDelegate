@@ -30,10 +30,6 @@
     HTTableViewDataSource *instance = [[self class] new];
     if (instance){
         instance.data = model;
-        if ([model isKindOfClass:[NSArray class]]) {
-            NSArray *theArrayModel = (NSArray *)model;
-            [theArrayModel ht_check2DArray];
-        }
         instance.cellTypeMaps = cellTypeMap;
         instance.cellConfiguration = configuration;
     }
@@ -48,6 +44,9 @@
             identifier = _cellTypeMaps[arg];
         }
     }
+    if ([cellModel isKindOfClass:[NSArray class]]) {
+        //
+    }
     NSAssert1(identifier, @"can find cell identifier for: %@", cellModel);
     
     return identifier;
@@ -55,13 +54,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger rowNum = [_data rowCountAtSectionIndex:section];
+    NSInteger rowNum = [_data ht_rowCountAtSectionIndex:section];
     return rowNum;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    id model = [_data itemAtSection:indexPath.section rowIndex:indexPath.row];
+    id model = [_data ht_itemAtSection:indexPath.section rowIndex:indexPath.row];
     
     NSString *identifier = [self cellIdentifierForCellModelClass:model];
     
@@ -78,7 +77,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [_data sectionCount];
+    return [_data ht_sectionCount];
 }
 
 @end

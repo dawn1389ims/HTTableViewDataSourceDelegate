@@ -13,21 +13,20 @@
 
 @implementation MyInterestList (HTTableViewDataSource)
 
-- (NSUInteger)sectionCount
+- (NSUInteger)ht_sectionCount
 {
     return [[self interestListDataArray] count];
 }
 
-- (NSUInteger)rowCountAtSectionIndex:(NSUInteger)section
+- (NSUInteger)ht_rowCountAtSectionIndex:(NSUInteger)section
 {
     NSArray * list = [self interestListDataArray][section];
     return list.count;
 }
 
-- (id)itemAtSection:(NSUInteger)section rowIndex:(NSUInteger)row
+- (id)ht_itemAtSection:(NSUInteger)section rowIndex:(NSUInteger)row
 {
     return [self interestListDataArray][section][row];
 }
-
 
 @end

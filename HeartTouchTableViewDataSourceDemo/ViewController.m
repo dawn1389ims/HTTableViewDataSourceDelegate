@@ -27,7 +27,7 @@
 
 - (NSArray <HTTableViewDataSourceDataModelProtocol> *)arrayDataSource
 {
-    return @[@[@"A", @"B", @"C", @"D"], @[@"E", @"F"]];
+    return @[@"A", @"B", @"C", @"D", @"E", @"F"];
 }
 
 - (NSArray <HTTableViewDataSourceDataModelProtocol> *)myCellModelArrayDataSource

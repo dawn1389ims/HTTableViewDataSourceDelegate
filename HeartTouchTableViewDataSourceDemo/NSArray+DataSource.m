@@ -7,78 +7,29 @@
 //
 
 #import "NSArray+DataSource.h"
-#import <objc/runtime.h>
+/**
+ *  NSArray 暂时不支持二维数组的。
+ *  sectionCount > 1时，这个array是二维(2D)数组，同时支持两种情况需要鉴别二维和一维，略纠结，等后面有需要时再实现
+ *  一维数组的sectionCount 永远为 1
+ */
+
 @implementation NSArray (DataSource)
 
-- (NSUInteger)sectionCount
+- (NSUInteger)ht_sectionCount
 {
-    if ([self ht_is2DArray]) {
-        return self.count;
-    } else {
-        return 1;
-    }
+    return 1;
 }
 
-- (NSUInteger)rowCountAtSectionIndex:(NSUInteger)section
+- (NSUInteger)ht_rowCountAtSectionIndex:(NSUInteger)section
 {
-    NSAssert2(section < self.count, @"section : %lu out bounds: %lu, rowCountAtSectionIndex", self.count, section);
-    id item = [self objectAtIndex:section];
-    if ([self ht_is2DArray]) {
-        if ([item isKindOfClass:[NSArray class]]) {
-            NSArray * array = item;
-            return array.count;
-        } else {
-            return 1;
-        }
-    } else {
-        /**
-         *  一维数组时，section == 0，返回数组元素个数
-         */
-        NSAssert2(section == 0, @"not 2d array: %@ access section: %lu", self, section);
-        return self.count;
-    }
+    NSAssert(section == 0, @"Only support 1D array temporary!");
+    return self.count;
 }
 
-- (id)itemAtSection:(NSUInteger)section rowIndex:(NSUInteger)row
+- (id)ht_itemAtSection:(NSUInteger)section rowIndex:(NSUInteger)row
 {
-    NSAssert2(section < self.count, @"section : %lu out bounds: %lu, itemAtSection", self.count, section);
-    
-    id item = [self objectAtIndex:section];
-    if ([self ht_is2DArray]) {
-        if ([item isKindOfClass:[NSArray class]]) {
-            NSArray * array = item;
-            NSAssert2(row < array.count, @"2d array: %@ index out bound: %lu", array, [self indexOfObject:item]);
-            return array[row];
-        } else {
-            NSAssert2(row < self.count, @"array: %@ index out bound: %lu", self, row);
-            return item;
-        }
-    } else {
-        NSAssert2(section == 0, @"not 2d array: %@ access section: %lu", self, section);
-        return [self objectAtIndex:row];
-    }
-    
-}
-
-- (BOOL)ht_is2DArray
-{
-    return [objc_getAssociatedObject(self, _cmd) boolValue];
-}
-
-- (void)setHt_is2DArray:(BOOL)is2DArray
-{
-    objc_setAssociatedObject(self, @selector(ht_is2DArray), @(is2DArray), OBJC_ASSOCIATION_RETAIN);
-}
-
-- (void)ht_check2DArray
-{
-    BOOL is2DArray = NO;
-    for (id item in self) {
-        if ([item isKindOfClass:[NSArray class]]) {
-            is2DArray = YES;
-        }
-    }
-    [self setHt_is2DArray:is2DArray];
+    NSAssert(section == 0, @"Only support 1D array temporary!");
+    return [self objectAtIndex:row];
 }
 
 @end

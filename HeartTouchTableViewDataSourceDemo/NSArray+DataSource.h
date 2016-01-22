@@ -11,9 +11,4 @@
 
 @interface NSArray (DataSource) <HTTableViewDataSourceDataModelProtocol>
 
-/**
- *  
- */
-- (void)ht_check2DArray;
-
 @end
