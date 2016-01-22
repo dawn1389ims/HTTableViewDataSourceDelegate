@@ -1,0 +1,30 @@
+//
+//  HTArrayDataSource.h
+//  Demo
+//
+//  Created by 志强 on 16/1/18.
+//  Copyright © 2016年 forkingdog. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "HTDataSourceArrayProtocol.h"
+
+@interface HTTableViewDataSource : NSObject < UITableViewDataSource, UITableViewDelegate >
+
+/**
+ *  构造一个dataSource对象
+ *
+ *  @param array         cell model array
+ *  @param cellTypeMap   cell model class : cell identifier
+ *  @param configuration 提供对cell的额外配置
+ *
+ *  @return
+ */
++ (instancetype)dataSourceWithArray:(id < HTDataSourceArrayProtocol >)array
+                        cellTypeMap:(NSDictionary *)cellTypeMap
+                  cellConfiguration:(void(^)(UITableViewCell * cell, NSIndexPath * indexPath))configuration;
+
+@end
+
+
+
