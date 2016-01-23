@@ -37,6 +37,9 @@
 
 -(void)setModel:(MyTableViewCellModel *)model
 {
+    if (_model == model) {
+        return;
+    }
     _model = model;
     if ([model isKindOfClass:[NSString class]]) {
         _leftLabel.text = @"normal";

@@ -8,8 +8,7 @@
 
 #import "NSArray+DataSource.h"
 /**
- *  NSArray 暂时不支持二维数组的。有需要支持sectinCount > 1的情况需要在需要的类中实现下面的接口
- *  一维数组的sectionCount 永远为 1
+ *  NSArray 暂时不支持二维数组的，有需要支持二维数组的情况需要自己修改，参考MyInterestList+HTTableViewDataSource.m
  */
 
 @implementation NSArray (DataSource)

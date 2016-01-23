@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ *  HeartTouch standard: Custom UITableViewCell should conform this protocol
+ */
 @protocol HTTableViewCellModelProtocol <NSObject>
 
 @property (nonatomic, strong) id model;

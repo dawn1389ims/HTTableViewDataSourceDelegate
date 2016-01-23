@@ -12,14 +12,13 @@
 
 typedef id <UITableViewDataSource, UITableViewDelegate> HTDataSourceType;
 
+
 @interface HTTableViewCompositeDataSource()
 
-@property (nonatomic, strong) NSArray <HTDataSourceType > * dataSourceArray;
+@property (nonatomic, strong) NSArray <HTDataSourceType > * dataSourceList;
 /**
- *  
- *  根据stage值取得dataSource 对应的 item index表
- *      section所在的stage index就是data source的index
- *  stageList最小元素为1
+ *  由每个dataSource的第一个 section 在提供给 table view 的 section list中的index值构成的数组
+ *  因为这个section 的index是累加的，称之为stage number
  */
 @property (nonatomic, strong) NSArray <NSNumber *> * sectionStageNumList;
 
@@ -31,7 +30,7 @@ typedef id <UITableViewDataSource, UITableViewDelegate> HTDataSourceType;
 {
     HTTableViewCompositeDataSource *instance = [HTTableViewCompositeDataSource new];
     if (instance){
-        instance.dataSourceArray = dataSources;
+        instance.dataSourceList = dataSources;
     }
     return instance;
 }
@@ -40,9 +39,9 @@ typedef id <UITableViewDataSource, UITableViewDelegate> HTDataSourceType;
 {
     NSInteger sumSection = 0;
     NSMutableArray * sectionStageNumList = [NSMutableArray new];
-    for (int index = 0; index < _dataSourceArray.count; index ++) {
+    for (int index = 0; index < _dataSourceList.count; index ++) {
         [sectionStageNumList addObject:@(sumSection)];
-        HTDataSourceType arg = _dataSourceArray[index];
+        HTDataSourceType arg = _dataSourceList[index];
         sumSection += [arg numberOfSectionsInTableView:tableView];
     }
     _sectionStageNumList = sectionStageNumList;
@@ -52,8 +51,9 @@ typedef id <UITableViewDataSource, UITableViewDelegate> HTDataSourceType;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSUInteger dataSourceIndex = [self dataSourceIndexForTableViewSection:section];
+    HTDataSourceType dataSource = _dataSourceList[dataSourceIndex];
+    
     NSInteger trueSection = section - [_sectionStageNumList[dataSourceIndex] integerValue];
-    HTDataSourceType dataSource = _dataSourceArray[dataSourceIndex];
     return [dataSource tableView:tableView numberOfRowsInSection:trueSection];
 }
 
@@ -61,8 +61,9 @@ typedef id <UITableViewDataSource, UITableViewDelegate> HTDataSourceType;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSUInteger dataSourceIndex = [self dataSourceIndexForTableViewSection:indexPath.section];
+    HTDataSourceType dataSource = _dataSourceList[dataSourceIndex];
+    
     NSInteger trueSection = indexPath.section - [_sectionStageNumList[dataSourceIndex] integerValue];
-    HTDataSourceType dataSource = _dataSourceArray[dataSourceIndex];
     return [dataSource tableView:tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:trueSection]];
 }
 
@@ -78,7 +79,7 @@ typedef id <UITableViewDataSource, UITableViewDelegate> HTDataSourceType;
             maxStageNum = index;
             continue;//继续取得最大的台阶值
         } else {
-            break;
+            break;//找到section位于的最大的台阶值
         }
     }
     if (maxStageNum == -1) {

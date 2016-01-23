@@ -30,6 +30,9 @@
 
 -(void)setModel:(MyTableViewCellModel *)model
 {
+    if (_model == model) {
+        return;
+    }
     _model = model;
     [_btn1 setTitle:model.title forState:UIControlStateNormal];
     [_btn1 addTarget:self action:@selector(pressBtn:) forControlEvents:UIControlEventTouchDown];

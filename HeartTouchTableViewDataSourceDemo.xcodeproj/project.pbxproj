@@ -102,11 +102,8 @@
 		227173C51C4CE8DF000F6999 /* HeartTouchTableViewDataSourceDemo */ = {
 			isa = PBXGroup;
 			children = (
-				227173C91C4CE8DF000F6999 /* AppDelegate.h */,
-				227173CA1C4CE8DF000F6999 /* AppDelegate.m */,
-				227174071C4DFDF7000F6999 /* HTDataSource */,
-				227174211C520CE8000F6999 /* User Data Model */,
-				227174231C521621000F6999 /* HT table view height calculate */,
+				227173CC1C4CE8DF000F6999 /* ViewController.h */,
+				227173CD1C4CE8DF000F6999 /* ViewController.m */,
 				227173E61C4D064A000F6999 /* MyTableViewCellModel.h */,
 				227173E71C4D064A000F6999 /* MyTableViewCellModel.m */,
 				227173E31C4D0620000F6999 /* MyTableViewCell.h */,
@@ -115,8 +112,11 @@
 				227174151C508E47000F6999 /* MyDelegateTableViewCell.m */,
 				2271741E1C5209B1000F6999 /* MyCustomHTTableViewDataSource.h */,
 				2271741F1C5209B1000F6999 /* MyCustomHTTableViewDataSource.m */,
-				227173CC1C4CE8DF000F6999 /* ViewController.h */,
-				227173CD1C4CE8DF000F6999 /* ViewController.m */,
+				227174071C4DFDF7000F6999 /* HTDataSource */,
+				227174211C520CE8000F6999 /* User Data Model */,
+				227174231C521621000F6999 /* HT table view height calculate */,
+				227173C91C4CE8DF000F6999 /* AppDelegate.h */,
+				227173CA1C4CE8DF000F6999 /* AppDelegate.m */,
 				227173CF1C4CE8DF000F6999 /* Main.storyboard */,
 				227173D21C4CE8DF000F6999 /* Assets.xcassets */,
 				227173D41C4CE8DF000F6999 /* LaunchScreen.storyboard */,

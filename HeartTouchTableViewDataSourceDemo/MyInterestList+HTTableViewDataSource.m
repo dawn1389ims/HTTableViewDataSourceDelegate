@@ -23,6 +23,7 @@
 - (NSUInteger)ht_rowCountAtSectionIndex:(NSUInteger)section
 {
     id value = [self interestListDataArray][section];
+    
     if ([value isKindOfClass:[NSArray class]]) {
         NSArray * list = value;
         return list.count;
@@ -34,6 +35,7 @@
 - (id)ht_itemAtSection:(NSUInteger)section rowIndex:(NSUInteger)row
 {
     id item = [self interestListDataArray][section];
+    
     if ([item isKindOfClass:[NSArray class]]) {
         NSArray * array = item;
         return array[row];

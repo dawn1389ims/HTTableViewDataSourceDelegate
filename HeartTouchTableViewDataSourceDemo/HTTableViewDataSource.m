@@ -3,7 +3,7 @@
 //  Demo
 //
 //  Created by 志强 on 16/1/18.
-//  Copyright © 2016年 forkingdog. All rights reserved.
+//  Copyright © 2016年 志强. All rights reserved.
 //
 
 #import "HTTableViewDataSource.h"
@@ -12,6 +12,7 @@
 #import "NSArray+DataSource.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "HTTableViewCellModelProtocol.h"
+
 @interface HTTableViewDataSource()
 
 @property (nonatomic, strong) id <HTTableViewDataSourceDataModelProtocol> data;
@@ -45,9 +46,7 @@
             identifier = _cellTypeMaps[arg];
         }
     }
-    
     NSAssert1(identifier, @"can find cell identifier for: %@", cellModel);
-    
     return identifier;
 }
 
@@ -60,17 +59,15 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     id model = [_data ht_itemAtSection:indexPath.section rowIndex:indexPath.row];
-    
     NSString *identifier = [self cellIdentifierForCellModelClass:model];
     
     id <HTTableViewCellModelProtocol> cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    NSAssert1([cell respondsToSelector:@selector(setModel:)], @"cell with identifier: %@ not have implement method 'setModel:'", identifier);
     
     [cell setModel:model];
-    
     if (self.cellConfiguration) {
         self.cellConfiguration(cell, indexPath);
     }
-    
     return (UITableViewCell *)cell;
 }
 
@@ -84,10 +81,13 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     id model = [_data ht_itemAtSection:indexPath.section rowIndex:indexPath.row];
-    
     NSString *identifier = [self cellIdentifierForCellModelClass:model];
     
-    CGFloat heightResult =  [tableView fd_heightForCellWithIdentifier:identifier configuration:^(id <HTTableViewCellModelProtocol>cell) {
+    CGFloat heightResult =  [tableView fd_heightForCellWithIdentifier:identifier
+                                                        configuration:
+                             ^(id <HTTableViewCellModelProtocol>cell)
+    {
+        NSAssert1([cell respondsToSelector:@selector(setModel:)], @"cell with identifier: %@ not implement method 'setModel:'", identifier);
         [cell setModel:model];
         if (self.cellConfiguration) {
             self.cellConfiguration(cell, indexPath);
