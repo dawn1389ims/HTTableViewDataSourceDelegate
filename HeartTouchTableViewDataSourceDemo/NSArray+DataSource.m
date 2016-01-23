@@ -8,8 +8,7 @@
 
 #import "NSArray+DataSource.h"
 /**
- *  NSArray 暂时不支持二维数组的。
- *  sectionCount > 1时，这个array是二维(2D)数组，同时支持两种情况需要鉴别二维和一维，略纠结，等后面有需要时再实现
+ *  NSArray 暂时不支持二维数组的。有需要支持sectinCount > 1的情况需要在需要的类中实现下面的接口
  *  一维数组的sectionCount 永远为 1
  */
 

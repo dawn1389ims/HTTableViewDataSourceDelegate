@@ -21,7 +21,8 @@
     MyInterestList * instance = [MyInterestList new];
     instance.interestList = @{
                               @"球类":@[@"乒乓球", @"足球", @"桌上足球", @"台球"],
-                              @"非球类":@[@"跑步", @"骑自行"]};
+                              @"非球类":@[@"跑步", @"骑自行"],
+                              @"StringKey":@"Mixed"};
     return instance;
 }
 
@@ -30,10 +31,20 @@
     if (_dataList == nil) {
         //convert data to table view data list
         NSMutableArray * templateArray = [NSMutableArray new];
+        NSMutableArray * secondDArray;
         for (NSString * key in self.interestList) {
-            for (NSString * content in self.interestList[key]) {
-                [templateArray addObject:[MyTableViewCellModel modelWithTitle:key name:content]];
+            secondDArray = [NSMutableArray new];
+            id value = self.interestList[key];
+            if ([value isKindOfClass:[NSArray class]]) {
+                NSArray * array = value;
+                for (NSString * content in array) {
+                    [secondDArray addObject:[MyTableViewCellModel modelWithTitle:key name:content]];
+                }
+            } else if ([value isKindOfClass:[NSString class]]) {
+                [secondDArray addObject:value];
             }
+            
+            [templateArray addObject:secondDArray];
         }
         _dataList = templateArray;
     }

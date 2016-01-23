@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "HTDataSourceDataModelProtocol.h"
-
+#import "HTTableViewCellModelProtocol.h"
 typedef void(^HTTableViewConfigBlock)(id cell, NSIndexPath * indexPath);
 
 @interface HTTableViewDataSource : NSObject < UITableViewDataSource, UITableViewDelegate >
@@ -22,7 +22,7 @@ typedef void(^HTTableViewConfigBlock)(id cell, NSIndexPath * indexPath);
  *
  *  @return
  */
-+ (instancetype)dataSourceWithModel:(NSArray < HTTableViewDataSourceDataModelProtocol > *)model
++ (instancetype)dataSourceWithModel:(id < HTTableViewDataSourceDataModelProtocol >)model
                         cellTypeMap:(NSDictionary *)cellTypeMap
                   cellConfiguration:(HTTableViewConfigBlock)configuration;
 @end

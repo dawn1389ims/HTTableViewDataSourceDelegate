@@ -103,16 +103,16 @@
                                 </prototypes>
                             </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xxY-NQ-Bsb">
-                                <rect key="frame" x="135" y="20" width="331" height="29"/>
+                                <rect key="frame" x="109" y="20" width="383" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="lxA-Ne-C0I"/>
-                                    <constraint firstAttribute="width" constant="331" id="sHS-Ga-iUe"/>
+                                    <constraint firstAttribute="width" constant="383" id="sHS-Ga-iUe"/>
                                 </constraints>
                                 <segments>
                                     <segment title="array"/>
                                     <segment title="user model"/>
                                     <segment title="composite"/>
-                                    <segment title="mixed cell "/>
+                                    <segment title="cell delegate "/>
                                 </segments>
                                 <connections>
                                     <action selector="changeSegmengt:" destination="BYZ-38-t0r" eventType="valueChanged" id="xVT-uH-Frt"/>
@@ -130,6 +130,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="demoSelectSegment" destination="xxY-NQ-Bsb" id="Svl-u1-ul0"/>
                         <outlet property="tableview" destination="r0X-Gd-dt3" id="aFL-nA-nTH"/>
                     </connections>
                 </viewController>

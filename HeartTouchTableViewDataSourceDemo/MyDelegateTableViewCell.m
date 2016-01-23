@@ -46,4 +46,9 @@
         [_delegate selectedButtonWithContent:sender.titleLabel.text];
     }
 }
+
+-(CGSize)sizeThatFits:(CGSize)size
+{
+    return CGSizeMake(size.width, 100);
+}
 @end

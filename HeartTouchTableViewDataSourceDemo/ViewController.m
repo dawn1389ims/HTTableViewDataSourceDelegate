@@ -15,7 +15,10 @@
 #import "NSArray+DataSource.h"
 #import "MyDelegateTableViewCell.h"
 #import "MyCustomHTTableViewDataSource.h"
+#import "UITableView+FDTemplateLayoutCell.h"
 @interface ViewController () <MyDelegateTableViewCellDelegate>
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl *demoSelectSegment;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 
@@ -41,6 +44,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    id < UITableViewDataSource, UITableViewDelegate > dataSource =
+    dataSource = [self normalDataSource];
+    _tableview.dataSource = dataSource;
+    _tableview.delegate = dataSource;
+    self.demoDataSource = dataSource;
+    [_tableview reloadData];
+    
+    [_demoSelectSegment setSelectedSegmentIndex:0];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,7 +78,7 @@
             dataSource = [self compositeModelDataSource];
             break;
         case 3:
-            dataSource = [self mixModelandDelegateCellDataSource];
+            dataSource = [self delegateCellDataSource];
             break;
         default:
             break;
@@ -81,7 +92,7 @@
 -(id < UITableViewDataSource, UITableViewDelegate >)normalDataSource
 {
     NSArray <HTTableViewDataSourceDataModelProtocol> * cellModels = [self arrayDataSource];
-    id < UITableViewDataSource, UITableViewDelegate > dataSource = [MyCustomHTTableViewDataSource dataSourceWithModel:cellModels cellTypeMap:@{@"NSString" : @"MyTableViewCell"} cellConfiguration:^(UITableViewCell *cell, NSIndexPath *indexPath) {
+    id < UITableViewDataSource, UITableViewDelegate > dataSource = [HTTableViewDataSource dataSourceWithModel:cellModels cellTypeMap:@{@"NSString" : @"MyTableViewCell"} cellConfiguration:^(UITableViewCell *cell, NSIndexPath *indexPath) {
         if (indexPath.row % 2 == 0) {
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         } else {
@@ -97,9 +108,9 @@
 
 -(id < UITableViewDataSource, UITableViewDelegate >)userModelDataSource
 {
-    id <HTTableViewDataSourceDataModelProtocol> userModel = [[MyInterestList interestListWithSport] interestListDataArray];
+    id <HTTableViewDataSourceDataModelProtocol> userModel = [MyInterestList interestListWithSport];
 
-    id < UITableViewDataSource, UITableViewDelegate > dataSource = [HTTableViewDataSource dataSourceWithModel:userModel cellTypeMap:@{@"MyTableViewCellModel" : @"MyTableViewCell"} cellConfiguration:^(UITableViewCell *cell, NSIndexPath *indexPath) {
+    id < UITableViewDataSource, UITableViewDelegate > dataSource = [MyCustomHTTableViewDataSource dataSourceWithModel:userModel cellTypeMap:@{@"NSString" : @"MyTableViewCell", @"MyTableViewCellModel" : @"MyTableViewCell"} cellConfiguration:^(UITableViewCell *cell, NSIndexPath *indexPath) {
         if (indexPath.row % 2 == 0) {
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         } else {
@@ -131,12 +142,16 @@
     HTTableViewDataSource * modelDataSource = [HTTableViewDataSource dataSourceWithModel:theCellModels cellTypeMap:@{@"MyTableViewCellModel" : @"MyTableViewCell"} cellConfiguration:^(UITableViewCell *cell, NSIndexPath *indexPath) {
         cell.accessoryType = UITableViewCellAccessoryDetailButton;
     }];
-    NSMutableArray * lll = [@[dataSource1, modelDataSource] mutableCopy];
-    id < UITableViewDataSource, UITableViewDelegate > dataSource = [HTTableViewCompositeDataSource dataSourceWithDataSources:lll];
+    
+    //
+    NSMutableArray < UITableViewDataSource, UITableViewDelegate >* dataSourceList = @[].mutableCopy;
+    [dataSourceList addObject:dataSource1];
+    [dataSourceList addObject:modelDataSource];
+    id < UITableViewDataSource, UITableViewDelegate > dataSource = [HTTableViewCompositeDataSource dataSourceWithDataSources:dataSourceList];
     return dataSource;
 }
 
--(id < UITableViewDataSource, UITableViewDelegate >)mixModelandDelegateCellDataSource
+-(id < UITableViewDataSource, UITableViewDelegate >)delegateCellDataSource
 {
     NSMutableArray * mixModelSource= [[self arrayDataSource] mutableCopy];
     [mixModelSource addObject:[MyTableViewCellModel modelWithTitle:@"Mixed" name:@"Delegate Cell"]];
@@ -145,6 +160,7 @@
         
         if ([cell isKindOfClass:[MyDelegateTableViewCell class]]) {
             cell.delegate = weakSelf;
+            cell.fd_enforceFrameLayout = YES;
         }
     }];
     return dataSource;

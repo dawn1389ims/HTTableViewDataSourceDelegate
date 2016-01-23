@@ -10,10 +10,11 @@
 #import "MyTableViewCellModel.h"
 #import "MyTableViewCell.h"
 #import "NSArray+DataSource.h"
-
+#import "UITableView+FDTemplateLayoutCell.h"
+#import "HTTableViewCellModelProtocol.h"
 @interface HTTableViewDataSource()
 
-@property (nonatomic, strong) NSArray <HTTableViewDataSourceDataModelProtocol> * data;
+@property (nonatomic, strong) id <HTTableViewDataSourceDataModelProtocol> data;
 
 @property (nonatomic, copy) NSDictionary *cellTypeMaps;
 
@@ -23,7 +24,7 @@
 
 @implementation HTTableViewDataSource
 
-+ (instancetype)dataSourceWithModel:(NSArray < HTTableViewDataSourceDataModelProtocol > *)model
++ (instancetype)dataSourceWithModel:(id < HTTableViewDataSourceDataModelProtocol >)model
                         cellTypeMap:(NSDictionary *)cellTypeMap
                   cellConfiguration:(HTTableViewConfigBlock)configuration
 {
@@ -44,9 +45,7 @@
             identifier = _cellTypeMaps[arg];
         }
     }
-    if ([cellModel isKindOfClass:[NSArray class]]) {
-        //
-    }
+    
     NSAssert1(identifier, @"can find cell identifier for: %@", cellModel);
     
     return identifier;
@@ -64,7 +63,7 @@
     
     NSString *identifier = [self cellIdentifierForCellModelClass:model];
     
-    MyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    id <HTTableViewCellModelProtocol> cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     
     [cell setModel:model];
     
@@ -72,7 +71,7 @@
         self.cellConfiguration(cell, indexPath);
     }
     
-    return cell;
+    return (UITableViewCell *)cell;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -80,4 +79,20 @@
     return [_data ht_sectionCount];
 }
 
+#pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    id model = [_data ht_itemAtSection:indexPath.section rowIndex:indexPath.row];
+    
+    NSString *identifier = [self cellIdentifierForCellModelClass:model];
+    
+    CGFloat heightResult =  [tableView fd_heightForCellWithIdentifier:identifier configuration:^(id <HTTableViewCellModelProtocol>cell) {
+        [cell setModel:model];
+        if (self.cellConfiguration) {
+            self.cellConfiguration(cell, indexPath);
+        }
+    }];
+    return heightResult;
+}
 @end

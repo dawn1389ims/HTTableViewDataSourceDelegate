@@ -10,7 +10,9 @@
 #import "MyTableViewCellModel.h"
 #import <objc/runtime.h>
 
-
+/**
+ *  实现多个section的功能
+ */
 @implementation MyInterestList (HTTableViewDataSource)
 
 - (NSUInteger)ht_sectionCount
@@ -20,13 +22,24 @@
 
 - (NSUInteger)ht_rowCountAtSectionIndex:(NSUInteger)section
 {
-    NSArray * list = [self interestListDataArray][section];
-    return list.count;
+    id value = [self interestListDataArray][section];
+    if ([value isKindOfClass:[NSArray class]]) {
+        NSArray * list = value;
+        return list.count;
+    } else {
+        return 1;
+    }
 }
 
 - (id)ht_itemAtSection:(NSUInteger)section rowIndex:(NSUInteger)row
 {
-    return [self interestListDataArray][section][row];
+    id item = [self interestListDataArray][section];
+    if ([item isKindOfClass:[NSArray class]]) {
+        NSArray * array = item;
+        return array[row];
+    } else {
+        return item;
+    }
 }
 
 @end
