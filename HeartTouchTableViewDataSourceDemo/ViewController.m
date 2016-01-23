@@ -28,12 +28,12 @@
 
 @implementation ViewController
 
-- (NSArray <HTTableViewDataSourceDataModelProtocol> *)arrayDataSource
+- (NSArray <HTTableViewDataSourceDataModelProtocol> *)arrayCellModels
 {
     return @[@"A", @"B", @"C", @"D", @"E", @"F"];
 }
 
-- (NSArray <HTTableViewDataSourceDataModelProtocol> *)myCellModelArrayDataSource
+- (NSArray <HTTableViewDataSourceDataModelProtocol> *)customClassCellModels
 {
     NSMutableArray * modelList = [NSMutableArray new];
     for (int index = 0; index < 10; index ++ ) {
@@ -45,7 +45,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     id < UITableViewDataSource, UITableViewDelegate > dataSource =
-    dataSource = [self normalDataSource];
+    dataSource = [self normalArrayDataSource];
     _tableview.dataSource = dataSource;
     _tableview.delegate = dataSource;
     self.demoDataSource = dataSource;
@@ -69,7 +69,7 @@
     id < UITableViewDataSource, UITableViewDelegate > dataSource;
     switch ([sender selectedSegmentIndex]) {
         case 0:
-            dataSource = [self normalDataSource];
+            dataSource = [self normalArrayDataSource];
             break;
         case 1:
             dataSource = [self userModelDataSource];
@@ -89,9 +89,9 @@
     [_tableview reloadData];
 }
 
--(id < UITableViewDataSource, UITableViewDelegate >)normalDataSource
+-(id < UITableViewDataSource, UITableViewDelegate >)normalArrayDataSource
 {
-    NSArray <HTTableViewDataSourceDataModelProtocol> * cellModels = [self arrayDataSource];
+    NSArray <HTTableViewDataSourceDataModelProtocol> * cellModels = [self arrayCellModels];
     id < UITableViewDataSource, UITableViewDelegate > dataSource = [HTTableViewDataSource dataSourceWithModel:cellModels cellTypeMap:@{@"NSString" : @"MyTableViewCell"} cellConfiguration:^(UITableViewCell *cell, NSIndexPath *indexPath) {
         if (indexPath.row % 2 == 0) {
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -125,7 +125,7 @@
 
 -(id < UITableViewDataSource, UITableViewDelegate >)compositeModelDataSource
 {
-    NSArray <HTTableViewDataSourceDataModelProtocol> * cellModel1 = [self arrayDataSource];
+    NSArray <HTTableViewDataSourceDataModelProtocol> * cellModel1 = [self arrayCellModels];
     HTTableViewDataSource * dataSource1 =
     [HTTableViewDataSource dataSourceWithModel:cellModel1 cellTypeMap:@{@"NSString" : @"MyTableViewCell"} cellConfiguration:^(UITableViewCell *cell, NSIndexPath *indexPath) {
         if (indexPath.row % 2 == 0) {
@@ -137,7 +137,7 @@
             [cell.contentView setBackgroundColor:[UIColor grayColor]];
         }
     }];
-    NSArray <HTTableViewDataSourceDataModelProtocol>* theCellModels = [self myCellModelArrayDataSource];
+    NSArray <HTTableViewDataSourceDataModelProtocol>* theCellModels = [self customClassCellModels];
     
     HTTableViewDataSource * modelDataSource = [HTTableViewDataSource dataSourceWithModel:theCellModels cellTypeMap:@{@"MyTableViewCellModel" : @"MyTableViewCell"} cellConfiguration:^(UITableViewCell *cell, NSIndexPath *indexPath) {
         cell.accessoryType = UITableViewCellAccessoryDetailButton;
@@ -153,7 +153,7 @@
 
 -(id < UITableViewDataSource, UITableViewDelegate >)delegateCellDataSource
 {
-    NSMutableArray * mixModelSource= [[self arrayDataSource] mutableCopy];
+    NSMutableArray * mixModelSource= [[self arrayCellModels] mutableCopy];
     [mixModelSource addObject:[MyTableViewCellModel modelWithTitle:@"Mixed" name:@"Delegate Cell"]];
     id __weak weakSelf = self;
     id < UITableViewDataSource, UITableViewDelegate > dataSource = [HTTableViewDataSource dataSourceWithModel:mixModelSource cellTypeMap:@{@"NSString" : @"MyTableViewCell", @"MyTableViewCellModel": @"MyDelegateTableViewCell"} cellConfiguration:^(MyDelegateTableViewCell *cell, NSIndexPath *indexPath) {
