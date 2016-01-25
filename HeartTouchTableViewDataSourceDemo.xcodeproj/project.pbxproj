@@ -112,7 +112,7 @@
 				227174151C508E47000F6999 /* MyDelegateTableViewCell.m */,
 				2271741E1C5209B1000F6999 /* MyCustomHTTableViewDataSource.h */,
 				2271741F1C5209B1000F6999 /* MyCustomHTTableViewDataSource.m */,
-				227174071C4DFDF7000F6999 /* HTDataSource */,
+				227174071C4DFDF7000F6999 /* HTTableViewDataSource */,
 				227174211C520CE8000F6999 /* User Data Model */,
 				227174231C521621000F6999 /* HT table view height calculate */,
 				227173C91C4CE8DF000F6999 /* AppDelegate.h */,
@@ -134,7 +134,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		227174071C4DFDF7000F6999 /* HTDataSource */ = {
+		227174071C4DFDF7000F6999 /* HTTableViewDataSource */ = {
 			isa = PBXGroup;
 			children = (
 				2271741D1C50AA2A000F6999 /* HTDataSourceDataModelProtocol.h */,
@@ -146,7 +146,7 @@
 				227173FD1C4DCA12000F6999 /* NSArray+DataSource.h */,
 				227173FE1C4DCA12000F6999 /* NSArray+DataSource.m */,
 			);
-			name = HTDataSource;
+			name = HTTableViewDataSource;
 			sourceTree = "<group>";
 		};
 		227174211C520CE8000F6999 /* User Data Model */ = {

@@ -46,7 +46,7 @@
             identifier = _cellTypeMaps[arg];
         }
     }
-    NSAssert1(identifier, @"can find cell identifier for: %@", cellModel);
+    NSAssert1(identifier, @"Can't find cell identifier for: %@", cellModel);
     return identifier;
 }
 
@@ -62,7 +62,7 @@
     NSString *identifier = [self cellIdentifierForCellModelClass:model];
     
     id <HTTableViewCellModelProtocol> cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    NSAssert1([cell respondsToSelector:@selector(setModel:)], @"cell with identifier: %@ not have implement method 'setModel:'", identifier);
+    NSAssert1([cell respondsToSelector:@selector(setModel:)], @"Cell with class: %@ not have implement method 'setModel:'", [cell class]);
     
     [cell setModel:model];
     if (self.cellConfiguration) {
@@ -87,7 +87,7 @@
                                                         configuration:
                              ^(id <HTTableViewCellModelProtocol>cell)
     {
-        NSAssert1([cell respondsToSelector:@selector(setModel:)], @"cell with identifier: %@ not implement method 'setModel:'", identifier);
+        NSAssert1([cell respondsToSelector:@selector(setModel:)], @"Cell with class: %@ not implement method 'setModel:'", [cell class]);
         [cell setModel:model];
         if (self.cellConfiguration) {
             self.cellConfiguration(cell, indexPath);

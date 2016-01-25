@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 /**
- *  一个可以展示为列表的对象需要满足的协议。
+ *  一个可以展示为列表的数据对象需要遵守的协议。
  */
 @protocol HTTableViewDataSourceDataModelProtocol <NSObject>
 

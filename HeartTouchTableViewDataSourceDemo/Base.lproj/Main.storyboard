@@ -75,7 +75,10 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="qtp-2n-s4T"/>
                                                     </constraints>
-                                                    <state key="normal" title="Button3"/>
+                                                    <state key="normal" title="Button3">
+                                                        <color key="titleColor" red="1" green="0.54797933170000002" blue="0.44959620490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" red="1" green="0.93237225960000003" blue="0.1447570091" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWJ-h2-pNm">
                                                     <rect key="frame" x="32" y="28" width="52" height="30"/>
