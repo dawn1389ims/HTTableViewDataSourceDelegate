@@ -17,7 +17,7 @@
 
 @property (nonatomic, strong) id <HTTableViewDataSourceDataModelProtocol> data;
 
-@property (nonatomic, copy) NSDictionary *cellTypeMaps;
+@property (nonatomic, copy) NSDictionary < NSString * , NSString *> * cellTypeMaps;
 
 @property (nonatomic, copy) HTTableViewConfigBlock cellConfiguration;
 
@@ -26,7 +26,7 @@
 @implementation HTTableViewDataSource
 
 + (instancetype)dataSourceWithModel:(id < HTTableViewDataSourceDataModelProtocol >)model
-                        cellTypeMap:(NSDictionary *)cellTypeMap
+                        cellTypeMap:(NSDictionary < NSString * , NSString *> *)cellTypeMap
                   cellConfiguration:(HTTableViewConfigBlock)configuration
 {
     HTTableViewDataSource *instance = [[self class] new];
@@ -46,7 +46,7 @@
             identifier = _cellTypeMaps[arg];
         }
     }
-    NSAssert1(identifier, @"Can't find cell identifier for: %@", cellModel);
+    NSAssert2(identifier, @"Can't find cell identifier for: %@ at cellTypeMap: %@", cellModel, _cellTypeMaps);
     return identifier;
 }
 
@@ -62,7 +62,12 @@
     NSString *identifier = [self cellIdentifierForCellModelClass:model];
     
     id <HTTableViewCellModelProtocol> cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    NSAssert1([cell respondsToSelector:@selector(setModel:)], @"Cell with class: %@ not have implement method 'setModel:'", [cell class]);
+    if (!cell) {
+        Class cellClass = NSClassFromString(identifier);
+        NSAssert1(cellClass, @"Cell with identifier: %@ not find corresponding cell class", identifier);
+        cell = [[cellClass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    NSAssert1([cell respondsToSelector:@selector(setModel:)], @"Cell with class: %@ not implement method 'setModel:'", [cell class]);
     
     [cell setModel:model];
     if (self.cellConfiguration) {
@@ -82,7 +87,10 @@
 {
     id model = [_data ht_itemAtSection:indexPath.section rowIndex:indexPath.row];
     NSString *identifier = [self cellIdentifierForCellModelClass:model];
-    
+    /**
+     *  UITableViewCell高度计算接口规范
+     *  https://git.hz.netease.com/hzzhangping/heartouch/blob/master/specification/ios/UITableViewCell%E9%AB%98%E5%BA%A6%E8%AE%A1%E7%AE%97%E6%8E%A5%E5%8F%A3%E8%A7%84%E8%8C%83.md
+     */
     CGFloat heightResult =  [tableView fd_heightForCellWithIdentifier:identifier
                                                         configuration:
                              ^(id <HTTableViewCellModelProtocol>cell)

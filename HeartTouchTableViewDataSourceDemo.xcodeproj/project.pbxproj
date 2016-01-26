@@ -27,6 +27,7 @@
 		227174301C521637000F6999 /* UITableView+FDIndexPathHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 227174291C521637000F6999 /* UITableView+FDIndexPathHeightCache.m */; };
 		227174311C521637000F6999 /* UITableView+FDTemplateLayoutCellDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 2271742B1C521637000F6999 /* UITableView+FDTemplateLayoutCellDebug.m */; };
 		227174321C521637000F6999 /* UITableView+HTTemplateLayoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2271742D1C521637000F6999 /* UITableView+HTTemplateLayoutCell.m */; };
+		227174E81C57181B000F6999 /* ReadMe.md in Sources */ = {isa = PBXBuildFile; fileRef = 227174E71C57181B000F6999 /* ReadMe.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		2271742C1C521637000F6999 /* UITableView+HTTemplateLayoutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+HTTemplateLayoutCell.h"; sourceTree = "<group>"; };
 		2271742D1C521637000F6999 /* UITableView+HTTemplateLayoutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+HTTemplateLayoutCell.m"; sourceTree = "<group>"; };
 		227174341C5235ED000F6999 /* HTTableViewCellModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTableViewCellModelProtocol.h; sourceTree = "<group>"; };
+		227174E71C57181B000F6999 /* ReadMe.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = ReadMe.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				227174231C521621000F6999 /* HT table view height calculate */,
 				227173C91C4CE8DF000F6999 /* AppDelegate.h */,
 				227173CA1C4CE8DF000F6999 /* AppDelegate.m */,
+				227174E71C57181B000F6999 /* ReadMe.md */,
 				227173CF1C4CE8DF000F6999 /* Main.storyboard */,
 				227173D21C4CE8DF000F6999 /* Assets.xcassets */,
 				227173D41C4CE8DF000F6999 /* LaunchScreen.storyboard */,
@@ -255,6 +258,7 @@
 				227173CE1C4CE8DF000F6999 /* ViewController.m in Sources */,
 				227173E81C4D064A000F6999 /* MyTableViewCellModel.m in Sources */,
 				227174161C508E47000F6999 /* MyDelegateTableViewCell.m in Sources */,
+				227174E81C57181B000F6999 /* ReadMe.md in Sources */,
 				2271741C1C5091C4000F6999 /* MyInterestList+HTTableViewDataSource.m in Sources */,
 				227174311C521637000F6999 /* UITableView+FDTemplateLayoutCellDebug.m in Sources */,
 				227173E51C4D0620000F6999 /* MyTableViewCell.m in Sources */,

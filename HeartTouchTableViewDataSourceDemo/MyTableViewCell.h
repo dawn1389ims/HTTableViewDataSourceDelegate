@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MyTableViewCellModel.h"
+
 @interface MyTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) id model;

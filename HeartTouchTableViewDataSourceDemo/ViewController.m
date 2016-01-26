@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "HTTableViewDataSource.h"
-
+#import "UITableView+FDTemplateLayoutCell.h"
 #import "MyTableViewCellModel.h"
 #import "HTTableViewCompositeDataSource.h"
 #import "MyInterestList+HTTableViewDataSource.h"
@@ -91,7 +91,7 @@ typedef id <UITableViewDataSource, UITableViewDelegate> MyTableViewDataSourceTyp
     }
     _tableview.dataSource = dataSource;
     _tableview.delegate = dataSource;
-    self.demoDataSource = dataSource;
+    self.demoDataSource = dataSource;//VC 持有 dataSource
     [_tableview reloadData];
 }
 
