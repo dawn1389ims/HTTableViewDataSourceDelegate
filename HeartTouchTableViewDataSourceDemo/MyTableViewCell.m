@@ -8,6 +8,7 @@
 
 #import "MyTableViewCell.h"
 #import "MyTableViewCellModel.h"
+#import "MyCellStringModel.h"
 @interface MyTableViewCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *leftLabel;
@@ -34,6 +35,7 @@
     [self.contentView setBackgroundColor:nil];
     self.accessoryType = UITableViewCellAccessoryNone;
 }
+
 /**
  *  UITableViewCell设置数据的规范
  *  https://git.hz.netease.com/hzzhangping/heartouch/blob/master/specification/ios/UITableViewCell%E8%AE%BE%E7%BD%AE%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A7%84%E8%8C%83.md
@@ -46,9 +48,7 @@
         return;
     }
     NSMutableString * selectorName = [@"set" mutableCopy];
-    //Demo中使用了NSString类型的数据，对应的设置数据的方法可以用"setStringModel:"
-    NSString * selectCompose = [aModel isKindOfClass:[NSString class]] ? @"StringModel" : NSStringFromClass([aModel class]);
-    [selectorName appendString:selectCompose];
+    [selectorName appendString:NSStringFromClass([aModel class])];
     [selectorName appendString:@":"];
     SEL selector = NSSelectorFromString(selectorName);
     
@@ -62,18 +62,20 @@
     }
 }
 
-- (void)setStringModel:(NSString*)model
+- (void)setMyCellStringModel:(MyCellStringModel*)model
 {
     _leftLabel.text = @"normal";
-    [_button setTitle:(NSString*)model forState:UIControlStateNormal];
+    [_button setTitle:model.title forState:UIControlStateNormal];
     [_button setBackgroundColor:[UIColor orangeColor]];
 }
+
 - (void)setMyTableViewCellModel:(MyTableViewCellModel*)model
 {
     _leftLabel.text = model.title;
     [_button setTitle:model.actionName forState:UIControlStateNormal];
     [_button setBackgroundColor:[UIColor orangeColor]];
 }
+
 -(CGSize)sizeThatFits:(CGSize)size
 {
     return CGSizeMake(size.width, 100);

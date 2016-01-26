@@ -8,6 +8,7 @@
 
 #import "MyInterestList.h"
 #import "MyTableViewCellModel.h"
+#import "MyCellStringModel.h"
 @interface MyInterestList ()
 
 @property (nonatomic, strong) NSDictionary * interestList;
@@ -41,7 +42,7 @@
                     [secondDArray addObject:[MyTableViewCellModel modelWithTitle:key name:content]];
                 }
             } else if ([value isKindOfClass:[NSString class]]) {
-                [secondDArray addObject:value];
+                [secondDArray addObject:[MyCellStringModel modelWithTitle:value]];
             }
             
             [templateArray addObject:secondDArray];

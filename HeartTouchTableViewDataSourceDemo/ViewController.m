@@ -15,7 +15,7 @@
 #import "NSArray+DataSource.h"
 #import "MyDelegateTableViewCell.h"
 #import "MyCustomHTTableViewDataSource.h"
-#import "UITableView+FDTemplateLayoutCell.h"
+#import "MyCellStringModel.h"
 
 @interface ViewController () <MyDelegateTableViewCellDelegate>
 
@@ -34,7 +34,11 @@ typedef id <UITableViewDataSource, UITableViewDelegate> MyTableViewDataSourceTyp
 
 - (NSArray <HTTableViewDataSourceDataModelProtocol> *)arrayCellModels
 {
-    return @[@"A", @"B", @"C", @"D", @"E", @"F"];
+    NSMutableArray * models = [NSMutableArray new];
+    for (NSString * arg in @[@"A", @"B", @"C", @"D", @"E", @"F"]) {
+        [models addObject:[MyCellStringModel modelWithTitle:arg]];
+    }
+    return models;
 }
 
 - (NSArray <HTTableViewDataSourceDataModelProtocol> *)customClassCellModels
@@ -100,7 +104,7 @@ typedef id <UITableViewDataSource, UITableViewDelegate> MyTableViewDataSourceTyp
     id <HTTableViewDataSourceDataModelProtocol> cellModels = [self arrayCellModels];
     MyTableViewDataSourceType dataSource
     = [HTTableViewDataSource dataSourceWithModel:cellModels
-                                     cellTypeMap:@{@"NSString" : @"MyTableViewCell"}
+                                     cellTypeMap:@{@"MyCellStringModel" : @"MyTableViewCell"}
                                cellConfiguration:
        ^(UITableViewCell *cell, NSIndexPath *indexPath) {
         if (indexPath.row % 2 == 0) {
@@ -120,7 +124,7 @@ typedef id <UITableViewDataSource, UITableViewDelegate> MyTableViewDataSourceTyp
 {
     MyTableViewDataSourceType dataSource
     = [MyCustomHTTableViewDataSource dataSourceWithModel:[MyInterestList interestListWithSport]
-                                             cellTypeMap:@{@"NSString" : @"MyTableViewCell", @"MyTableViewCellModel" : @"MyTableViewCell"}
+                                             cellTypeMap:@{@"MyCellStringModel" : @"MyTableViewCell", @"MyTableViewCellModel" : @"MyTableViewCell"}
                                        cellConfiguration:
        ^(UITableViewCell *cell, NSIndexPath *indexPath) {
         if (indexPath.row % 2 == 0) {
@@ -140,7 +144,7 @@ typedef id <UITableViewDataSource, UITableViewDelegate> MyTableViewDataSourceTyp
     //first data source
     HTTableViewDataSource * dataSource1 =
     [HTTableViewDataSource dataSourceWithModel:[self arrayCellModels]
-                                   cellTypeMap:@{@"NSString" : @"MyTableViewCell"}
+                                   cellTypeMap:@{@"MyCellStringModel" : @"MyTableViewCell"}
                              cellConfiguration:
      ^(UITableViewCell *cell, NSIndexPath *indexPath) {
         if (indexPath.row % 2 == 0) {
@@ -180,7 +184,7 @@ typedef id <UITableViewDataSource, UITableViewDelegate> MyTableViewDataSourceTyp
     id __weak weakSelf = self;
     MyTableViewDataSourceType dataSource
     = [HTTableViewDataSource dataSourceWithModel:mixModelSource
-                                     cellTypeMap:@{@"NSString" : @"MyTableViewCell", @"MyTableViewCellModel": @"MyDelegateTableViewCell"} cellConfiguration:
+                                     cellTypeMap:@{@"MyCellStringModel" : @"MyTableViewCell", @"MyTableViewCellModel": @"MyDelegateTableViewCell"} cellConfiguration:
        ^(MyDelegateTableViewCell *cell, NSIndexPath *indexPath) {
         if ([cell isKindOfClass:[MyDelegateTableViewCell class]]) {
             cell.delegate = weakSelf;

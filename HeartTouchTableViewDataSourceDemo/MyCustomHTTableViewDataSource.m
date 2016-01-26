@@ -7,6 +7,8 @@
 //
 
 #import "MyCustomHTTableViewDataSource.h"
+#import "MyCellStringModel.h"
+
 @interface MyCustomHTTableViewDataSource ()
 
 @property (nonatomic, strong) id <HTTableViewDataSourceDataModelProtocol> data;
@@ -21,12 +23,18 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    id model = [self.data ht_itemAtSection:section rowIndex:0];
-    if ([model isKindOfClass:[NSString class]]) {
-        UIButton * headerBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
-        [headerBtn setTitle:@"header" forState:UIControlStateNormal];
-        [headerBtn setBackgroundColor:[UIColor brownColor]];
-        return headerBtn;
+    if (section == 1) {
+        MyCellStringModel * model = [self.data ht_itemAtSection:section rowIndex:0];
+        
+        static NSString *kHeadView = @"headerView";
+        UITableViewHeaderFooterView *myHeader = [tableView dequeueReusableHeaderFooterViewWithIdentifier:kHeadView];
+        if(!myHeader) {
+            myHeader = [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:kHeadView];
+        }
+        
+        myHeader.textLabel.text = [@"Header" stringByAppendingFormat:@" for %@",model.title];
+        [myHeader setFrame:CGRectMake(0, 0, tableView.frame.size.width, [self tableView:tableView heightForHeaderInSection:section])];
+        return myHeader;
     } else {
         return nil;
     }
@@ -34,12 +42,18 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
-    id model = [self.data ht_itemAtSection:section rowIndex:0];
-    if ([model isKindOfClass:[NSString class]]) {
-        UIButton * footerBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
-        [footerBtn setTitle:@"footer" forState:UIControlStateNormal];
-        [footerBtn setBackgroundColor:[UIColor orangeColor]];
-        return footerBtn;
+    if (section == 1) {
+        MyCellStringModel * model = [self.data ht_itemAtSection:section rowIndex:0];
+        
+        static NSString *kFootView = @"footerView";
+        UITableViewHeaderFooterView *myFooter = [tableView dequeueReusableHeaderFooterViewWithIdentifier:kFootView];
+        if(!myFooter) {
+            myFooter = [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:kFootView];
+        }
+        
+        myFooter.textLabel.text = [@"Footer" stringByAppendingFormat:@" for %@",model.title];
+        [myFooter setFrame:CGRectMake(0, 0, tableView.frame.size.width, [self tableView:tableView heightForHeaderInSection:section])];
+        return myFooter;
     } else {
         return nil;
     }
@@ -47,9 +61,8 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    id model = [self.data ht_itemAtSection:section rowIndex:0];
-    if ([model isKindOfClass:[NSString class]]) {
-        return 40;
+    if (section == 1) {
+        return 30;
     } else {
         return 0;
     }
@@ -57,11 +70,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    id model = [self.data ht_itemAtSection:section rowIndex:0];
-    if ([model isKindOfClass:[NSString class]]) {
-        return 40;
+    if (section == 1) {
+        return 30;
     } else {
         return 0;
     }
 }
+
 @end
