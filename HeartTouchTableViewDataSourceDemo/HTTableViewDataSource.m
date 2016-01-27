@@ -39,13 +39,14 @@
 }
 
 - (NSString*)cellIdentifierForCellModelClass:(id)cellModel{
-    NSString * identifier;
-    NSArray * keyList = _cellTypeMaps.allKeys;
-    for (NSString * arg in keyList) {
-        if ([cellModel isKindOfClass:NSClassFromString(arg)]) {
-            identifier = _cellTypeMaps[arg];
+    __block NSString * identifier;
+    [_cellTypeMaps enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSString * _Nonnull obj, BOOL * _Nonnull stop) {
+        if ([cellModel isKindOfClass:NSClassFromString(key)]) {
+            identifier = obj;
+            *stop = YES;
         }
-    }
+    }];
+    
     NSAssert2(identifier, @"Can't find cell identifier for: %@ at cellTypeMap: %@", cellModel, _cellTypeMaps);
     return identifier;
 }

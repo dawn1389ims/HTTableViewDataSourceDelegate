@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HTTableViewDataSource.h"
+#import "HTTableViewDataSourceDataModelProtocol.h"
 
 @interface NSArray (DataSource) <HTTableViewDataSourceDataModelProtocol>
 

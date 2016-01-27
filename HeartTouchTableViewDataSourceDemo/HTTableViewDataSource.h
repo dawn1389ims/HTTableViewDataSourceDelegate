@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HTDataSourceDataModelProtocol.h"
+#import "HTTableViewDataSourceDataModelProtocol.h"
 #import "HTTableViewCellModelProtocol.h"
 typedef void(^HTTableViewConfigBlock)(id cell, NSIndexPath * indexPath);
 

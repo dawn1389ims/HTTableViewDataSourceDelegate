@@ -10,7 +10,7 @@
 
 /**
  *  table view 所有数据的提供类，测试从现有数组集合转换成
- *  HTDataSourceDataModelProtocol的过程
+ *  HTTableViewDataSourceDataModelProtocol的过程
  */
 @interface MyInterestList : NSObject
 

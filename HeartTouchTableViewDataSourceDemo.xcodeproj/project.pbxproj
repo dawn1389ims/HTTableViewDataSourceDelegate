@@ -58,7 +58,7 @@
 		227174181C5090C2000F6999 /* MyInterestList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInterestList.m; sourceTree = "<group>"; };
 		2271741A1C5091C4000F6999 /* MyInterestList+HTTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MyInterestList+HTTableViewDataSource.h"; sourceTree = "<group>"; };
 		2271741B1C5091C4000F6999 /* MyInterestList+HTTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MyInterestList+HTTableViewDataSource.m"; sourceTree = "<group>"; };
-		2271741D1C50AA2A000F6999 /* HTDataSourceDataModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTDataSourceDataModelProtocol.h; sourceTree = "<group>"; };
+		2271741D1C50AA2A000F6999 /* HTTableViewDataSourceDataModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTableViewDataSourceDataModelProtocol.h; sourceTree = "<group>"; };
 		2271741E1C5209B1000F6999 /* MyCustomHTTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCustomHTTableViewDataSource.h; sourceTree = "<group>"; };
 		2271741F1C5209B1000F6999 /* MyCustomHTTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCustomHTTableViewDataSource.m; sourceTree = "<group>"; };
 		227174241C521637000F6999 /* UITableView+FDTemplateLayoutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+FDTemplateLayoutCell.h"; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 		227174071C4DFDF7000F6999 /* HTTableViewDataSource */ = {
 			isa = PBXGroup;
 			children = (
-				2271741D1C50AA2A000F6999 /* HTDataSourceDataModelProtocol.h */,
+				2271741D1C50AA2A000F6999 /* HTTableViewDataSourceDataModelProtocol.h */,
 				227174341C5235ED000F6999 /* HTTableViewCellModelProtocol.h */,
 				227173FB1C4DCA12000F6999 /* HTTableViewDataSource.h */,
 				227173FC1C4DCA12000F6999 /* HTTableViewDataSource.m */,
