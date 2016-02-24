@@ -2,7 +2,7 @@
 //  MyTableViewCell.m
 //  HeartTouchTableViewDataSourceDemo
 //
-//  Created by 志强 on 16/1/18.
+//  Created by 志强 on 16/2/24.
 //  Copyright © 2016年 志强. All rights reserved.
 //
 
@@ -25,7 +25,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 

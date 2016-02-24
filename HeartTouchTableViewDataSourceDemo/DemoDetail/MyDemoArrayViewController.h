@@ -1,15 +1,13 @@
 //
-//  ViewController.h
+//  MyDemoArrayViewController.h
 //  HeartTouchTableViewDataSourceDemo
 //
-//  Created by 志强 on 16/1/18.
+//  Created by 志强 on 16/2/23.
 //  Copyright © 2016年 志强. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface MyDemoArrayViewController : UITableViewController
 
 @end
-

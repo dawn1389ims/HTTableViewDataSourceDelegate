@@ -7,74 +7,84 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2257A87B1C7D9025002A3EF3 /* HTTableViewCompositeDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A8751C7D9025002A3EF3 /* HTTableViewCompositeDataSource.m */; };
+		2257A87C1C7D9025002A3EF3 /* HTTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A8771C7D9025002A3EF3 /* HTTableViewDataSource.m */; };
+		2257A87D1C7D9025002A3EF3 /* NSArray+DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A87A1C7D9025002A3EF3 /* NSArray+DataSource.m */; };
+		2257A8861C7D9070002A3EF3 /* UITableView+FDIndexPathHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A87F1C7D9070002A3EF3 /* UITableView+FDIndexPathHeightCache.m */; };
+		2257A8871C7D9070002A3EF3 /* UITableView+FDKeyedHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A8811C7D9070002A3EF3 /* UITableView+FDKeyedHeightCache.m */; };
+		2257A8881C7D9070002A3EF3 /* UITableView+FDTemplateLayoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A8831C7D9070002A3EF3 /* UITableView+FDTemplateLayoutCell.m */; };
+		2257A8891C7D9070002A3EF3 /* UITableView+FDTemplateLayoutCellDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A8851C7D9070002A3EF3 /* UITableView+FDTemplateLayoutCellDebug.m */; };
+		2257A8AE1C7D9232002A3EF3 /* MyCellStringModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A8991C7D9232002A3EF3 /* MyCellStringModel.m */; };
+		2257A8AF1C7D9232002A3EF3 /* MyCustomHTTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A89B1C7D9232002A3EF3 /* MyCustomHTTableViewDataSource.m */; };
+		2257A8B01C7D9232002A3EF3 /* MyDelegateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A89D1C7D9232002A3EF3 /* MyDelegateTableViewCell.m */; };
+		2257A8B11C7D9232002A3EF3 /* MyDemoArrayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A89F1C7D9232002A3EF3 /* MyDemoArrayViewController.m */; };
+		2257A8B21C7D9232002A3EF3 /* MyDemoCellDelegateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A8A11C7D9232002A3EF3 /* MyDemoCellDelegateViewController.m */; };
+		2257A8B31C7D9232002A3EF3 /* MyDemoCompositeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A8A31C7D9232002A3EF3 /* MyDemoCompositeViewController.m */; };
+		2257A8B41C7D9232002A3EF3 /* MyDemoUserModelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A8A51C7D9232002A3EF3 /* MyDemoUserModelViewController.m */; };
+		2257A8B51C7D9232002A3EF3 /* MyInterestList.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A8A71C7D9232002A3EF3 /* MyInterestList.m */; };
+		2257A8B61C7D9232002A3EF3 /* MyInterestList+HTTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A8A91C7D9232002A3EF3 /* MyInterestList+HTTableViewDataSource.m */; };
+		2257A8B81C7D9232002A3EF3 /* MyTableViewCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A8AD1C7D9232002A3EF3 /* MyTableViewCellModel.m */; };
+		2257A8C61C7D98C0002A3EF3 /* MyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2257A8C41C7D98C0002A3EF3 /* MyTableViewCell.xib */; };
+		2257A8C91C7D9946002A3EF3 /* MyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A8C81C7D9946002A3EF3 /* MyTableViewCell.m */; };
+		2257A8CD1C7D9BC7002A3EF3 /* MyDelegateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2257A8CC1C7D9BC7002A3EF3 /* MyDelegateTableViewCell.xib */; };
 		227173C81C4CE8DF000F6999 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 227173C71C4CE8DF000F6999 /* main.m */; };
 		227173CB1C4CE8DF000F6999 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 227173CA1C4CE8DF000F6999 /* AppDelegate.m */; };
-		227173CE1C4CE8DF000F6999 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 227173CD1C4CE8DF000F6999 /* ViewController.m */; };
 		227173D11C4CE8DF000F6999 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 227173CF1C4CE8DF000F6999 /* Main.storyboard */; };
 		227173D31C4CE8DF000F6999 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 227173D21C4CE8DF000F6999 /* Assets.xcassets */; };
 		227173D61C4CE8DF000F6999 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 227173D41C4CE8DF000F6999 /* LaunchScreen.storyboard */; };
-		227173E51C4D0620000F6999 /* MyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 227173E41C4D0620000F6999 /* MyTableViewCell.m */; };
-		227173E81C4D064A000F6999 /* MyTableViewCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 227173E71C4D064A000F6999 /* MyTableViewCellModel.m */; };
-		227174031C4DCA12000F6999 /* HTTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 227173FC1C4DCA12000F6999 /* HTTableViewDataSource.m */; };
-		227174041C4DCA12000F6999 /* NSArray+DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 227173FE1C4DCA12000F6999 /* NSArray+DataSource.m */; };
-		2271740A1C4E114E000F6999 /* HTTableViewCompositeDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 227174091C4E114E000F6999 /* HTTableViewCompositeDataSource.m */; };
-		227174161C508E47000F6999 /* MyDelegateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 227174151C508E47000F6999 /* MyDelegateTableViewCell.m */; };
-		227174191C5090C2000F6999 /* MyInterestList.m in Sources */ = {isa = PBXBuildFile; fileRef = 227174181C5090C2000F6999 /* MyInterestList.m */; };
-		2271741C1C5091C4000F6999 /* MyInterestList+HTTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2271741B1C5091C4000F6999 /* MyInterestList+HTTableViewDataSource.m */; };
-		227174201C5209B1000F6999 /* MyCustomHTTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2271741F1C5209B1000F6999 /* MyCustomHTTableViewDataSource.m */; };
-		2271742E1C521637000F6999 /* UITableView+FDTemplateLayoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 227174251C521637000F6999 /* UITableView+FDTemplateLayoutCell.m */; };
-		2271742F1C521637000F6999 /* UITableView+FDKeyedHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 227174271C521637000F6999 /* UITableView+FDKeyedHeightCache.m */; };
-		227174301C521637000F6999 /* UITableView+FDIndexPathHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 227174291C521637000F6999 /* UITableView+FDIndexPathHeightCache.m */; };
-		227174311C521637000F6999 /* UITableView+FDTemplateLayoutCellDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 2271742B1C521637000F6999 /* UITableView+FDTemplateLayoutCellDebug.m */; };
-		227174321C521637000F6999 /* UITableView+HTTemplateLayoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2271742D1C521637000F6999 /* UITableView+HTTemplateLayoutCell.m */; };
 		227174E81C57181B000F6999 /* ReadMe.md in Sources */ = {isa = PBXBuildFile; fileRef = 227174E71C57181B000F6999 /* ReadMe.md */; };
-		227174F21C57925A000F6999 /* MyCellStringModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 227174F11C57925A000F6999 /* MyCellStringModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2257A8731C7D9025002A3EF3 /* HTTableViewCellModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTableViewCellModelProtocol.h; path = HTTableViewDataSource/HTTableViewCellModelProtocol.h; sourceTree = "<group>"; };
+		2257A8741C7D9025002A3EF3 /* HTTableViewCompositeDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTableViewCompositeDataSource.h; path = HTTableViewDataSource/HTTableViewCompositeDataSource.h; sourceTree = "<group>"; };
+		2257A8751C7D9025002A3EF3 /* HTTableViewCompositeDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTableViewCompositeDataSource.m; path = HTTableViewDataSource/HTTableViewCompositeDataSource.m; sourceTree = "<group>"; };
+		2257A8761C7D9025002A3EF3 /* HTTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTableViewDataSource.h; path = HTTableViewDataSource/HTTableViewDataSource.h; sourceTree = "<group>"; };
+		2257A8771C7D9025002A3EF3 /* HTTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTableViewDataSource.m; path = HTTableViewDataSource/HTTableViewDataSource.m; sourceTree = "<group>"; };
+		2257A8781C7D9025002A3EF3 /* HTTableViewDataSourceDataModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTableViewDataSourceDataModelProtocol.h; path = HTTableViewDataSource/HTTableViewDataSourceDataModelProtocol.h; sourceTree = "<group>"; };
+		2257A8791C7D9025002A3EF3 /* NSArray+DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+DataSource.h"; path = "HTTableViewDataSource/NSArray+DataSource.h"; sourceTree = "<group>"; };
+		2257A87A1C7D9025002A3EF3 /* NSArray+DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+DataSource.m"; path = "HTTableViewDataSource/NSArray+DataSource.m"; sourceTree = "<group>"; };
+		2257A87E1C7D9070002A3EF3 /* UITableView+FDIndexPathHeightCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITableView+FDIndexPathHeightCache.h"; path = "HT table view height calculate/UITableView+FDIndexPathHeightCache.h"; sourceTree = "<group>"; };
+		2257A87F1C7D9070002A3EF3 /* UITableView+FDIndexPathHeightCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITableView+FDIndexPathHeightCache.m"; path = "HT table view height calculate/UITableView+FDIndexPathHeightCache.m"; sourceTree = "<group>"; };
+		2257A8801C7D9070002A3EF3 /* UITableView+FDKeyedHeightCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITableView+FDKeyedHeightCache.h"; path = "HT table view height calculate/UITableView+FDKeyedHeightCache.h"; sourceTree = "<group>"; };
+		2257A8811C7D9070002A3EF3 /* UITableView+FDKeyedHeightCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITableView+FDKeyedHeightCache.m"; path = "HT table view height calculate/UITableView+FDKeyedHeightCache.m"; sourceTree = "<group>"; };
+		2257A8821C7D9070002A3EF3 /* UITableView+FDTemplateLayoutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITableView+FDTemplateLayoutCell.h"; path = "HT table view height calculate/UITableView+FDTemplateLayoutCell.h"; sourceTree = "<group>"; };
+		2257A8831C7D9070002A3EF3 /* UITableView+FDTemplateLayoutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITableView+FDTemplateLayoutCell.m"; path = "HT table view height calculate/UITableView+FDTemplateLayoutCell.m"; sourceTree = "<group>"; };
+		2257A8841C7D9070002A3EF3 /* UITableView+FDTemplateLayoutCellDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITableView+FDTemplateLayoutCellDebug.h"; path = "HT table view height calculate/UITableView+FDTemplateLayoutCellDebug.h"; sourceTree = "<group>"; };
+		2257A8851C7D9070002A3EF3 /* UITableView+FDTemplateLayoutCellDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITableView+FDTemplateLayoutCellDebug.m"; path = "HT table view height calculate/UITableView+FDTemplateLayoutCellDebug.m"; sourceTree = "<group>"; };
+		2257A8981C7D9232002A3EF3 /* MyCellStringModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyCellStringModel.h; path = DemoDetail/MyCellStringModel.h; sourceTree = "<group>"; };
+		2257A8991C7D9232002A3EF3 /* MyCellStringModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyCellStringModel.m; path = DemoDetail/MyCellStringModel.m; sourceTree = "<group>"; };
+		2257A89A1C7D9232002A3EF3 /* MyCustomHTTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyCustomHTTableViewDataSource.h; path = DemoDetail/MyCustomHTTableViewDataSource.h; sourceTree = "<group>"; };
+		2257A89B1C7D9232002A3EF3 /* MyCustomHTTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyCustomHTTableViewDataSource.m; path = DemoDetail/MyCustomHTTableViewDataSource.m; sourceTree = "<group>"; };
+		2257A89C1C7D9232002A3EF3 /* MyDelegateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyDelegateTableViewCell.h; path = DemoDetail/MyDelegateTableViewCell.h; sourceTree = "<group>"; };
+		2257A89D1C7D9232002A3EF3 /* MyDelegateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyDelegateTableViewCell.m; path = DemoDetail/MyDelegateTableViewCell.m; sourceTree = "<group>"; };
+		2257A89E1C7D9232002A3EF3 /* MyDemoArrayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyDemoArrayViewController.h; path = DemoDetail/MyDemoArrayViewController.h; sourceTree = "<group>"; };
+		2257A89F1C7D9232002A3EF3 /* MyDemoArrayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyDemoArrayViewController.m; path = DemoDetail/MyDemoArrayViewController.m; sourceTree = "<group>"; };
+		2257A8A01C7D9232002A3EF3 /* MyDemoCellDelegateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyDemoCellDelegateViewController.h; path = DemoDetail/MyDemoCellDelegateViewController.h; sourceTree = "<group>"; };
+		2257A8A11C7D9232002A3EF3 /* MyDemoCellDelegateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyDemoCellDelegateViewController.m; path = DemoDetail/MyDemoCellDelegateViewController.m; sourceTree = "<group>"; };
+		2257A8A21C7D9232002A3EF3 /* MyDemoCompositeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyDemoCompositeViewController.h; path = DemoDetail/MyDemoCompositeViewController.h; sourceTree = "<group>"; };
+		2257A8A31C7D9232002A3EF3 /* MyDemoCompositeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyDemoCompositeViewController.m; path = DemoDetail/MyDemoCompositeViewController.m; sourceTree = "<group>"; };
+		2257A8A41C7D9232002A3EF3 /* MyDemoUserModelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyDemoUserModelViewController.h; path = DemoDetail/MyDemoUserModelViewController.h; sourceTree = "<group>"; };
+		2257A8A51C7D9232002A3EF3 /* MyDemoUserModelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyDemoUserModelViewController.m; path = DemoDetail/MyDemoUserModelViewController.m; sourceTree = "<group>"; };
+		2257A8A61C7D9232002A3EF3 /* MyInterestList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyInterestList.h; path = DemoDetail/MyInterestList.h; sourceTree = "<group>"; };
+		2257A8A71C7D9232002A3EF3 /* MyInterestList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyInterestList.m; path = DemoDetail/MyInterestList.m; sourceTree = "<group>"; };
+		2257A8A81C7D9232002A3EF3 /* MyInterestList+HTTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MyInterestList+HTTableViewDataSource.h"; path = "DemoDetail/MyInterestList+HTTableViewDataSource.h"; sourceTree = "<group>"; };
+		2257A8A91C7D9232002A3EF3 /* MyInterestList+HTTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MyInterestList+HTTableViewDataSource.m"; path = "DemoDetail/MyInterestList+HTTableViewDataSource.m"; sourceTree = "<group>"; };
+		2257A8AC1C7D9232002A3EF3 /* MyTableViewCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyTableViewCellModel.h; path = DemoDetail/MyTableViewCellModel.h; sourceTree = "<group>"; };
+		2257A8AD1C7D9232002A3EF3 /* MyTableViewCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyTableViewCellModel.m; path = DemoDetail/MyTableViewCellModel.m; sourceTree = "<group>"; };
+		2257A8C41C7D98C0002A3EF3 /* MyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyTableViewCell.xib; path = DemoDetail/MyTableViewCell.xib; sourceTree = "<group>"; };
+		2257A8C71C7D9946002A3EF3 /* MyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyTableViewCell.h; path = DemoDetail/MyTableViewCell.h; sourceTree = "<group>"; };
+		2257A8C81C7D9946002A3EF3 /* MyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyTableViewCell.m; path = DemoDetail/MyTableViewCell.m; sourceTree = "<group>"; };
+		2257A8CC1C7D9BC7002A3EF3 /* MyDelegateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyDelegateTableViewCell.xib; path = DemoDetail/MyDelegateTableViewCell.xib; sourceTree = "<group>"; };
 		227173C31C4CE8DF000F6999 /* HeartTouchTableViewDataSourceDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeartTouchTableViewDataSourceDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		227173C71C4CE8DF000F6999 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		227173C91C4CE8DF000F6999 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		227173CA1C4CE8DF000F6999 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		227173CC1C4CE8DF000F6999 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		227173CD1C4CE8DF000F6999 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		227173D01C4CE8DF000F6999 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		227173D21C4CE8DF000F6999 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		227173D51C4CE8DF000F6999 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		227173D71C4CE8DF000F6999 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		227173E31C4D0620000F6999 /* MyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewCell.h; sourceTree = "<group>"; };
-		227173E41C4D0620000F6999 /* MyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewCell.m; sourceTree = "<group>"; };
-		227173E61C4D064A000F6999 /* MyTableViewCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewCellModel.h; sourceTree = "<group>"; };
-		227173E71C4D064A000F6999 /* MyTableViewCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewCellModel.m; sourceTree = "<group>"; };
-		227173FB1C4DCA12000F6999 /* HTTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTableViewDataSource.h; sourceTree = "<group>"; };
-		227173FC1C4DCA12000F6999 /* HTTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTableViewDataSource.m; sourceTree = "<group>"; };
-		227173FD1C4DCA12000F6999 /* NSArray+DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+DataSource.h"; sourceTree = "<group>"; };
-		227173FE1C4DCA12000F6999 /* NSArray+DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+DataSource.m"; sourceTree = "<group>"; };
-		227174081C4E114E000F6999 /* HTTableViewCompositeDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTableViewCompositeDataSource.h; sourceTree = "<group>"; };
-		227174091C4E114E000F6999 /* HTTableViewCompositeDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTableViewCompositeDataSource.m; sourceTree = "<group>"; };
-		227174141C508E47000F6999 /* MyDelegateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDelegateTableViewCell.h; sourceTree = "<group>"; };
-		227174151C508E47000F6999 /* MyDelegateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDelegateTableViewCell.m; sourceTree = "<group>"; };
-		227174171C5090C2000F6999 /* MyInterestList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInterestList.h; sourceTree = "<group>"; };
-		227174181C5090C2000F6999 /* MyInterestList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInterestList.m; sourceTree = "<group>"; };
-		2271741A1C5091C4000F6999 /* MyInterestList+HTTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MyInterestList+HTTableViewDataSource.h"; sourceTree = "<group>"; };
-		2271741B1C5091C4000F6999 /* MyInterestList+HTTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MyInterestList+HTTableViewDataSource.m"; sourceTree = "<group>"; };
-		2271741D1C50AA2A000F6999 /* HTTableViewDataSourceDataModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTableViewDataSourceDataModelProtocol.h; sourceTree = "<group>"; };
-		2271741E1C5209B1000F6999 /* MyCustomHTTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCustomHTTableViewDataSource.h; sourceTree = "<group>"; };
-		2271741F1C5209B1000F6999 /* MyCustomHTTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCustomHTTableViewDataSource.m; sourceTree = "<group>"; };
-		227174241C521637000F6999 /* UITableView+FDTemplateLayoutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+FDTemplateLayoutCell.h"; sourceTree = "<group>"; };
-		227174251C521637000F6999 /* UITableView+FDTemplateLayoutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+FDTemplateLayoutCell.m"; sourceTree = "<group>"; };
-		227174261C521637000F6999 /* UITableView+FDKeyedHeightCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+FDKeyedHeightCache.h"; sourceTree = "<group>"; };
-		227174271C521637000F6999 /* UITableView+FDKeyedHeightCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+FDKeyedHeightCache.m"; sourceTree = "<group>"; };
-		227174281C521637000F6999 /* UITableView+FDIndexPathHeightCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+FDIndexPathHeightCache.h"; sourceTree = "<group>"; };
-		227174291C521637000F6999 /* UITableView+FDIndexPathHeightCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+FDIndexPathHeightCache.m"; sourceTree = "<group>"; };
-		2271742A1C521637000F6999 /* UITableView+FDTemplateLayoutCellDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+FDTemplateLayoutCellDebug.h"; sourceTree = "<group>"; };
-		2271742B1C521637000F6999 /* UITableView+FDTemplateLayoutCellDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+FDTemplateLayoutCellDebug.m"; sourceTree = "<group>"; };
-		2271742C1C521637000F6999 /* UITableView+HTTemplateLayoutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+HTTemplateLayoutCell.h"; sourceTree = "<group>"; };
-		2271742D1C521637000F6999 /* UITableView+HTTemplateLayoutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+HTTemplateLayoutCell.m"; sourceTree = "<group>"; };
-		227174341C5235ED000F6999 /* HTTableViewCellModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTableViewCellModelProtocol.h; sourceTree = "<group>"; };
 		227174E71C57181B000F6999 /* ReadMe.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = ReadMe.md; sourceTree = "<group>"; };
-		227174F01C57925A000F6999 /* MyCellStringModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCellStringModel.h; sourceTree = "<group>"; };
-		227174F11C57925A000F6999 /* MyCellStringModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCellStringModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +98,65 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2257A8971C7D9205002A3EF3 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				2257A8981C7D9232002A3EF3 /* MyCellStringModel.h */,
+				2257A8991C7D9232002A3EF3 /* MyCellStringModel.m */,
+				2257A8AC1C7D9232002A3EF3 /* MyTableViewCellModel.h */,
+				2257A8AD1C7D9232002A3EF3 /* MyTableViewCellModel.m */,
+				2257A89C1C7D9232002A3EF3 /* MyDelegateTableViewCell.h */,
+				2257A89D1C7D9232002A3EF3 /* MyDelegateTableViewCell.m */,
+				2257A8CC1C7D9BC7002A3EF3 /* MyDelegateTableViewCell.xib */,
+				2257A8C71C7D9946002A3EF3 /* MyTableViewCell.h */,
+				2257A8C81C7D9946002A3EF3 /* MyTableViewCell.m */,
+				2257A8C41C7D98C0002A3EF3 /* MyTableViewCell.xib */,
+			);
+			name = Commons;
+			sourceTree = "<group>";
+		};
+		2257A8B91C7D93E5002A3EF3 /* DemoCellDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				2257A8A01C7D9232002A3EF3 /* MyDemoCellDelegateViewController.h */,
+				2257A8A11C7D9232002A3EF3 /* MyDemoCellDelegateViewController.m */,
+				2257A89A1C7D9232002A3EF3 /* MyCustomHTTableViewDataSource.h */,
+				2257A89B1C7D9232002A3EF3 /* MyCustomHTTableViewDataSource.m */,
+				2257A8A61C7D9232002A3EF3 /* MyInterestList.h */,
+				2257A8A71C7D9232002A3EF3 /* MyInterestList.m */,
+				2257A8A81C7D9232002A3EF3 /* MyInterestList+HTTableViewDataSource.h */,
+				2257A8A91C7D9232002A3EF3 /* MyInterestList+HTTableViewDataSource.m */,
+			);
+			name = DemoCellDelegate;
+			sourceTree = "<group>";
+		};
+		2257A8BA1C7D93F0002A3EF3 /* DemoArray */ = {
+			isa = PBXGroup;
+			children = (
+				2257A89E1C7D9232002A3EF3 /* MyDemoArrayViewController.h */,
+				2257A89F1C7D9232002A3EF3 /* MyDemoArrayViewController.m */,
+			);
+			name = DemoArray;
+			sourceTree = "<group>";
+		};
+		2257A8BB1C7D93F9002A3EF3 /* DemoComposite */ = {
+			isa = PBXGroup;
+			children = (
+				2257A8A21C7D9232002A3EF3 /* MyDemoCompositeViewController.h */,
+				2257A8A31C7D9232002A3EF3 /* MyDemoCompositeViewController.m */,
+			);
+			name = DemoComposite;
+			sourceTree = "<group>";
+		};
+		2257A8BC1C7D9401002A3EF3 /* DemoUserModel */ = {
+			isa = PBXGroup;
+			children = (
+				2257A8A41C7D9232002A3EF3 /* MyDemoUserModelViewController.h */,
+				2257A8A51C7D9232002A3EF3 /* MyDemoUserModelViewController.m */,
+			);
+			name = DemoUserModel;
+			sourceTree = "<group>";
+		};
 		227173BA1C4CE8DF000F6999 = {
 			isa = PBXGroup;
 			children = (
@@ -107,18 +176,12 @@
 		227173C51C4CE8DF000F6999 /* HeartTouchTableViewDataSourceDemo */ = {
 			isa = PBXGroup;
 			children = (
-				227173CC1C4CE8DF000F6999 /* ViewController.h */,
-				227173CD1C4CE8DF000F6999 /* ViewController.m */,
-				227173E61C4D064A000F6999 /* MyTableViewCellModel.h */,
-				227173E71C4D064A000F6999 /* MyTableViewCellModel.m */,
-				227174F01C57925A000F6999 /* MyCellStringModel.h */,
-				227174F11C57925A000F6999 /* MyCellStringModel.m */,
-				227173E31C4D0620000F6999 /* MyTableViewCell.h */,
-				227173E41C4D0620000F6999 /* MyTableViewCell.m */,
-				227174141C508E47000F6999 /* MyDelegateTableViewCell.h */,
-				227174151C508E47000F6999 /* MyDelegateTableViewCell.m */,
+				2257A8BA1C7D93F0002A3EF3 /* DemoArray */,
+				2257A8BC1C7D9401002A3EF3 /* DemoUserModel */,
+				2257A8BB1C7D93F9002A3EF3 /* DemoComposite */,
+				2257A8B91C7D93E5002A3EF3 /* DemoCellDelegate */,
+				2257A8971C7D9205002A3EF3 /* Commons */,
 				227174071C4DFDF7000F6999 /* HTTableViewDataSource */,
-				227174211C520CE8000F6999 /* User Data Model */,
 				227174231C521621000F6999 /* HT table view height calculate */,
 				227173C91C4CE8DF000F6999 /* AppDelegate.h */,
 				227173CA1C4CE8DF000F6999 /* AppDelegate.m */,
@@ -143,44 +206,29 @@
 		227174071C4DFDF7000F6999 /* HTTableViewDataSource */ = {
 			isa = PBXGroup;
 			children = (
-				2271741D1C50AA2A000F6999 /* HTTableViewDataSourceDataModelProtocol.h */,
-				227174341C5235ED000F6999 /* HTTableViewCellModelProtocol.h */,
-				227173FB1C4DCA12000F6999 /* HTTableViewDataSource.h */,
-				227173FC1C4DCA12000F6999 /* HTTableViewDataSource.m */,
-				227174081C4E114E000F6999 /* HTTableViewCompositeDataSource.h */,
-				227174091C4E114E000F6999 /* HTTableViewCompositeDataSource.m */,
-				227173FD1C4DCA12000F6999 /* NSArray+DataSource.h */,
-				227173FE1C4DCA12000F6999 /* NSArray+DataSource.m */,
+				2257A8731C7D9025002A3EF3 /* HTTableViewCellModelProtocol.h */,
+				2257A8741C7D9025002A3EF3 /* HTTableViewCompositeDataSource.h */,
+				2257A8751C7D9025002A3EF3 /* HTTableViewCompositeDataSource.m */,
+				2257A8761C7D9025002A3EF3 /* HTTableViewDataSource.h */,
+				2257A8771C7D9025002A3EF3 /* HTTableViewDataSource.m */,
+				2257A8781C7D9025002A3EF3 /* HTTableViewDataSourceDataModelProtocol.h */,
+				2257A8791C7D9025002A3EF3 /* NSArray+DataSource.h */,
+				2257A87A1C7D9025002A3EF3 /* NSArray+DataSource.m */,
 			);
 			name = HTTableViewDataSource;
-			sourceTree = "<group>";
-		};
-		227174211C520CE8000F6999 /* User Data Model */ = {
-			isa = PBXGroup;
-			children = (
-				227174171C5090C2000F6999 /* MyInterestList.h */,
-				227174181C5090C2000F6999 /* MyInterestList.m */,
-				2271741A1C5091C4000F6999 /* MyInterestList+HTTableViewDataSource.h */,
-				2271741B1C5091C4000F6999 /* MyInterestList+HTTableViewDataSource.m */,
-				2271741E1C5209B1000F6999 /* MyCustomHTTableViewDataSource.h */,
-				2271741F1C5209B1000F6999 /* MyCustomHTTableViewDataSource.m */,
-			);
-			name = "User Data Model";
 			sourceTree = "<group>";
 		};
 		227174231C521621000F6999 /* HT table view height calculate */ = {
 			isa = PBXGroup;
 			children = (
-				227174241C521637000F6999 /* UITableView+FDTemplateLayoutCell.h */,
-				227174251C521637000F6999 /* UITableView+FDTemplateLayoutCell.m */,
-				227174261C521637000F6999 /* UITableView+FDKeyedHeightCache.h */,
-				227174271C521637000F6999 /* UITableView+FDKeyedHeightCache.m */,
-				227174281C521637000F6999 /* UITableView+FDIndexPathHeightCache.h */,
-				227174291C521637000F6999 /* UITableView+FDIndexPathHeightCache.m */,
-				2271742A1C521637000F6999 /* UITableView+FDTemplateLayoutCellDebug.h */,
-				2271742B1C521637000F6999 /* UITableView+FDTemplateLayoutCellDebug.m */,
-				2271742C1C521637000F6999 /* UITableView+HTTemplateLayoutCell.h */,
-				2271742D1C521637000F6999 /* UITableView+HTTemplateLayoutCell.m */,
+				2257A87E1C7D9070002A3EF3 /* UITableView+FDIndexPathHeightCache.h */,
+				2257A87F1C7D9070002A3EF3 /* UITableView+FDIndexPathHeightCache.m */,
+				2257A8801C7D9070002A3EF3 /* UITableView+FDKeyedHeightCache.h */,
+				2257A8811C7D9070002A3EF3 /* UITableView+FDKeyedHeightCache.m */,
+				2257A8821C7D9070002A3EF3 /* UITableView+FDTemplateLayoutCell.h */,
+				2257A8831C7D9070002A3EF3 /* UITableView+FDTemplateLayoutCell.m */,
+				2257A8841C7D9070002A3EF3 /* UITableView+FDTemplateLayoutCellDebug.h */,
+				2257A8851C7D9070002A3EF3 /* UITableView+FDTemplateLayoutCellDebug.m */,
 			);
 			name = "HT table view height calculate";
 			sourceTree = "<group>";
@@ -244,7 +292,9 @@
 			files = (
 				227173D61C4CE8DF000F6999 /* LaunchScreen.storyboard in Resources */,
 				227173D31C4CE8DF000F6999 /* Assets.xcassets in Resources */,
+				2257A8CD1C7D9BC7002A3EF3 /* MyDelegateTableViewCell.xib in Resources */,
 				227173D11C4CE8DF000F6999 /* Main.storyboard in Resources */,
+				2257A8C61C7D98C0002A3EF3 /* MyTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,25 +305,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2271740A1C4E114E000F6999 /* HTTableViewCompositeDataSource.m in Sources */,
-				2271742E1C521637000F6999 /* UITableView+FDTemplateLayoutCell.m in Sources */,
-				227174041C4DCA12000F6999 /* NSArray+DataSource.m in Sources */,
-				227174301C521637000F6999 /* UITableView+FDIndexPathHeightCache.m in Sources */,
-				227174031C4DCA12000F6999 /* HTTableViewDataSource.m in Sources */,
-				227173CE1C4CE8DF000F6999 /* ViewController.m in Sources */,
-				227173E81C4D064A000F6999 /* MyTableViewCellModel.m in Sources */,
-				227174F21C57925A000F6999 /* MyCellStringModel.m in Sources */,
-				227174161C508E47000F6999 /* MyDelegateTableViewCell.m in Sources */,
+				2257A8861C7D9070002A3EF3 /* UITableView+FDIndexPathHeightCache.m in Sources */,
+				2257A8891C7D9070002A3EF3 /* UITableView+FDTemplateLayoutCellDebug.m in Sources */,
+				2257A8B41C7D9232002A3EF3 /* MyDemoUserModelViewController.m in Sources */,
+				2257A8B81C7D9232002A3EF3 /* MyTableViewCellModel.m in Sources */,
+				2257A87D1C7D9025002A3EF3 /* NSArray+DataSource.m in Sources */,
+				2257A8AE1C7D9232002A3EF3 /* MyCellStringModel.m in Sources */,
+				2257A8871C7D9070002A3EF3 /* UITableView+FDKeyedHeightCache.m in Sources */,
+				2257A8B31C7D9232002A3EF3 /* MyDemoCompositeViewController.m in Sources */,
 				227174E81C57181B000F6999 /* ReadMe.md in Sources */,
-				2271741C1C5091C4000F6999 /* MyInterestList+HTTableViewDataSource.m in Sources */,
-				227174311C521637000F6999 /* UITableView+FDTemplateLayoutCellDebug.m in Sources */,
-				227173E51C4D0620000F6999 /* MyTableViewCell.m in Sources */,
-				227174321C521637000F6999 /* UITableView+HTTemplateLayoutCell.m in Sources */,
+				2257A87B1C7D9025002A3EF3 /* HTTableViewCompositeDataSource.m in Sources */,
+				2257A8C91C7D9946002A3EF3 /* MyTableViewCell.m in Sources */,
+				2257A8AF1C7D9232002A3EF3 /* MyCustomHTTableViewDataSource.m in Sources */,
 				227173CB1C4CE8DF000F6999 /* AppDelegate.m in Sources */,
-				227174201C5209B1000F6999 /* MyCustomHTTableViewDataSource.m in Sources */,
+				2257A8B21C7D9232002A3EF3 /* MyDemoCellDelegateViewController.m in Sources */,
+				2257A8B11C7D9232002A3EF3 /* MyDemoArrayViewController.m in Sources */,
+				2257A8B01C7D9232002A3EF3 /* MyDelegateTableViewCell.m in Sources */,
+				2257A8881C7D9070002A3EF3 /* UITableView+FDTemplateLayoutCell.m in Sources */,
+				2257A87C1C7D9025002A3EF3 /* HTTableViewDataSource.m in Sources */,
 				227173C81C4CE8DF000F6999 /* main.m in Sources */,
-				2271742F1C521637000F6999 /* UITableView+FDKeyedHeightCache.m in Sources */,
-				227174191C5090C2000F6999 /* MyInterestList.m in Sources */,
+				2257A8B61C7D9232002A3EF3 /* MyInterestList+HTTableViewDataSource.m in Sources */,
+				2257A8B51C7D9232002A3EF3 /* MyInterestList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
