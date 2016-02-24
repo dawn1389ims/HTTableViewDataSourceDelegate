@@ -73,6 +73,9 @@
 		2257A8D41C7D9EB7002A3EF3 /* HTTableViewDataSourceDataModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTableViewDataSourceDataModelProtocol.h; path = HTTableViewDataSourceDelegate/HTTableViewDataSourceDataModelProtocol.h; sourceTree = "<group>"; };
 		2257A8D51C7D9EB7002A3EF3 /* NSArray+DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+DataSource.h"; path = "HTTableViewDataSourceDelegate/NSArray+DataSource.h"; sourceTree = "<group>"; };
 		2257A8D61C7D9EB7002A3EF3 /* NSArray+DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+DataSource.m"; path = "HTTableViewDataSourceDelegate/NSArray+DataSource.m"; sourceTree = "<group>"; };
+		2257A8DB1C7DFADC002A3EF3 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		2257A8DD1C7DFC33002A3EF3 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		2257A8DF1C7DFD52002A3EF3 /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = System/Library/Frameworks/PassKit.framework; sourceTree = SDKROOT; };
 		227173C31C4CE8DF000F6999 /* HeartTouchTableViewDataSourceDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeartTouchTableViewDataSourceDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		227173C71C4CE8DF000F6999 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		227173C91C4CE8DF000F6999 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -170,6 +173,9 @@
 		227173BA1C4CE8DF000F6999 = {
 			isa = PBXGroup;
 			children = (
+				2257A8DF1C7DFD52002A3EF3 /* PassKit.framework */,
+				2257A8DD1C7DFC33002A3EF3 /* Accounts.framework */,
+				2257A8DB1C7DFADC002A3EF3 /* Accelerate.framework */,
 				227173C51C4CE8DF000F6999 /* HeartTouchTableViewDataSourceDemo */,
 				227173C41C4CE8DF000F6999 /* Products */,
 			);

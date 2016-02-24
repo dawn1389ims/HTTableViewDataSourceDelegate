@@ -77,26 +77,12 @@
     [_tableview reloadData];
 }
 
-#pragma mark - UITableViewDelegate
-
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+- (BOOL)prefersStatusBarHidden
 {
-    if (section == 1) {
-        MyCellStringModel * model = [_dataModel ht_itemAtSection:section rowIndex:0];
-        
-        static NSString *kHeadView = @"headerView";
-        UITableViewHeaderFooterView *myHeader = [tableView dequeueReusableHeaderFooterViewWithIdentifier:kHeadView];
-        if(!myHeader) {
-            myHeader = [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:kHeadView];
-        }
-        
-        myHeader.textLabel.text = [@"Header" stringByAppendingFormat:@" for %@",model.title];
-        [myHeader setFrame:CGRectMake(0, 0, tableView.frame.size.width, [self tableView:tableView heightForHeaderInSection:section])];
-        return myHeader;
-    } else {
-        return nil;
-    }
+    return YES;
 }
+
+#pragma mark - UITableViewDelegate
 
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
@@ -109,7 +95,7 @@
             myFooter = [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:kFootView];
         }
         
-        myFooter.textLabel.text = [@"Footer" stringByAppendingFormat:@" for %@",model.title];
+        myFooter.textLabel.text = [@"Footer" stringByAppendingFormat:@" for %@ by Delegate",model.title];
         [myFooter setFrame:CGRectMake(0, 0, tableView.frame.size.width, [self tableView:tableView heightForHeaderInSection:section])];
         return myFooter;
     } else {
@@ -135,8 +121,11 @@
     }
 }
 
-- (BOOL)prefersStatusBarHidden
+#pragma mark - UITableViewDataSource
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return YES;
+    return @"Header for mixed by DataSource";
 }
+
 @end

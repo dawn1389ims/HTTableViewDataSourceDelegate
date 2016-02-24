@@ -113,10 +113,8 @@
  */
 -(BOOL)respondsToSelector:(SEL)selector
 {
-    if (selector == @selector(tableView:heightForRowAtIndexPath:)) {
-        return YES;
-    }
-    if ([self isBelongTableViewDelegateForSelector:selector]) {
+    if ([self checkProtocol:@protocol(UITableViewDelegate) containSelector:selector]
+        ||[self checkProtocol:@protocol(UITableViewDataSource) containSelector:selector]) {
         return [_tableViewDelegate respondsToSelector:selector];
     }
     return [super respondsToSelector:selector];
@@ -124,7 +122,8 @@
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
 {
-    if ([self isBelongTableViewDelegateForSelector:aSelector]) {
+    if ([self checkProtocol:@protocol(UITableViewDelegate) containSelector:aSelector]
+        ||[self checkProtocol:@protocol(UITableViewDataSource) containSelector:aSelector]) {
         return [(NSObject*)_tableViewDelegate methodSignatureForSelector:aSelector];
     }
     return [self methodSignatureForSelector:aSelector];
@@ -132,15 +131,16 @@
 
 -(void)forwardInvocation:(NSInvocation *)anInvocation
 {
-    if ([self isBelongTableViewDelegateForSelector:anInvocation.selector]) {
+    if ([self checkProtocol:@protocol(UITableViewDelegate) containSelector:anInvocation.selector]
+        ||[self checkProtocol:@protocol(UITableViewDataSource) containSelector:anInvocation.selector]) {
         return [anInvocation invokeWithTarget:_tableViewDelegate];
     }
     [anInvocation invokeWithTarget:self];
 }
 
-- (BOOL)isBelongTableViewDelegateForSelector:(SEL)sel
+- (BOOL)checkProtocol:(Protocol*)pro containSelector:(SEL)sel
 {
-    struct objc_method_description hasMethod = protocol_getMethodDescription(@protocol(UITableViewDelegate), sel, NO, YES);
+    struct objc_method_description hasMethod = protocol_getMethodDescription(pro, sel, NO, YES);
     
     return hasMethod.name != NULL;
 }
