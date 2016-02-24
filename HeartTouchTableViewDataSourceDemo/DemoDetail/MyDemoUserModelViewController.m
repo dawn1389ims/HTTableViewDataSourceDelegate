@@ -7,23 +7,41 @@
 //
 
 #import "MyDemoUserModelViewController.h"
-#import "HTTableViewDataSource.h"
-#import "MyCellStringModel.h"
-#import "MyTableViewCellModel.h"
-#import "MyDelegateTableViewCell.h"
+
+#import "HTTableViewDataSourceDelegate.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "NSArray+DataSource.h"
+
+#import "MyInterestList.h"
+#import "MyInterestList+HTTableViewDataSource.h"
+
+#import "MyCellStringModel.h"
+#import "MyTableViewCellModel.h"
+
 #import "MyTableViewCell.h"
 #import "MyDelegateTableViewCell.h"
+
+
 @interface MyDemoUserModelViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 
 @property (nonatomic ,strong) id demoDataSource;
 
+@property (nonatomic, strong) id <HTTableViewDataSourceDataModelProtocol> dataModel;
+
 @end
 
 @implementation MyDemoUserModelViewController
+
+- (NSArray <HTTableViewDataSourceDataModelProtocol> *)arrayCellModels
+{
+    NSMutableArray * models = [NSMutableArray new];
+    for (NSString * arg in @[@"A", @"B", @"C", @"D", @"E", @"F"]) {
+        [models addObject:[MyCellStringModel modelWithTitle:arg]];
+    }
+    return models;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,17 +53,21 @@
     nib = [UINib nibWithNibName:@"MyDelegateTableViewCell" bundle:[NSBundle mainBundle]];
     [_tableview registerNib:nib forCellReuseIdentifier:@"MyDelegateTableViewCell"];
     
-    NSMutableArray * mixModelSource= [[self arrayCellModels] mutableCopy];
-    [mixModelSource addObject:[MyTableViewCellModel modelWithTitle:@"Mixed" name:@"Delegate Cell"]];
+    _dataModel = [MyInterestList interestListWithSport];
     
-    id __weak weakSelf = self;
     id <UITableViewDataSource, UITableViewDelegate> dataSource
-    = [HTTableViewDataSource dataSourceWithModel:mixModelSource
-                                     cellTypeMap:@{@"MyCellStringModel" : @"MyTableViewCell", @"MyTableViewCellModel": @"MyDelegateTableViewCell"} cellConfiguration:
+    = [HTTableViewDataSourceDelegate dataSourceWithModel:_dataModel
+                                     cellTypeMap:@{@"MyCellStringModel" : @"MyTableViewCell", @"MyTableViewCellModel" : @"MyTableViewCell"}
+                               tableViewDelegate:self
+                               cellConfiguration:
        ^(MyDelegateTableViewCell *cell, NSIndexPath *indexPath) {
-           if ([cell isKindOfClass:[MyDelegateTableViewCell class]]) {
-               cell.delegate = weakSelf;
-               cell.fd_enforceFrameLayout = YES;
+           if (indexPath.row % 2 == 0) {
+               cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+           } else {
+               cell.accessoryType = UITableViewCellAccessoryCheckmark;
+           }
+           if (indexPath.section == 1) {
+               [cell.contentView setBackgroundColor:[UIColor grayColor]];
            }
        }];
     
@@ -55,18 +77,66 @@
     [_tableview reloadData];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+#pragma mark - UITableViewDelegate
 
-- (NSArray <HTTableViewDataSourceDataModelProtocol> *)arrayCellModels
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    NSMutableArray * models = [NSMutableArray new];
-    for (NSString * arg in @[@"A", @"B", @"C", @"D", @"E", @"F"]) {
-        [models addObject:[MyCellStringModel modelWithTitle:arg]];
+    if (section == 1) {
+        MyCellStringModel * model = [_dataModel ht_itemAtSection:section rowIndex:0];
+        
+        static NSString *kHeadView = @"headerView";
+        UITableViewHeaderFooterView *myHeader = [tableView dequeueReusableHeaderFooterViewWithIdentifier:kHeadView];
+        if(!myHeader) {
+            myHeader = [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:kHeadView];
+        }
+        
+        myHeader.textLabel.text = [@"Header" stringByAppendingFormat:@" for %@",model.title];
+        [myHeader setFrame:CGRectMake(0, 0, tableView.frame.size.width, [self tableView:tableView heightForHeaderInSection:section])];
+        return myHeader;
+    } else {
+        return nil;
     }
-    return models;
 }
 
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    if (section == 1) {
+        MyCellStringModel * model = [_dataModel ht_itemAtSection:section rowIndex:0];
+        
+        static NSString *kFootView = @"footerView";
+        UITableViewHeaderFooterView *myFooter = [tableView dequeueReusableHeaderFooterViewWithIdentifier:kFootView];
+        if(!myFooter) {
+            myFooter = [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:kFootView];
+        }
+        
+        myFooter.textLabel.text = [@"Footer" stringByAppendingFormat:@" for %@",model.title];
+        [myFooter setFrame:CGRectMake(0, 0, tableView.frame.size.width, [self tableView:tableView heightForHeaderInSection:section])];
+        return myFooter;
+    } else {
+        return nil;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == 1) {
+        return 30;
+    } else {
+        return 0;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    if (section == 1) {
+        return 30;
+    } else {
+        return 0;
+    }
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
 @end

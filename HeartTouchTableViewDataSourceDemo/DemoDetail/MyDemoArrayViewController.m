@@ -7,12 +7,16 @@
 //
 
 #import "MyDemoArrayViewController.h"
-#import "HTTableViewDataSource.h"
+
+#import "HTTableViewDataSourceDelegate.h"
+#import "NSArray+DataSource.h"
+
 #import "MyCellStringModel.h"
 #import "MyTableViewCellModel.h"
+
 #import "MyTableViewCell.h"
-#import "NSArray+DataSource.h"
-@interface MyDemoArrayViewController ()
+
+@interface MyDemoArrayViewController () <UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 
@@ -21,6 +25,15 @@
 @end
 
 @implementation MyDemoArrayViewController
+
+- (NSArray <HTTableViewDataSourceDataModelProtocol> *)arrayCellModels
+{
+    NSMutableArray * models = [NSMutableArray new];
+    for (NSString * arg in @[@"A", @"B", @"C", @"D", @"E", @"F"]) {
+        [models addObject:[MyCellStringModel modelWithTitle:arg]];
+    }
+    return models;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,9 +44,9 @@
     
     id <HTTableViewDataSourceDataModelProtocol> cellModels = [self arrayCellModels];
     id <UITableViewDataSource, UITableViewDelegate> dataSource
-    = [HTTableViewDataSource dataSourceWithModel:cellModels
+    = [HTTableViewDataSourceDelegate dataSourceWithModel:cellModels
                                      cellTypeMap:@{@"MyCellStringModel" : @"MyTableViewCell"}
-                               cellConfiguration:
+                               tableViewDelegate:nil                               cellConfiguration:
        ^(UITableViewCell *cell, NSIndexPath *indexPath) {
            if (indexPath.row % 2 == 0) {
                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -51,26 +64,8 @@
     [_tableview reloadData];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (NSArray <HTTableViewDataSourceDataModelProtocol> *)arrayCellModels
+- (BOOL)prefersStatusBarHidden
 {
-    NSMutableArray * models = [NSMutableArray new];
-    for (NSString * arg in @[@"A", @"B", @"C", @"D", @"E", @"F"]) {
-        [models addObject:[MyCellStringModel modelWithTitle:arg]];
-    }
-    return models;
-}
-
-- (NSArray <HTTableViewDataSourceDataModelProtocol> *)customClassCellModels
-{
-    NSMutableArray * modelList = [NSMutableArray new];
-    for (int index = 0; index < 10; index ++ ) {
-        [modelList addObject:[MyTableViewCellModel modelWithTitle:[NSString stringWithFormat:@"%d",index] name:@"normal"]];
-    }
-    return modelList;
+    return YES;
 }
 @end

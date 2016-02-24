@@ -12,7 +12,7 @@
  *  连接多个dataSource对象，合并为一个。
  *  被连接的dataSource的调用没有受到连接的影响
  */
-@interface HTTableViewCompositeDataSource : NSObject < UITableViewDataSource, UITableViewDelegate >
+@interface HTTableViewCompositeDataSourceDelegate : NSObject < UITableViewDataSource, UITableViewDelegate >
 
 /**
  *  将多个dataSource连接成一个新的dataSource

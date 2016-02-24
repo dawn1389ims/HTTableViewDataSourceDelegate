@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ *  演示cell需要设置delegate的情况
+ */
 @interface MyDemoCellDelegateViewController : UITableViewController
 
 @end

@@ -7,15 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2257A87B1C7D9025002A3EF3 /* HTTableViewCompositeDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A8751C7D9025002A3EF3 /* HTTableViewCompositeDataSource.m */; };
-		2257A87C1C7D9025002A3EF3 /* HTTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A8771C7D9025002A3EF3 /* HTTableViewDataSource.m */; };
-		2257A87D1C7D9025002A3EF3 /* NSArray+DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A87A1C7D9025002A3EF3 /* NSArray+DataSource.m */; };
 		2257A8861C7D9070002A3EF3 /* UITableView+FDIndexPathHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A87F1C7D9070002A3EF3 /* UITableView+FDIndexPathHeightCache.m */; };
 		2257A8871C7D9070002A3EF3 /* UITableView+FDKeyedHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A8811C7D9070002A3EF3 /* UITableView+FDKeyedHeightCache.m */; };
 		2257A8881C7D9070002A3EF3 /* UITableView+FDTemplateLayoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A8831C7D9070002A3EF3 /* UITableView+FDTemplateLayoutCell.m */; };
 		2257A8891C7D9070002A3EF3 /* UITableView+FDTemplateLayoutCellDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A8851C7D9070002A3EF3 /* UITableView+FDTemplateLayoutCellDebug.m */; };
 		2257A8AE1C7D9232002A3EF3 /* MyCellStringModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A8991C7D9232002A3EF3 /* MyCellStringModel.m */; };
-		2257A8AF1C7D9232002A3EF3 /* MyCustomHTTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A89B1C7D9232002A3EF3 /* MyCustomHTTableViewDataSource.m */; };
 		2257A8B01C7D9232002A3EF3 /* MyDelegateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A89D1C7D9232002A3EF3 /* MyDelegateTableViewCell.m */; };
 		2257A8B11C7D9232002A3EF3 /* MyDemoArrayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A89F1C7D9232002A3EF3 /* MyDemoArrayViewController.m */; };
 		2257A8B21C7D9232002A3EF3 /* MyDemoCellDelegateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A8A11C7D9232002A3EF3 /* MyDemoCellDelegateViewController.m */; };
@@ -27,6 +23,9 @@
 		2257A8C61C7D98C0002A3EF3 /* MyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2257A8C41C7D98C0002A3EF3 /* MyTableViewCell.xib */; };
 		2257A8C91C7D9946002A3EF3 /* MyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A8C81C7D9946002A3EF3 /* MyTableViewCell.m */; };
 		2257A8CD1C7D9BC7002A3EF3 /* MyDelegateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2257A8CC1C7D9BC7002A3EF3 /* MyDelegateTableViewCell.xib */; };
+		2257A8D71C7D9EB7002A3EF3 /* HTTableViewDataSourceDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A8CF1C7D9EB7002A3EF3 /* HTTableViewDataSourceDelegate.m */; };
+		2257A8D81C7D9EB7002A3EF3 /* HTTableViewCompositeDataSourceDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A8D21C7D9EB7002A3EF3 /* HTTableViewCompositeDataSourceDelegate.m */; };
+		2257A8D91C7D9EB7002A3EF3 /* NSArray+DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A8D61C7D9EB7002A3EF3 /* NSArray+DataSource.m */; };
 		227173C81C4CE8DF000F6999 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 227173C71C4CE8DF000F6999 /* main.m */; };
 		227173CB1C4CE8DF000F6999 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 227173CA1C4CE8DF000F6999 /* AppDelegate.m */; };
 		227173D11C4CE8DF000F6999 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 227173CF1C4CE8DF000F6999 /* Main.storyboard */; };
@@ -36,14 +35,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2257A8731C7D9025002A3EF3 /* HTTableViewCellModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTableViewCellModelProtocol.h; path = HTTableViewDataSource/HTTableViewCellModelProtocol.h; sourceTree = "<group>"; };
-		2257A8741C7D9025002A3EF3 /* HTTableViewCompositeDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTableViewCompositeDataSource.h; path = HTTableViewDataSource/HTTableViewCompositeDataSource.h; sourceTree = "<group>"; };
-		2257A8751C7D9025002A3EF3 /* HTTableViewCompositeDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTableViewCompositeDataSource.m; path = HTTableViewDataSource/HTTableViewCompositeDataSource.m; sourceTree = "<group>"; };
-		2257A8761C7D9025002A3EF3 /* HTTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTableViewDataSource.h; path = HTTableViewDataSource/HTTableViewDataSource.h; sourceTree = "<group>"; };
-		2257A8771C7D9025002A3EF3 /* HTTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTableViewDataSource.m; path = HTTableViewDataSource/HTTableViewDataSource.m; sourceTree = "<group>"; };
-		2257A8781C7D9025002A3EF3 /* HTTableViewDataSourceDataModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTableViewDataSourceDataModelProtocol.h; path = HTTableViewDataSource/HTTableViewDataSourceDataModelProtocol.h; sourceTree = "<group>"; };
-		2257A8791C7D9025002A3EF3 /* NSArray+DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+DataSource.h"; path = "HTTableViewDataSource/NSArray+DataSource.h"; sourceTree = "<group>"; };
-		2257A87A1C7D9025002A3EF3 /* NSArray+DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+DataSource.m"; path = "HTTableViewDataSource/NSArray+DataSource.m"; sourceTree = "<group>"; };
 		2257A87E1C7D9070002A3EF3 /* UITableView+FDIndexPathHeightCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITableView+FDIndexPathHeightCache.h"; path = "HT table view height calculate/UITableView+FDIndexPathHeightCache.h"; sourceTree = "<group>"; };
 		2257A87F1C7D9070002A3EF3 /* UITableView+FDIndexPathHeightCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITableView+FDIndexPathHeightCache.m"; path = "HT table view height calculate/UITableView+FDIndexPathHeightCache.m"; sourceTree = "<group>"; };
 		2257A8801C7D9070002A3EF3 /* UITableView+FDKeyedHeightCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITableView+FDKeyedHeightCache.h"; path = "HT table view height calculate/UITableView+FDKeyedHeightCache.h"; sourceTree = "<group>"; };
@@ -54,8 +45,6 @@
 		2257A8851C7D9070002A3EF3 /* UITableView+FDTemplateLayoutCellDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITableView+FDTemplateLayoutCellDebug.m"; path = "HT table view height calculate/UITableView+FDTemplateLayoutCellDebug.m"; sourceTree = "<group>"; };
 		2257A8981C7D9232002A3EF3 /* MyCellStringModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyCellStringModel.h; path = DemoDetail/MyCellStringModel.h; sourceTree = "<group>"; };
 		2257A8991C7D9232002A3EF3 /* MyCellStringModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyCellStringModel.m; path = DemoDetail/MyCellStringModel.m; sourceTree = "<group>"; };
-		2257A89A1C7D9232002A3EF3 /* MyCustomHTTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyCustomHTTableViewDataSource.h; path = DemoDetail/MyCustomHTTableViewDataSource.h; sourceTree = "<group>"; };
-		2257A89B1C7D9232002A3EF3 /* MyCustomHTTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyCustomHTTableViewDataSource.m; path = DemoDetail/MyCustomHTTableViewDataSource.m; sourceTree = "<group>"; };
 		2257A89C1C7D9232002A3EF3 /* MyDelegateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyDelegateTableViewCell.h; path = DemoDetail/MyDelegateTableViewCell.h; sourceTree = "<group>"; };
 		2257A89D1C7D9232002A3EF3 /* MyDelegateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyDelegateTableViewCell.m; path = DemoDetail/MyDelegateTableViewCell.m; sourceTree = "<group>"; };
 		2257A89E1C7D9232002A3EF3 /* MyDemoArrayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyDemoArrayViewController.h; path = DemoDetail/MyDemoArrayViewController.h; sourceTree = "<group>"; };
@@ -76,6 +65,14 @@
 		2257A8C71C7D9946002A3EF3 /* MyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyTableViewCell.h; path = DemoDetail/MyTableViewCell.h; sourceTree = "<group>"; };
 		2257A8C81C7D9946002A3EF3 /* MyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyTableViewCell.m; path = DemoDetail/MyTableViewCell.m; sourceTree = "<group>"; };
 		2257A8CC1C7D9BC7002A3EF3 /* MyDelegateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyDelegateTableViewCell.xib; path = DemoDetail/MyDelegateTableViewCell.xib; sourceTree = "<group>"; };
+		2257A8CF1C7D9EB7002A3EF3 /* HTTableViewDataSourceDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTableViewDataSourceDelegate.m; path = HTTableViewDataSourceDelegate/HTTableViewDataSourceDelegate.m; sourceTree = "<group>"; };
+		2257A8D01C7D9EB7002A3EF3 /* HTTableViewCellModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTableViewCellModelProtocol.h; path = HTTableViewDataSourceDelegate/HTTableViewCellModelProtocol.h; sourceTree = "<group>"; };
+		2257A8D11C7D9EB7002A3EF3 /* HTTableViewCompositeDataSourceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTableViewCompositeDataSourceDelegate.h; path = HTTableViewDataSourceDelegate/HTTableViewCompositeDataSourceDelegate.h; sourceTree = "<group>"; };
+		2257A8D21C7D9EB7002A3EF3 /* HTTableViewCompositeDataSourceDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTableViewCompositeDataSourceDelegate.m; path = HTTableViewDataSourceDelegate/HTTableViewCompositeDataSourceDelegate.m; sourceTree = "<group>"; };
+		2257A8D31C7D9EB7002A3EF3 /* HTTableViewDataSourceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTableViewDataSourceDelegate.h; path = HTTableViewDataSourceDelegate/HTTableViewDataSourceDelegate.h; sourceTree = "<group>"; };
+		2257A8D41C7D9EB7002A3EF3 /* HTTableViewDataSourceDataModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTableViewDataSourceDataModelProtocol.h; path = HTTableViewDataSourceDelegate/HTTableViewDataSourceDataModelProtocol.h; sourceTree = "<group>"; };
+		2257A8D51C7D9EB7002A3EF3 /* NSArray+DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+DataSource.h"; path = "HTTableViewDataSourceDelegate/NSArray+DataSource.h"; sourceTree = "<group>"; };
+		2257A8D61C7D9EB7002A3EF3 /* NSArray+DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+DataSource.m"; path = "HTTableViewDataSourceDelegate/NSArray+DataSource.m"; sourceTree = "<group>"; };
 		227173C31C4CE8DF000F6999 /* HeartTouchTableViewDataSourceDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeartTouchTableViewDataSourceDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		227173C71C4CE8DF000F6999 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		227173C91C4CE8DF000F6999 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -120,12 +117,6 @@
 			children = (
 				2257A8A01C7D9232002A3EF3 /* MyDemoCellDelegateViewController.h */,
 				2257A8A11C7D9232002A3EF3 /* MyDemoCellDelegateViewController.m */,
-				2257A89A1C7D9232002A3EF3 /* MyCustomHTTableViewDataSource.h */,
-				2257A89B1C7D9232002A3EF3 /* MyCustomHTTableViewDataSource.m */,
-				2257A8A61C7D9232002A3EF3 /* MyInterestList.h */,
-				2257A8A71C7D9232002A3EF3 /* MyInterestList.m */,
-				2257A8A81C7D9232002A3EF3 /* MyInterestList+HTTableViewDataSource.h */,
-				2257A8A91C7D9232002A3EF3 /* MyInterestList+HTTableViewDataSource.m */,
 			);
 			name = DemoCellDelegate;
 			sourceTree = "<group>";
@@ -153,8 +144,27 @@
 			children = (
 				2257A8A41C7D9232002A3EF3 /* MyDemoUserModelViewController.h */,
 				2257A8A51C7D9232002A3EF3 /* MyDemoUserModelViewController.m */,
+				2257A8A61C7D9232002A3EF3 /* MyInterestList.h */,
+				2257A8A71C7D9232002A3EF3 /* MyInterestList.m */,
+				2257A8A81C7D9232002A3EF3 /* MyInterestList+HTTableViewDataSource.h */,
+				2257A8A91C7D9232002A3EF3 /* MyInterestList+HTTableViewDataSource.m */,
 			);
 			name = DemoUserModel;
+			sourceTree = "<group>";
+		};
+		2257A8CE1C7D9EA3002A3EF3 /* HTTableViewDataSourceDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				2257A8D31C7D9EB7002A3EF3 /* HTTableViewDataSourceDelegate.h */,
+				2257A8CF1C7D9EB7002A3EF3 /* HTTableViewDataSourceDelegate.m */,
+				2257A8D01C7D9EB7002A3EF3 /* HTTableViewCellModelProtocol.h */,
+				2257A8D11C7D9EB7002A3EF3 /* HTTableViewCompositeDataSourceDelegate.h */,
+				2257A8D21C7D9EB7002A3EF3 /* HTTableViewCompositeDataSourceDelegate.m */,
+				2257A8D41C7D9EB7002A3EF3 /* HTTableViewDataSourceDataModelProtocol.h */,
+				2257A8D51C7D9EB7002A3EF3 /* NSArray+DataSource.h */,
+				2257A8D61C7D9EB7002A3EF3 /* NSArray+DataSource.m */,
+			);
+			name = HTTableViewDataSourceDelegate;
 			sourceTree = "<group>";
 		};
 		227173BA1C4CE8DF000F6999 = {
@@ -181,7 +191,7 @@
 				2257A8BB1C7D93F9002A3EF3 /* DemoComposite */,
 				2257A8B91C7D93E5002A3EF3 /* DemoCellDelegate */,
 				2257A8971C7D9205002A3EF3 /* Commons */,
-				227174071C4DFDF7000F6999 /* HTTableViewDataSource */,
+				2257A8CE1C7D9EA3002A3EF3 /* HTTableViewDataSourceDelegate */,
 				227174231C521621000F6999 /* HT table view height calculate */,
 				227173C91C4CE8DF000F6999 /* AppDelegate.h */,
 				227173CA1C4CE8DF000F6999 /* AppDelegate.m */,
@@ -201,21 +211,6 @@
 				227173C71C4CE8DF000F6999 /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		227174071C4DFDF7000F6999 /* HTTableViewDataSource */ = {
-			isa = PBXGroup;
-			children = (
-				2257A8731C7D9025002A3EF3 /* HTTableViewCellModelProtocol.h */,
-				2257A8741C7D9025002A3EF3 /* HTTableViewCompositeDataSource.h */,
-				2257A8751C7D9025002A3EF3 /* HTTableViewCompositeDataSource.m */,
-				2257A8761C7D9025002A3EF3 /* HTTableViewDataSource.h */,
-				2257A8771C7D9025002A3EF3 /* HTTableViewDataSource.m */,
-				2257A8781C7D9025002A3EF3 /* HTTableViewDataSourceDataModelProtocol.h */,
-				2257A8791C7D9025002A3EF3 /* NSArray+DataSource.h */,
-				2257A87A1C7D9025002A3EF3 /* NSArray+DataSource.m */,
-			);
-			name = HTTableViewDataSource;
 			sourceTree = "<group>";
 		};
 		227174231C521621000F6999 /* HT table view height calculate */ = {
@@ -309,20 +304,19 @@
 				2257A8891C7D9070002A3EF3 /* UITableView+FDTemplateLayoutCellDebug.m in Sources */,
 				2257A8B41C7D9232002A3EF3 /* MyDemoUserModelViewController.m in Sources */,
 				2257A8B81C7D9232002A3EF3 /* MyTableViewCellModel.m in Sources */,
-				2257A87D1C7D9025002A3EF3 /* NSArray+DataSource.m in Sources */,
 				2257A8AE1C7D9232002A3EF3 /* MyCellStringModel.m in Sources */,
 				2257A8871C7D9070002A3EF3 /* UITableView+FDKeyedHeightCache.m in Sources */,
 				2257A8B31C7D9232002A3EF3 /* MyDemoCompositeViewController.m in Sources */,
 				227174E81C57181B000F6999 /* ReadMe.md in Sources */,
-				2257A87B1C7D9025002A3EF3 /* HTTableViewCompositeDataSource.m in Sources */,
+				2257A8D71C7D9EB7002A3EF3 /* HTTableViewDataSourceDelegate.m in Sources */,
 				2257A8C91C7D9946002A3EF3 /* MyTableViewCell.m in Sources */,
-				2257A8AF1C7D9232002A3EF3 /* MyCustomHTTableViewDataSource.m in Sources */,
 				227173CB1C4CE8DF000F6999 /* AppDelegate.m in Sources */,
+				2257A8D81C7D9EB7002A3EF3 /* HTTableViewCompositeDataSourceDelegate.m in Sources */,
 				2257A8B21C7D9232002A3EF3 /* MyDemoCellDelegateViewController.m in Sources */,
+				2257A8D91C7D9EB7002A3EF3 /* NSArray+DataSource.m in Sources */,
 				2257A8B11C7D9232002A3EF3 /* MyDemoArrayViewController.m in Sources */,
 				2257A8B01C7D9232002A3EF3 /* MyDelegateTableViewCell.m in Sources */,
 				2257A8881C7D9070002A3EF3 /* UITableView+FDTemplateLayoutCell.m in Sources */,
-				2257A87C1C7D9025002A3EF3 /* HTTableViewDataSource.m in Sources */,
 				227173C81C4CE8DF000F6999 /* main.m in Sources */,
 				2257A8B61C7D9232002A3EF3 /* MyInterestList+HTTableViewDataSource.m in Sources */,
 				2257A8B51C7D9232002A3EF3 /* MyInterestList.m in Sources */,
@@ -437,10 +431,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: zhongkai song (YB9TPKN6VZ)";
 				INFOPLIST_FILE = HeartTouchTableViewDataSourceDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = HT.HeartTouchTableViewDataSourceDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f912dcc6-0c25-4b4a-a2d9-31e47690269c";
 			};
 			name = Debug;
 		};
@@ -448,10 +444,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: zhongkai song (YB9TPKN6VZ)";
 				INFOPLIST_FILE = HeartTouchTableViewDataSourceDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = HT.HeartTouchTableViewDataSourceDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f912dcc6-0c25-4b4a-a2d9-31e47690269c";
 			};
 			name = Release;
 		};

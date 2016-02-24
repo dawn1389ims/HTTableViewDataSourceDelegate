@@ -6,14 +6,12 @@
 //  Copyright © 2016年 志强. All rights reserved.
 //
 
-#import "HTTableViewCompositeDataSource.h"
-#import "MyTableViewCellModel.h"
-#import "MyTableViewCell.h"
+#import "HTTableViewCompositeDataSourceDelegate.h"
 
 typedef id <UITableViewDataSource, UITableViewDelegate> HTDataSourceType;
 
 
-@interface HTTableViewCompositeDataSource()
+@interface HTTableViewCompositeDataSourceDelegate()
 
 @property (nonatomic, strong) NSArray <HTDataSourceType > * dataSourceList;
 /**
@@ -24,11 +22,11 @@ typedef id <UITableViewDataSource, UITableViewDelegate> HTDataSourceType;
 
 @end
 
-@implementation HTTableViewCompositeDataSource
+@implementation HTTableViewCompositeDataSourceDelegate
 
 + (instancetype)dataSourceWithDataSources:(NSArray < HTDataSourceType > *)dataSources;
 {
-    HTTableViewCompositeDataSource *instance = [HTTableViewCompositeDataSource new];
+    HTTableViewCompositeDataSourceDelegate *instance = [HTTableViewCompositeDataSourceDelegate new];
     if (instance){
         instance.dataSourceList = dataSources;
     }

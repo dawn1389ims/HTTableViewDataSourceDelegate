@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ *  演示将dataModel数组转换成为HTTableViewDataSourceDelegate
+ */
 @interface MyDemoArrayViewController : UITableViewController
 
 @end

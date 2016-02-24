@@ -7,14 +7,17 @@
 //
 
 #import "MyDemoCellDelegateViewController.h"
-#import "HTTableViewDataSource.h"
+
+#import "HTTableViewDataSourceDelegate.h"
+#import "NSArray+DataSource.h"
+#import "UITableView+FDTemplateLayoutCell.h"
+
 #import "MyCellStringModel.h"
 #import "MyTableViewCellModel.h"
-#import "MyCustomHTTableViewDataSource.h"
-#import "MyInterestList.h"
-#import "MyInterestList+HTTableViewDataSource.h"
+
 #import "MyTableViewCell.h"
 #import "MyDelegateTableViewCell.h"
+
 @interface MyDemoCellDelegateViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
@@ -25,6 +28,14 @@
 
 @implementation MyDemoCellDelegateViewController
 
+- (NSArray <HTTableViewDataSourceDataModelProtocol> *)arrayCellModels
+{
+    NSMutableArray * models = [NSMutableArray new];
+    for (NSString * arg in @[@"A", @"B", @"C", @"D", @"E", @"F"]) {
+        [models addObject:[MyCellStringModel modelWithTitle:arg]];
+    }
+    return models;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -35,18 +46,19 @@
     nib = [UINib nibWithNibName:@"MyDelegateTableViewCell" bundle:[NSBundle mainBundle]];
     [_tableview registerNib:nib forCellReuseIdentifier:@"MyDelegateTableViewCell"];
     
-    id <UITableViewDataSource, UITableViewDelegate> dataSource
-    = [MyCustomHTTableViewDataSource dataSourceWithModel:[MyInterestList interestListWithSport]
-                                             cellTypeMap:@{@"MyCellStringModel" : @"MyTableViewCell", @"MyTableViewCellModel" : @"MyTableViewCell"}
-                                       cellConfiguration:
-       ^(UITableViewCell *cell, NSIndexPath *indexPath) {
-           if (indexPath.row % 2 == 0) {
-               cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-           } else {
-               cell.accessoryType = UITableViewCellAccessoryCheckmark;
-           }
-           if (indexPath.section == 1) {
-               [cell.contentView setBackgroundColor:[UIColor grayColor]];
+    NSMutableArray * mixModelSource= [[self arrayCellModels] mutableCopy];
+    [mixModelSource addObject:[MyTableViewCellModel modelWithTitle:@"Mixed" name:@"Delegate Cell"]];
+    
+    id __weak weakSelf = self;
+    id <UITableViewDelegate, UITableViewDataSource> dataSource
+    = [HTTableViewDataSourceDelegate dataSourceWithModel:mixModelSource
+                                     cellTypeMap:@{@"MyCellStringModel" : @"MyTableViewCell", @"MyTableViewCellModel": @"MyDelegateTableViewCell"}
+                               tableViewDelegate:nil
+                               cellConfiguration:
+       ^(MyDelegateTableViewCell *cell, NSIndexPath *indexPath) {
+           if ([cell isKindOfClass:[MyDelegateTableViewCell class]]) {
+               cell.delegate = weakSelf;
+               cell.fd_enforceFrameLayout = YES;
            }
        }];
     
@@ -56,9 +68,13 @@
     [_tableview reloadData];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)selectedButtonWithContent:(NSString *)content
+{
+    NSLog(@"table view cell delegate invoke: %@",content);
 }
 
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
 @end

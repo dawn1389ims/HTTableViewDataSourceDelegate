@@ -6,33 +6,34 @@
 //  Copyright © 2016年 志强. All rights reserved.
 //
 
-#import "HTTableViewDataSource.h"
-#import "MyTableViewCellModel.h"
-#import "MyTableViewCell.h"
+#import "HTTableViewDataSourceDelegate.h"
 #import "NSArray+DataSource.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "HTTableViewCellModelProtocol.h"
-
-@interface HTTableViewDataSource()
-
-@property (nonatomic, strong) id <HTTableViewDataSourceDataModelProtocol> data;
+#import <objc/runtime.h>
+@interface HTTableViewDataSourceDelegate()
 
 @property (nonatomic, copy) NSDictionary < NSString * , NSString *> * cellTypeMaps;
 
 @property (nonatomic, copy) HTTableViewConfigBlock cellConfiguration;
 
+@property (nonatomic, weak) id <UITableViewDelegate> tableViewDelegate;
+
 @end
 
-@implementation HTTableViewDataSource
+@implementation HTTableViewDataSourceDelegate
 
 + (instancetype)dataSourceWithModel:(id < HTTableViewDataSourceDataModelProtocol >)model
                         cellTypeMap:(NSDictionary < NSString * , NSString *> *)cellTypeMap
+                  tableViewDelegate:(id <UITableViewDelegate>)tableViewDelegate
                   cellConfiguration:(HTTableViewConfigBlock)configuration
+
 {
-    HTTableViewDataSource *instance = [[self class] new];
+    HTTableViewDataSourceDelegate *instance = [[self class] new];
     if (instance){
-        instance.data = model;
+        instance.model = model;
         instance.cellTypeMaps = cellTypeMap;
+        instance.tableViewDelegate = tableViewDelegate;
         instance.cellConfiguration = configuration;
     }
     return instance;
@@ -53,13 +54,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger rowNum = [_data ht_rowCountAtSectionIndex:section];
+    NSInteger rowNum = [_model ht_rowCountAtSectionIndex:section];
     return rowNum;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    id model = [_data ht_itemAtSection:indexPath.section rowIndex:indexPath.row];
+    id model = [_model ht_itemAtSection:indexPath.section rowIndex:indexPath.row];
     NSString *identifier = [self cellIdentifierForCellModelClass:model];
     
     id <HTTableViewCellModelProtocol> cell = [tableView dequeueReusableCellWithIdentifier:identifier];
@@ -79,14 +80,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [_data ht_sectionCount];
+    return [_model ht_sectionCount];
 }
 
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    id model = [_data ht_itemAtSection:indexPath.section rowIndex:indexPath.row];
+    id model = [_model ht_itemAtSection:indexPath.section rowIndex:indexPath.row];
     NSString *identifier = [self cellIdentifierForCellModelClass:model];
     /**
      *  UITableViewCell高度计算接口规范
@@ -103,5 +104,44 @@
         }
     }];
     return heightResult;
+}
+
+#pragma mark - 转发 UITableViewDelegate 消息到 tableViewDelegate中
+
+/**
+ *  没有实现的UITableViewDelegate的方法转发给tableViewDelegate
+ */
+-(BOOL)respondsToSelector:(SEL)selector
+{
+    if (selector == @selector(tableView:heightForRowAtIndexPath:)) {
+        return YES;
+    }
+    if ([self isBelongTableViewDelegateForSelector:selector]) {
+        return [_tableViewDelegate respondsToSelector:selector];
+    }
+    return [super respondsToSelector:selector];
+}
+
+- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
+{
+    if ([self isBelongTableViewDelegateForSelector:aSelector]) {
+        return [(NSObject*)_tableViewDelegate methodSignatureForSelector:aSelector];
+    }
+    return [self methodSignatureForSelector:aSelector];
+}
+
+-(void)forwardInvocation:(NSInvocation *)anInvocation
+{
+    if ([self isBelongTableViewDelegateForSelector:anInvocation.selector]) {
+        return [anInvocation invokeWithTarget:_tableViewDelegate];
+    }
+    [anInvocation invokeWithTarget:self];
+}
+
+- (BOOL)isBelongTableViewDelegateForSelector:(SEL)sel
+{
+    struct objc_method_description hasMethod = protocol_getMethodDescription(@protocol(UITableViewDelegate), sel, NO, YES);
+    
+    return hasMethod.name != NULL;
 }
 @end

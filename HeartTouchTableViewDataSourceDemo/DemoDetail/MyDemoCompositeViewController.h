@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+/**
+ *  演示HTTableViewCompositeDataSource合成多个HTTableViewDataSource
+ */
 @interface MyDemoCompositeViewController : UITableViewController
 
 @end

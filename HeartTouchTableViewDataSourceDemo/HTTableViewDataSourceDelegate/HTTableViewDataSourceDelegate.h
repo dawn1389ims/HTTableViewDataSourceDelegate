@@ -7,12 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HTTableViewDataSourceDataModelProtocol.h"
-#import "HTTableViewCellModelProtocol.h"
+
+@protocol HTTableViewDataSourceDataModelProtocol;
+@protocol HTTableViewCellModelProtocol;
+
 typedef void(^HTTableViewConfigBlock)(id cell, NSIndexPath * indexPath);
 
+@interface HTTableViewDataSourceDelegate : NSObject <UITableViewDataSource, UITableViewDelegate>
 
-@interface HTTableViewDataSource : NSObject < UITableViewDataSource, UITableViewDelegate >
+/**
+ *  允许动态设置model
+ */
+@property (nonatomic, strong) id <HTTableViewDataSourceDataModelProtocol> model;
 
 /**
  *  根据cellTypeMaps从cellModel中查找到指定的cell identifier
@@ -28,12 +34,14 @@ typedef void(^HTTableViewConfigBlock)(id cell, NSIndexPath * indexPath);
  *
  *  @param model         dataSource model，根据协议HTTableViewDataSourceDataModelProtocol取得数据
  *  @param cellTypeMap   提供从cell model的class 到cell identifier 和 cell class的对应表
+ *  @param tableViewDelegate
  *  @param configuration 在 cell 设置 model 结束后额外的设置cell属性的机会，可根据 indexPath 配置cell。cell 高度计算：默认使用auto layout约束来计算cell高度；如果没有使用auto layout，必须在block中添加一行代码：cell.fd_enforceFrameLayout = YES;并且在cell实现文件中实现-[UIView sizeThatFits:]方法，计算出正确的 cell 高度
  *
  *  @return
  */
 + (instancetype)dataSourceWithModel:(id < HTTableViewDataSourceDataModelProtocol >)model
                         cellTypeMap:(NSDictionary < NSString * , NSString *> *)cellTypeMap
+                  tableViewDelegate:(id <UITableViewDelegate>)tableViewDelegate
                   cellConfiguration:(HTTableViewConfigBlock)configuration;
 @end
 
