@@ -10,6 +10,7 @@
 
 /**
  *  演示cell需要设置delegate的情况
+ *  演示使用非Autolayout布局的cell的高度计算
  */
 @interface MyDemoCellDelegateViewController : UITableViewController
 

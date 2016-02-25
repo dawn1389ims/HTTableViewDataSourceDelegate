@@ -52,6 +52,8 @@
     return identifier;
 }
 
+#pragma mark - UITableViewDataSource
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSInteger rowNum = [_model ht_rowCountAtSectionIndex:section];
@@ -113,8 +115,7 @@
  */
 -(BOOL)respondsToSelector:(SEL)selector
 {
-    if ([self checkProtocol:@protocol(UITableViewDelegate) containSelector:selector]
-        ||[self checkProtocol:@protocol(UITableViewDataSource) containSelector:selector]) {
+    if ([self checkProtocol:@protocol(UITableViewDelegate) containSelector:selector]) {
         return [_tableViewDelegate respondsToSelector:selector];
     }
     return [super respondsToSelector:selector];
@@ -122,8 +123,7 @@
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
 {
-    if ([self checkProtocol:@protocol(UITableViewDelegate) containSelector:aSelector]
-        ||[self checkProtocol:@protocol(UITableViewDataSource) containSelector:aSelector]) {
+    if ([self checkProtocol:@protocol(UITableViewDelegate) containSelector:aSelector]) {
         return [(NSObject*)_tableViewDelegate methodSignatureForSelector:aSelector];
     }
     return [self methodSignatureForSelector:aSelector];
@@ -131,8 +131,7 @@
 
 -(void)forwardInvocation:(NSInvocation *)anInvocation
 {
-    if ([self checkProtocol:@protocol(UITableViewDelegate) containSelector:anInvocation.selector]
-        ||[self checkProtocol:@protocol(UITableViewDataSource) containSelector:anInvocation.selector]) {
+    if ([self checkProtocol:@protocol(UITableViewDelegate) containSelector:anInvocation.selector]) {
         return [anInvocation invokeWithTarget:_tableViewDelegate];
     }
     [anInvocation invokeWithTarget:self];

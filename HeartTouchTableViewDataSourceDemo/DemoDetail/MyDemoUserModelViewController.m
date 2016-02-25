@@ -21,6 +21,7 @@
 #import "MyTableViewCell.h"
 #import "MyDelegateTableViewCell.h"
 
+#import "MyCustomHTTableViewDataSource.h"
 
 @interface MyDemoUserModelViewController ()
 
@@ -56,7 +57,7 @@
     _dataModel = [MyInterestList interestListWithSport];
     
     id <UITableViewDataSource, UITableViewDelegate> dataSource
-    = [HTTableViewDataSourceDelegate dataSourceWithModel:_dataModel
+    = [MyCustomHTTableViewDataSource dataSourceWithModel:_dataModel
                                      cellTypeMap:@{@"MyCellStringModel" : @"MyTableViewCell", @"MyTableViewCellModel" : @"MyTableViewCell"}
                                tableViewDelegate:self
                                cellConfiguration:
@@ -119,13 +120,6 @@
     } else {
         return 0;
     }
-}
-
-#pragma mark - UITableViewDataSource
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    return @"Header for mixed by DataSource";
 }
 
 @end

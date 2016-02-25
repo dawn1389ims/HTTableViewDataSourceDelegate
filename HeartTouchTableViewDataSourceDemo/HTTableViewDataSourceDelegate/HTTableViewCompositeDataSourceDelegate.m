@@ -33,6 +33,31 @@ typedef id <UITableViewDataSource, UITableViewDelegate> HTDataSourceType;
     return instance;
 }
 
+/**
+ *  比对section，查找台阶值列表，找到正确的dataSource index
+ */
+- (NSUInteger)dataSourceIndexForTableViewSection:(NSUInteger)section
+{
+    NSUInteger maxStageNum = -1;
+    for (int index = 0; index < _sectionStageNumList.count; index ++) {
+        NSUInteger stageNum = [_sectionStageNumList[index] integerValue];
+        if (section >= stageNum) {
+            maxStageNum = index;
+            continue;//继续取得最大的台阶值
+        } else {
+            break;//找到section位于的最大的台阶值
+        }
+    }
+    if (maxStageNum == -1) {
+        NSAssert2(NO, @"can't get right section: %lu from stage list: %@",section, _sectionStageNumList);
+        return -1;
+    }
+    //    NSLog(@"calculate section: %lu ds=====>: %lu",section, maxStageNum);
+    return maxStageNum;
+}
+
+#pragma mark - UITableViewDataSource
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     NSInteger sumSection = 0;
@@ -65,27 +90,16 @@ typedef id <UITableViewDataSource, UITableViewDelegate> HTDataSourceType;
     return [dataSource tableView:tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:trueSection]];
 }
 
-/**
- *  比对section，查找台阶值列表，找到正确的dataSource index
- */
-- (NSUInteger)dataSourceIndexForTableViewSection:(NSUInteger)section
+#pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSUInteger maxStageNum = -1;
-    for (int index = 0; index < _sectionStageNumList.count; index ++) {
-        NSUInteger stageNum = [_sectionStageNumList[index] integerValue];
-        if (section >= stageNum) {
-            maxStageNum = index;
-            continue;//继续取得最大的台阶值
-        } else {
-            break;//找到section位于的最大的台阶值
-        }
-    }
-    if (maxStageNum == -1) {
-        NSAssert2(NO, @"can't get right section: %lu from stage list: %@",section, _sectionStageNumList);
-        return -1;
-    }
-//    NSLog(@"calculate section: %lu ds=====>: %lu",section, maxStageNum);
-    return maxStageNum;
+    NSUInteger dataSourceIndex = [self dataSourceIndexForTableViewSection:indexPath.section];
+    HTDataSourceType dataSource = _dataSourceList[dataSourceIndex];
+    
+    NSInteger trueSection = indexPath.section - [_sectionStageNumList[dataSourceIndex] integerValue];
+    return [dataSource tableView:tableView heightForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:trueSection]];
 }
+
 
 @end

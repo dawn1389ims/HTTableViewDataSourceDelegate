@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 /**
- *  1.演示多种dataModel数组转换成为HTTableViewDataSourceDelegate
- *  2.演示DataSource未实现的UITableViewDelegate和UITableViewDataSource的方法也可以被正常调用
+ *  1.演示将用户自定义的数据列表构造成一个HTTableViewDataSourceDelegate
+ *  2.演示使用tableViewDelegate参数配置更多的UITableViewDelegate的方法
+ *  3.MyCustomHTTableViewDataSource演示继承HTTableViewDataSourceDelegate配置更多UITableViewDataSource方法
  */
 @interface MyDemoUserModelViewController : UITableViewController
 

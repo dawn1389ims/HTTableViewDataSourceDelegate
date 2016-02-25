@@ -26,6 +26,7 @@
 		2257A8D71C7D9EB7002A3EF3 /* HTTableViewDataSourceDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A8CF1C7D9EB7002A3EF3 /* HTTableViewDataSourceDelegate.m */; };
 		2257A8D81C7D9EB7002A3EF3 /* HTTableViewCompositeDataSourceDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A8D21C7D9EB7002A3EF3 /* HTTableViewCompositeDataSourceDelegate.m */; };
 		2257A8D91C7D9EB7002A3EF3 /* NSArray+DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A8D61C7D9EB7002A3EF3 /* NSArray+DataSource.m */; };
+		2257A8E21C7E9DD7002A3EF3 /* MyCustomHTTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2257A8E11C7E9DD6002A3EF3 /* MyCustomHTTableViewDataSource.m */; };
 		227173C81C4CE8DF000F6999 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 227173C71C4CE8DF000F6999 /* main.m */; };
 		227173CB1C4CE8DF000F6999 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 227173CA1C4CE8DF000F6999 /* AppDelegate.m */; };
 		227173D11C4CE8DF000F6999 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 227173CF1C4CE8DF000F6999 /* Main.storyboard */; };
@@ -73,9 +74,8 @@
 		2257A8D41C7D9EB7002A3EF3 /* HTTableViewDataSourceDataModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTableViewDataSourceDataModelProtocol.h; path = HTTableViewDataSourceDelegate/HTTableViewDataSourceDataModelProtocol.h; sourceTree = "<group>"; };
 		2257A8D51C7D9EB7002A3EF3 /* NSArray+DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+DataSource.h"; path = "HTTableViewDataSourceDelegate/NSArray+DataSource.h"; sourceTree = "<group>"; };
 		2257A8D61C7D9EB7002A3EF3 /* NSArray+DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+DataSource.m"; path = "HTTableViewDataSourceDelegate/NSArray+DataSource.m"; sourceTree = "<group>"; };
-		2257A8DB1C7DFADC002A3EF3 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		2257A8DD1C7DFC33002A3EF3 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
-		2257A8DF1C7DFD52002A3EF3 /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = System/Library/Frameworks/PassKit.framework; sourceTree = SDKROOT; };
+		2257A8E11C7E9DD6002A3EF3 /* MyCustomHTTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCustomHTTableViewDataSource.m; sourceTree = "<group>"; };
+		2257A8E31C7E9E02002A3EF3 /* MyCustomHTTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCustomHTTableViewDataSource.h; sourceTree = "<group>"; };
 		227173C31C4CE8DF000F6999 /* HeartTouchTableViewDataSourceDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeartTouchTableViewDataSourceDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		227173C71C4CE8DF000F6999 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		227173C91C4CE8DF000F6999 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -147,6 +147,8 @@
 			children = (
 				2257A8A41C7D9232002A3EF3 /* MyDemoUserModelViewController.h */,
 				2257A8A51C7D9232002A3EF3 /* MyDemoUserModelViewController.m */,
+				2257A8E31C7E9E02002A3EF3 /* MyCustomHTTableViewDataSource.h */,
+				2257A8E11C7E9DD6002A3EF3 /* MyCustomHTTableViewDataSource.m */,
 				2257A8A61C7D9232002A3EF3 /* MyInterestList.h */,
 				2257A8A71C7D9232002A3EF3 /* MyInterestList.m */,
 				2257A8A81C7D9232002A3EF3 /* MyInterestList+HTTableViewDataSource.h */,
@@ -173,9 +175,6 @@
 		227173BA1C4CE8DF000F6999 = {
 			isa = PBXGroup;
 			children = (
-				2257A8DF1C7DFD52002A3EF3 /* PassKit.framework */,
-				2257A8DD1C7DFC33002A3EF3 /* Accounts.framework */,
-				2257A8DB1C7DFADC002A3EF3 /* Accelerate.framework */,
 				227173C51C4CE8DF000F6999 /* HeartTouchTableViewDataSourceDemo */,
 				227173C41C4CE8DF000F6999 /* Products */,
 			);
@@ -318,6 +317,7 @@
 				2257A8C91C7D9946002A3EF3 /* MyTableViewCell.m in Sources */,
 				227173CB1C4CE8DF000F6999 /* AppDelegate.m in Sources */,
 				2257A8D81C7D9EB7002A3EF3 /* HTTableViewCompositeDataSourceDelegate.m in Sources */,
+				2257A8E21C7E9DD7002A3EF3 /* MyCustomHTTableViewDataSource.m in Sources */,
 				2257A8B21C7D9232002A3EF3 /* MyDemoCellDelegateViewController.m in Sources */,
 				2257A8D91C7D9EB7002A3EF3 /* NSArray+DataSource.m in Sources */,
 				2257A8B11C7D9232002A3EF3 /* MyDemoArrayViewController.m in Sources */,
