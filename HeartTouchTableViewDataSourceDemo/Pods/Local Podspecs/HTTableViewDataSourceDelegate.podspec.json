@@ -1,0 +1,24 @@
+{
+  "name": "HTTableViewDataSourceDelegate",
+  "version": "0.0.1",
+  "summary": "simple table view dataSource & delegate.",
+  "description": "简单易用的table view dataSource & delegate, 提供简单的接口来访问数据和设置cell，\n让使用者从table view的重复代码中解脱出来；\n包含cell的高度计算功能；\n支持多个dataSource的组合；",
+  "homepage": "https://g.hz.netease.com/hzzhuzhiqiang/HTTableViewDataSourceDelegate",
+  "license": "MIT",
+  "authors": {
+    "hzzhuzhiqiang": "hzzhuzhiqiang@corp.netease.com"
+  },
+  "source": {
+    "git": "https://g.hz.netease.com/hzzhuzhiqiang/HTTableViewDataSourceDelegate.git"
+  },
+  "platforms": {
+    "ios": "7.0"
+  },
+  "source_files": "HTTableViewDataSourceDelegate/*.{h,m}",
+  "public_header_files": "HTTableViewDataSourceDelegate/*.h",
+  "dependencies": {
+    "UITableView+FDTemplateLayoutCell": [
+      "~> 1.4"
+    ]
+  }
+}
