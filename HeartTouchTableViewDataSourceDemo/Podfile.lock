@@ -1,24 +1,10 @@
 PODS:
-  - HTTableViewDataSourceDelegate (0.0.1):
-    - UITableView+FDTemplateLayoutCell (~> 1.4)
   - UITableView+FDTemplateLayoutCell (1.4)
 
 DEPENDENCIES:
-  - HTTableViewDataSourceDelegate (from `https://g.hz.netease.com/hzzhuzhiqiang/HTTableViewDataSourceDelegate.git`,
-    branch `master`)
-
-EXTERNAL SOURCES:
-  HTTableViewDataSourceDelegate:
-    :branch: master
-    :git: https://g.hz.netease.com/hzzhuzhiqiang/HTTableViewDataSourceDelegate.git
-
-CHECKOUT OPTIONS:
-  HTTableViewDataSourceDelegate:
-    :commit: 5e48cbe9479261ac33da7ccf369c2c495c25ad0c
-    :git: https://g.hz.netease.com/hzzhuzhiqiang/HTTableViewDataSourceDelegate.git
+  - UITableView+FDTemplateLayoutCell (= 1.4)
 
 SPEC CHECKSUMS:
-  HTTableViewDataSourceDelegate: 114c0edb52d866c766b4f039ced277572d134026
   UITableView+FDTemplateLayoutCell: 234e1582bcc4e18461af91155123bb96538ed030
 
 COCOAPODS: 0.39.0

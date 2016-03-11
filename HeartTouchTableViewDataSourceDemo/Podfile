@@ -1,1 +1,1 @@
-pod 'HTTableViewDataSourceDelegate', :git => 'https://g.hz.netease.com/hzzhuzhiqiang/HTTableViewDataSourceDelegate.git', :branch => 'master'
+pod 'UITableView+FDTemplateLayoutCell',  '1.4'

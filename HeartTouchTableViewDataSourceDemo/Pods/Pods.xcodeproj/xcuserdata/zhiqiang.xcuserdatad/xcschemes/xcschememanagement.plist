@@ -4,11 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>HTTableViewDataSourceDelegate.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +17,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>631259FED8AE1F6896C7C7ED29863A52</key>
+		<key>4F3F9156C7C34A55CB001C6FA7FF1FB5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7B72D251A0DC8309D755DED5E41F60AD</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>92B6EF62DE3E6D567B2536F2FB38671F</key>
+		<key>DA903D1BFC5CD73D6C63A5EF95302DB5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

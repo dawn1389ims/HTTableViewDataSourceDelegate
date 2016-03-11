@@ -115,7 +115,10 @@
  */
 -(BOOL)respondsToSelector:(SEL)selector
 {
-    if ([self checkProtocol:@protocol(UITableViewDelegate) containSelector:selector]) {
+    if (selector == @selector(tableView:heightForRowAtIndexPath:)) {
+        return YES;
+    }
+    if (_tableViewDelegate && [self checkProtocol:@protocol(UITableViewDelegate) containSelector:selector]) {
         return [_tableViewDelegate respondsToSelector:selector];
     }
     return [super respondsToSelector:selector];
@@ -123,7 +126,7 @@
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
 {
-    if ([self checkProtocol:@protocol(UITableViewDelegate) containSelector:aSelector]) {
+    if (_tableViewDelegate && [self checkProtocol:@protocol(UITableViewDelegate) containSelector:aSelector]) {
         return [(NSObject*)_tableViewDelegate methodSignatureForSelector:aSelector];
     }
     return [self methodSignatureForSelector:aSelector];
@@ -131,7 +134,7 @@
 
 -(void)forwardInvocation:(NSInvocation *)anInvocation
 {
-    if ([self checkProtocol:@protocol(UITableViewDelegate) containSelector:anInvocation.selector]) {
+    if (_tableViewDelegate && [self checkProtocol:@protocol(UITableViewDelegate) containSelector:anInvocation.selector]) {
         return [anInvocation invokeWithTarget:_tableViewDelegate];
     }
     [anInvocation invokeWithTarget:self];

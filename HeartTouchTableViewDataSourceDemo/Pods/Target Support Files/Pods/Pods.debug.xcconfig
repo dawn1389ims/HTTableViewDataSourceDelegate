@@ -1,5 +1,5 @@
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/HTTableViewDataSourceDelegate" "${PODS_ROOT}/Headers/Public/UITableView+FDTemplateLayoutCell"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/HTTableViewDataSourceDelegate" -isystem "${PODS_ROOT}/Headers/Public/UITableView+FDTemplateLayoutCell"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"HTTableViewDataSourceDelegate" -l"UITableView+FDTemplateLayoutCell"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/UITableView+FDTemplateLayoutCell"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/UITableView+FDTemplateLayoutCell"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"UITableView+FDTemplateLayoutCell"
 PODS_ROOT = ${SRCROOT}/Pods
