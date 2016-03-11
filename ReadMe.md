@@ -24,7 +24,7 @@
 
 ## HTTableViewDataSourceDelegate使用方式
 
-Pods使用方式: `pod 'HTTableViewDataSourceDelegate', :git => 'https://g.hz.netease.com/hzzhuzhiqiang/HTTableViewDataSourceDelegate.git', :branch => 'master'`
+Pods使用方式: `pod 'HTTableViewDataSourceDelegate', :git => 'https://g.hz.netease.com/HeartTouchOpen/HTTableViewDataSourceDelegate.git', :branch => 'master'`
 
 ## HTTableViewDataSourceDelegate
 
