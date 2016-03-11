@@ -29,9 +29,9 @@
 		220447A11C927BCE00C08EEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2204479A1C927BCE00C08EEC /* Main.storyboard */; };
 		220447A21C927BCE00C08EEC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2204479C1C927BCE00C08EEC /* Info.plist */; };
 		220447A31C927BCE00C08EEC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2204479D1C927BCE00C08EEC /* main.m */; };
-		220447B91C92CEF200C08EEC /* HTTableViewCompositeDataSourceDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 220447B21C92CEF200C08EEC /* HTTableViewCompositeDataSourceDelegate.m */; };
-		220447BA1C92CEF200C08EEC /* HTTableViewDataSourceDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 220447B41C92CEF200C08EEC /* HTTableViewDataSourceDelegate.m */; };
-		220447BB1C92CEF200C08EEC /* NSArray+DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 220447B81C92CEF200C08EEC /* NSArray+DataSource.m */; };
+		220447C41C92CFDE00C08EEC /* HTTableViewCompositeDataSourceDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 220447BE1C92CFDE00C08EEC /* HTTableViewCompositeDataSourceDelegate.m */; };
+		220447C51C92CFDE00C08EEC /* HTTableViewDataSourceDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 220447C11C92CFDE00C08EEC /* HTTableViewDataSourceDelegate.m */; };
+		220447C61C92CFDE00C08EEC /* NSArray+DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 220447C31C92CFDE00C08EEC /* NSArray+DataSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,14 +70,14 @@
 		2204479B1C927BCE00C08EEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 		2204479C1C927BCE00C08EEC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2204479D1C927BCE00C08EEC /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		220447B11C92CEF200C08EEC /* HTTableViewCompositeDataSourceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTableViewCompositeDataSourceDelegate.h; sourceTree = "<group>"; };
-		220447B21C92CEF200C08EEC /* HTTableViewCompositeDataSourceDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTableViewCompositeDataSourceDelegate.m; sourceTree = "<group>"; };
-		220447B31C92CEF200C08EEC /* HTTableViewDataSourceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTableViewDataSourceDelegate.h; sourceTree = "<group>"; };
-		220447B41C92CEF200C08EEC /* HTTableViewDataSourceDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTableViewDataSourceDelegate.m; sourceTree = "<group>"; };
-		220447B51C92CEF200C08EEC /* NSArray+DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+DataSource.h"; sourceTree = "<group>"; };
-		220447B61C92CEF200C08EEC /* HTTableViewCellModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTableViewCellModelProtocol.h; sourceTree = "<group>"; };
-		220447B71C92CEF200C08EEC /* HTTableViewDataSourceDataModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTableViewDataSourceDataModelProtocol.h; sourceTree = "<group>"; };
-		220447B81C92CEF200C08EEC /* NSArray+DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+DataSource.m"; sourceTree = "<group>"; };
+		220447BC1C92CFDE00C08EEC /* HTTableViewCellModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTableViewCellModelProtocol.h; path = ../../HTTableViewDataSourceDelegate/HTTableViewCellModelProtocol.h; sourceTree = "<group>"; };
+		220447BD1C92CFDE00C08EEC /* HTTableViewCompositeDataSourceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTableViewCompositeDataSourceDelegate.h; path = ../../HTTableViewDataSourceDelegate/HTTableViewCompositeDataSourceDelegate.h; sourceTree = "<group>"; };
+		220447BE1C92CFDE00C08EEC /* HTTableViewCompositeDataSourceDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTableViewCompositeDataSourceDelegate.m; path = ../../HTTableViewDataSourceDelegate/HTTableViewCompositeDataSourceDelegate.m; sourceTree = "<group>"; };
+		220447BF1C92CFDE00C08EEC /* HTTableViewDataSourceDataModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTableViewDataSourceDataModelProtocol.h; path = ../../HTTableViewDataSourceDelegate/HTTableViewDataSourceDataModelProtocol.h; sourceTree = "<group>"; };
+		220447C01C92CFDE00C08EEC /* HTTableViewDataSourceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTableViewDataSourceDelegate.h; path = ../../HTTableViewDataSourceDelegate/HTTableViewDataSourceDelegate.h; sourceTree = "<group>"; };
+		220447C11C92CFDE00C08EEC /* HTTableViewDataSourceDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTableViewDataSourceDelegate.m; path = ../../HTTableViewDataSourceDelegate/HTTableViewDataSourceDelegate.m; sourceTree = "<group>"; };
+		220447C21C92CFDE00C08EEC /* NSArray+DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+DataSource.h"; path = "../../HTTableViewDataSourceDelegate/NSArray+DataSource.h"; sourceTree = "<group>"; };
+		220447C31C92CFDE00C08EEC /* NSArray+DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+DataSource.m"; path = "../../HTTableViewDataSourceDelegate/NSArray+DataSource.m"; sourceTree = "<group>"; };
 		2E2C3EEBFBA52534A840B961 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DD82B909F289A69D14490E93 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E251AA37CF0127D61768F937 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -153,14 +153,14 @@
 		220447A51C92A43500C08EEC /* HTTableViewDataSourceDelegate */ = {
 			isa = PBXGroup;
 			children = (
-				220447B11C92CEF200C08EEC /* HTTableViewCompositeDataSourceDelegate.h */,
-				220447B21C92CEF200C08EEC /* HTTableViewCompositeDataSourceDelegate.m */,
-				220447B31C92CEF200C08EEC /* HTTableViewDataSourceDelegate.h */,
-				220447B41C92CEF200C08EEC /* HTTableViewDataSourceDelegate.m */,
-				220447B51C92CEF200C08EEC /* NSArray+DataSource.h */,
-				220447B61C92CEF200C08EEC /* HTTableViewCellModelProtocol.h */,
-				220447B71C92CEF200C08EEC /* HTTableViewDataSourceDataModelProtocol.h */,
-				220447B81C92CEF200C08EEC /* NSArray+DataSource.m */,
+				220447BC1C92CFDE00C08EEC /* HTTableViewCellModelProtocol.h */,
+				220447BD1C92CFDE00C08EEC /* HTTableViewCompositeDataSourceDelegate.h */,
+				220447BE1C92CFDE00C08EEC /* HTTableViewCompositeDataSourceDelegate.m */,
+				220447BF1C92CFDE00C08EEC /* HTTableViewDataSourceDataModelProtocol.h */,
+				220447C01C92CFDE00C08EEC /* HTTableViewDataSourceDelegate.h */,
+				220447C11C92CFDE00C08EEC /* HTTableViewDataSourceDelegate.m */,
+				220447C21C92CFDE00C08EEC /* NSArray+DataSource.h */,
+				220447C31C92CFDE00C08EEC /* NSArray+DataSource.m */,
 			);
 			name = HTTableViewDataSourceDelegate;
 			sourceTree = "<group>";
@@ -309,8 +309,8 @@
 				220447831C927BA900C08EEC /* MyTableViewCellModel.m in Sources */,
 				2204477C1C927BA900C08EEC /* MyDemoCellDelegateViewController.m in Sources */,
 				220447801C927BA900C08EEC /* MyInterestList.m in Sources */,
-				220447BA1C92CEF200C08EEC /* HTTableViewDataSourceDelegate.m in Sources */,
-				220447BB1C92CEF200C08EEC /* NSArray+DataSource.m in Sources */,
+				220447C51C92CFDE00C08EEC /* HTTableViewDataSourceDelegate.m in Sources */,
+				220447C61C92CFDE00C08EEC /* NSArray+DataSource.m in Sources */,
 				220447791C927BA900C08EEC /* MyDelegateTableViewCell.m in Sources */,
 				220447A31C927BCE00C08EEC /* main.m in Sources */,
 				2204477D1C927BA900C08EEC /* MyDemoCompositeViewController.m in Sources */,
@@ -318,7 +318,7 @@
 				220447781C927BA900C08EEC /* MyCustomHTTableViewDataSource.m in Sources */,
 				220447811C927BA900C08EEC /* MyTableViewCell.m in Sources */,
 				2204477B1C927BA900C08EEC /* MyDemoArrayViewController.m in Sources */,
-				220447B91C92CEF200C08EEC /* HTTableViewCompositeDataSourceDelegate.m in Sources */,
+				220447C41C92CFDE00C08EEC /* HTTableViewCompositeDataSourceDelegate.m in Sources */,
 				2204477E1C927BA900C08EEC /* MyDemoUserModelViewController.m in Sources */,
 				2204479E1C927BCE00C08EEC /* AppDelegate.m in Sources */,
 			);
