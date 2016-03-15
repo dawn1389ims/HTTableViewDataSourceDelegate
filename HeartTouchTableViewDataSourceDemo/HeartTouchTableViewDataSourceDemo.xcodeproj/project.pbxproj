@@ -98,30 +98,14 @@
 		2204475E1C927BA900C08EEC /* DemoDetail */ = {
 			isa = PBXGroup;
 			children = (
-				2204475F1C927BA900C08EEC /* MyCellStringModel.h */,
-				220447601C927BA900C08EEC /* MyCellStringModel.m */,
-				220447611C927BA900C08EEC /* MyCustomHTTableViewDataSource.h */,
-				220447621C927BA900C08EEC /* MyCustomHTTableViewDataSource.m */,
-				220447631C927BA900C08EEC /* MyDelegateTableViewCell.h */,
-				220447641C927BA900C08EEC /* MyDelegateTableViewCell.m */,
-				220447651C927BA900C08EEC /* MyDelegateTableViewCell.xib */,
 				220447661C927BA900C08EEC /* MyDemoArrayViewController.h */,
 				220447671C927BA900C08EEC /* MyDemoArrayViewController.m */,
 				220447681C927BA900C08EEC /* MyDemoCellDelegateViewController.h */,
 				220447691C927BA900C08EEC /* MyDemoCellDelegateViewController.m */,
-				2204476A1C927BA900C08EEC /* MyDemoCompositeViewController.h */,
-				2204476B1C927BA900C08EEC /* MyDemoCompositeViewController.m */,
+				223E08001C9807C000AE81A1 /* MyDemoCellDelegateViewController */,
 				2204476C1C927BA900C08EEC /* MyDemoUserModelViewController.h */,
 				2204476D1C927BA900C08EEC /* MyDemoUserModelViewController.m */,
-				2204476E1C927BA900C08EEC /* MyInterestList+HTTableViewDataSource.h */,
-				2204476F1C927BA900C08EEC /* MyInterestList+HTTableViewDataSource.m */,
-				220447701C927BA900C08EEC /* MyInterestList.h */,
-				220447711C927BA900C08EEC /* MyInterestList.m */,
-				220447721C927BA900C08EEC /* MyTableViewCell.h */,
-				220447731C927BA900C08EEC /* MyTableViewCell.m */,
-				220447741C927BA900C08EEC /* MyTableViewCell.xib */,
-				220447751C927BA900C08EEC /* MyTableViewCellModel.h */,
-				220447761C927BA900C08EEC /* MyTableViewCellModel.m */,
+				223E07FC1C98066C00AE81A1 /* Common */,
 			);
 			path = DemoDetail;
 			sourceTree = "<group>";
@@ -163,6 +147,38 @@
 				220447C31C92CFDE00C08EEC /* NSArray+DataSource.m */,
 			);
 			name = HTTableViewDataSourceDelegate;
+			sourceTree = "<group>";
+		};
+		223E07FC1C98066C00AE81A1 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				2204475F1C927BA900C08EEC /* MyCellStringModel.h */,
+				220447601C927BA900C08EEC /* MyCellStringModel.m */,
+				220447611C927BA900C08EEC /* MyCustomHTTableViewDataSource.h */,
+				220447621C927BA900C08EEC /* MyCustomHTTableViewDataSource.m */,
+				220447631C927BA900C08EEC /* MyDelegateTableViewCell.h */,
+				220447641C927BA900C08EEC /* MyDelegateTableViewCell.m */,
+				220447651C927BA900C08EEC /* MyDelegateTableViewCell.xib */,
+				2204476E1C927BA900C08EEC /* MyInterestList+HTTableViewDataSource.h */,
+				2204476F1C927BA900C08EEC /* MyInterestList+HTTableViewDataSource.m */,
+				220447701C927BA900C08EEC /* MyInterestList.h */,
+				220447711C927BA900C08EEC /* MyInterestList.m */,
+				220447721C927BA900C08EEC /* MyTableViewCell.h */,
+				220447731C927BA900C08EEC /* MyTableViewCell.m */,
+				220447741C927BA900C08EEC /* MyTableViewCell.xib */,
+				220447751C927BA900C08EEC /* MyTableViewCellModel.h */,
+				220447761C927BA900C08EEC /* MyTableViewCellModel.m */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		223E08001C9807C000AE81A1 /* MyDemoCellDelegateViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2204476A1C927BA900C08EEC /* MyDemoCompositeViewController.h */,
+				2204476B1C927BA900C08EEC /* MyDemoCompositeViewController.m */,
+			);
+			name = MyDemoCellDelegateViewController;
 			sourceTree = "<group>";
 		};
 		227173BA1C4CE8DF000F6999 = {

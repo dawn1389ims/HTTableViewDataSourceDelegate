@@ -14,6 +14,8 @@
  */
 @interface HTTableViewCompositeDataSourceDelegate : NSObject < UITableViewDataSource, UITableViewDelegate >
 
+@property (nonatomic, strong) NSArray < UITableViewDataSource, UITableViewDelegate > * dataSourceList;
+
 /**
  *  将多个dataSource连接成一个新的dataSource
  *

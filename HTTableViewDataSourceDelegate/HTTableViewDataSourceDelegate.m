@@ -35,6 +35,7 @@
         instance.cellTypeMaps = cellTypeMap;
         instance.tableViewDelegate = tableViewDelegate;
         instance.cellConfiguration = configuration;
+        [instance setHt_Visible:YES];
     }
     return instance;
 }

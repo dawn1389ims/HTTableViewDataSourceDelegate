@@ -7,24 +7,22 @@
 //
 
 #import "HTTableViewCompositeDataSourceDelegate.h"
+#import "HTTableViewDataSourceDataModelProtocol.h"
 
 typedef id <UITableViewDataSource, UITableViewDelegate> HTDataSourceType;
 
-
 @interface HTTableViewCompositeDataSourceDelegate()
 
-@property (nonatomic, strong) NSArray <HTDataSourceType > * dataSourceList;
 /**
- *  由每个dataSource的第一个 section 在提供给 table view 的 section list中的index值构成的数组
- *  因为这个section 的index是累加的，称之为stage number
+ *  visible section range <--> data index 的对应表
  */
-@property (nonatomic, strong) NSArray <NSNumber *> * sectionStageNumList;
+@property (nonatomic, strong) NSDictionary <NSNumber *, NSValue *>* dataToSectionMap;
 
 @end
 
 @implementation HTTableViewCompositeDataSourceDelegate
 
-+ (instancetype)dataSourceWithDataSources:(NSArray < HTDataSourceType > *)dataSources;
++ (instancetype)dataSourceWithDataSources:(NSArray <UITableViewDataSource,UITableViewDelegate> *)dataSources;
 {
     HTTableViewCompositeDataSourceDelegate *instance = [HTTableViewCompositeDataSourceDelegate new];
     if (instance){
@@ -33,60 +31,73 @@ typedef id <UITableViewDataSource, UITableViewDelegate> HTDataSourceType;
     return instance;
 }
 
-/**
- *  比对section，查找台阶值列表，找到正确的dataSource index
- */
-- (NSUInteger)dataSourceIndexForTableViewSection:(NSUInteger)section
+- (NSInteger)sumSectionCalculateandShuffle:(UITableView*)tableview
 {
-    NSUInteger maxStageNum = -1;
-    for (int index = 0; index < _sectionStageNumList.count; index ++) {
-        NSUInteger stageNum = [_sectionStageNumList[index] integerValue];
-        if (section >= stageNum) {
-            maxStageNum = index;
-            continue;//继续取得最大的台阶值
-        } else {
-            break;//找到section位于的最大的台阶值
+    NSMutableDictionary * dataToSectionDic = [NSMutableDictionary new];
+    NSInteger sumSection = 0;
+    NSUInteger dataIndex = 0;
+    for (int index = 0; index < _dataSourceList.count; index ++) {
+        HTDataSourceType arg = _dataSourceList[index];
+        BOOL isVisible = YES;
+        if ([arg respondsToSelector:@selector(isHt_Visible)]) {
+            id <HTTableViewDataSourceDelegateVisibleProtocol>visibleObj = (id)arg;
+            isVisible = [visibleObj isHt_Visible];
         }
+        if (isVisible) {
+            NSInteger sectionLength = [arg numberOfSectionsInTableView:tableview];
+            NSValue *rangeValue = [NSValue valueWithRange:NSMakeRange(sumSection, sectionLength)];
+            sumSection += sectionLength;
+            [dataToSectionDic setObject:rangeValue forKey:@(dataIndex)];
+        }
+        dataIndex ++;
     }
-    if (maxStageNum == -1) {
-        NSAssert2(NO, @"can't get right section: %lu from stage list: %@",section, _sectionStageNumList);
-        return -1;
-    }
-    //    NSLog(@"calculate section: %lu ds=====>: %lu",section, maxStageNum);
-    return maxStageNum;
+    _dataToSectionMap = dataToSectionDic;
+    return sumSection;
+}
+/**
+ *  根据section range <--> data index 的对应表查找到section对应的data index和 section的相对值
+ */
+- (HTDataSourceType)relativeDataSourceForTableViewSection:(NSUInteger)section
+                                              trueSection:(NSUInteger*)trueSection
+{
+    __block NSUInteger dataSourceIndex;
+    __block NSRange currentSectionRange;
+    [_dataToSectionMap enumerateKeysAndObjectsUsingBlock:^(NSNumber * _Nonnull key, NSValue * _Nonnull obj, BOOL * _Nonnull stop) {
+        NSRange range = [obj rangeValue];
+        if (NSLocationInRange(section, range)) {
+            currentSectionRange = range;
+            dataSourceIndex = [key integerValue];
+            *stop = YES;
+        }
+    }];
+    NSAssert2(dataSourceIndex >= 0, @"can't get right section: %lu from stage list: %@",section, _dataToSectionMap);
+    
+    HTDataSourceType dataSource = _dataSourceList[dataSourceIndex];
+    *trueSection = section - currentSectionRange.location;
+    return dataSource;
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    NSInteger sumSection = 0;
-    NSMutableArray * sectionStageNumList = [NSMutableArray new];
-    for (int index = 0; index < _dataSourceList.count; index ++) {
-        [sectionStageNumList addObject:@(sumSection)];
-        HTDataSourceType arg = _dataSourceList[index];
-        sumSection += [arg numberOfSectionsInTableView:tableView];
-    }
-    _sectionStageNumList = sectionStageNumList;
-    return sumSection;
+    return [self sumSectionCalculateandShuffle:tableView];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSUInteger dataSourceIndex = [self dataSourceIndexForTableViewSection:section];
-    HTDataSourceType dataSource = _dataSourceList[dataSourceIndex];
-    
-    NSInteger trueSection = section - [_sectionStageNumList[dataSourceIndex] integerValue];
+    NSUInteger trueSection;
+    HTDataSourceType dataSource = [self relativeDataSourceForTableViewSection:section
+                                                           trueSection:&trueSection];
     return [dataSource tableView:tableView numberOfRowsInSection:trueSection];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSUInteger dataSourceIndex = [self dataSourceIndexForTableViewSection:indexPath.section];
-    HTDataSourceType dataSource = _dataSourceList[dataSourceIndex];
-    
-    NSInteger trueSection = indexPath.section - [_sectionStageNumList[dataSourceIndex] integerValue];
+    NSUInteger trueSection;
+    HTDataSourceType dataSource = [self relativeDataSourceForTableViewSection:indexPath.section
+                                                           trueSection:&trueSection];
     return [dataSource tableView:tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:trueSection]];
 }
 
@@ -94,10 +105,9 @@ typedef id <UITableViewDataSource, UITableViewDelegate> HTDataSourceType;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSUInteger dataSourceIndex = [self dataSourceIndexForTableViewSection:indexPath.section];
-    HTDataSourceType dataSource = _dataSourceList[dataSourceIndex];
-    
-    NSInteger trueSection = indexPath.section - [_sectionStageNumList[dataSourceIndex] integerValue];
+    NSUInteger trueSection;
+    HTDataSourceType dataSource = [self relativeDataSourceForTableViewSection:indexPath.section
+                                                           trueSection:&trueSection];
     return [dataSource tableView:tableView heightForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:trueSection]];
 }
 

@@ -21,6 +21,12 @@ typedef void(^HTTableViewConfigBlock)(id cell, NSIndexPath * indexPath);
 @property (nonatomic, strong) id <HTTableViewDataSourceDataModelProtocol> model;
 
 /**
+ *  对协议HTTableViewDataSourceDelegateVisibleProtocol的实现，该属性影响dataSourceDelegate在
+ *  HTTableViewCompositeDataSourceDelegate中是否显示。
+ */
+@property (nonatomic, assign, setter = setHt_Visible:) BOOL isHt_Visible;
+
+/**
  *  根据cellTypeMaps从cellModel中查找到指定的cell identifier
  *  允许自定义映射规则
  *

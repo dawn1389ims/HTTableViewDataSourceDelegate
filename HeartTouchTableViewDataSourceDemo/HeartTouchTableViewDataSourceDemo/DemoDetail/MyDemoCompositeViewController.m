@@ -23,6 +23,10 @@
 
 @property (nonatomic ,strong) id demoDataSource;
 
+@property (nonatomic, strong) UIButton * btn;
+
+@property (nonatomic, weak) HTTableViewDataSourceDelegate * singleSectionDataSource;
+
 @end
 
 @implementation MyDemoCompositeViewController
@@ -84,6 +88,16 @@
     [dataSourceList addObject:dataSource1];
     [dataSourceList addObject:modelDataSource];
     
+    NSArray * oneItemModel = @[[MyCellStringModel modelWithTitle:@"more content"]];
+    HTTableViewDataSourceDelegate * oneItemDataSource =
+    [HTTableViewDataSourceDelegate dataSourceWithModel:oneItemModel
+                                           cellTypeMap:@{@"MyCellStringModel" : @"MyTableViewCell"}
+                                     tableViewDelegate:nil
+                                     cellConfiguration:nil];
+    [oneItemDataSource setHt_Visible:YES];
+    [dataSourceList addObject:oneItemDataSource];
+    _singleSectionDataSource = oneItemDataSource;
+    
     id <UITableViewDataSource, UITableViewDelegate> dataSource
     = [HTTableViewCompositeDataSourceDelegate dataSourceWithDataSources:dataSourceList];
     
@@ -91,8 +105,26 @@
     _tableview.delegate = dataSource;
     self.demoDataSource = dataSource;
     [_tableview reloadData];
+    
+    [self addBtn];
 }
 
+- (void)addBtn
+{
+    float btnHeight = 40;
+    CGRect bounds = self.view.bounds;
+    CGRect rect = CGRectMake(0, CGRectGetHeight(bounds) - btnHeight - 100, 260, btnHeight);
+    _btn = [[UIButton alloc] initWithFrame:rect];
+    [_btn addTarget:self action:@selector(performPress:) forControlEvents:UIControlEventTouchDown];
+    [_btn setBackgroundColor:[UIColor brownColor]];
+    [_btn setTitle:@"press me to hide or show cell" forState:UIControlStateNormal];
+    [self.view addSubview:_btn];
+}
+- (IBAction)performPress:(id)sender
+{
+    [_singleSectionDataSource setHt_Visible:![_singleSectionDataSource isHt_Visible]];
+    [_tableview reloadData];
+}
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
