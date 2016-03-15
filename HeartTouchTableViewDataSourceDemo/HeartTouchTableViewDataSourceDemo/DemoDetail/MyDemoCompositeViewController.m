@@ -83,21 +83,22 @@
          cell.accessoryType = UITableViewCellAccessoryDetailButton;
      }];
     
-    //composite data source
-    NSMutableArray < UITableViewDataSource, UITableViewDelegate >* dataSourceList = @[].mutableCopy;
-    [dataSourceList addObject:dataSource1];
-    [dataSourceList addObject:modelDataSource];
     
+    
+    //one item data source
     NSArray * oneItemModel = @[[MyCellStringModel modelWithTitle:@"more content"]];
     HTTableViewDataSourceDelegate * oneItemDataSource =
     [HTTableViewDataSourceDelegate dataSourceWithModel:oneItemModel
                                            cellTypeMap:@{@"MyCellStringModel" : @"MyTableViewCell"}
                                      tableViewDelegate:nil
                                      cellConfiguration:nil];
-    [oneItemDataSource setHt_Visible:YES];
-    [dataSourceList addObject:oneItemDataSource];
     _singleSectionDataSource = oneItemDataSource;
     
+    //composite data source
+    NSMutableArray < UITableViewDataSource, UITableViewDelegate >* dataSourceList = @[].mutableCopy;
+    [dataSourceList addObject:dataSource1];
+    [dataSourceList addObject:modelDataSource];
+    [dataSourceList addObject:oneItemDataSource];
     id <UITableViewDataSource, UITableViewDelegate> dataSource
     = [HTTableViewCompositeDataSourceDelegate dataSourceWithDataSources:dataSourceList];
     

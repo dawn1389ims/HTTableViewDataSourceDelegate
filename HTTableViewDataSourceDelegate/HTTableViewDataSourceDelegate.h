@@ -23,6 +23,7 @@ typedef void(^HTTableViewConfigBlock)(id cell, NSIndexPath * indexPath);
 /**
  *  对协议HTTableViewDataSourceDelegateVisibleProtocol的实现，该属性影响dataSourceDelegate在
  *  HTTableViewCompositeDataSourceDelegate中是否显示。
+ *  使用场景：load more的显示；
  */
 @property (nonatomic, assign, setter = setHt_Visible:) BOOL isHt_Visible;
 

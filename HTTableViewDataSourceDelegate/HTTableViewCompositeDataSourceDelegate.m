@@ -14,7 +14,7 @@ typedef id <UITableViewDataSource, UITableViewDelegate> HTDataSourceType;
 @interface HTTableViewCompositeDataSourceDelegate()
 
 /**
- *  visible section range <--> data index 的对应表
+ *  data index <--> visible section range 的对应表
  */
 @property (nonatomic, strong) NSDictionary <NSNumber *, NSValue *>* dataToSectionMap;
 
@@ -55,7 +55,7 @@ typedef id <UITableViewDataSource, UITableViewDelegate> HTDataSourceType;
     return sumSection;
 }
 /**
- *  根据section range <--> data index 的对应表查找到section对应的data index和 section的相对值
+ *  根据data index <--> visible section range 的对应表查找到section对应的data index和 section的相对值
  */
 - (HTDataSourceType)relativeDataSourceForTableViewSection:(NSUInteger)section
                                               trueSection:(NSUInteger*)trueSection

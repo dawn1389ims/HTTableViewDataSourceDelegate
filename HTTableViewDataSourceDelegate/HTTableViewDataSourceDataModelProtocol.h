@@ -23,8 +23,7 @@
 
 /**
  *  附加到 HTTableViewDataSourceDelegate或者< UITableViewDataSource, UITableViewDelegate >类型
- *  上的visible协议，使HTTableViewCompositeDataSourceDelegate可以定制是否显示。
- *  使用场景：load more的显示；
+ *  上的visible协议，使HTTableViewCompositeDataSourceDelegate可以控制 dataSourceDelegate 是否显示。
  */
 @protocol HTTableViewDataSourceDelegateVisibleProtocol <NSObject>
 
