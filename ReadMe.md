@@ -1,12 +1,19 @@
 #HeartTouch UITableView dataSource和delegate的规范
+在UIViewController瘦身这一热门话题中，UITableView属于主要目标。  
+本文介绍两种简化常见UITableView书写的方式，最大限度减少view controller中table view的代码：
 
+1.	`HTTableViewDataSourceDelegate`:抽离view controller中dataSource接口和部分与UI无关的delegate接口，包括cell的高度计算方法。  
+2.	`HTCompositeDataSourceDelegate`:使用组合的方式将复杂的dataSource化繁为简。
+
+使用此文档需要遵守[UITableViewCell设置数据的规范](https://git.hz.netease.com/hzzhangping/heartouch/blob/master/specification/ios/UITableViewCell%E8%AE%BE%E7%BD%AE%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A7%84%E8%8C%83.md)，了解[UITableViewCell高度计算接口规范](https://git.hz.netease.com/hzzhangping/heartouch/blob/master/specification/ios/UITableViewCell%E9%AB%98%E5%BA%A6%E8%AE%A1%E7%AE%97%E6%8E%A5%E5%8F%A3%E8%A7%84%E8%8C%83.md)。
 ##常见UITableView dataSource的写法
-`UITableView`是UIKit最重要的控件之一，它是使用委托模式最经典的例子。它通过属性`delegate`和`dataSource`来完成配置，这两个属性分别遵守协议`UITableViewDelegate`和`UITableViewDataSource`。  
-下面是`UITableViewDataSource`协议的两个必须实现的方法：
+
+`UITableView`是UIKit最重要的控件之一，是使用委托模式最经典的例子。  
+通过属性`id <UITableViewDelegate> delegate`和`id <UITableViewDataSource> dataSource`来完成配置。  
+下面是`UITableViewDataSource`协议必须实现方法的常规实现：
 
 	- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 	{
-	    NSInteger rowNum = 5;
 	    return rowNum;
 	}
 	- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -15,12 +22,11 @@
 	    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
 	    //cell model set
 	    return cell;
-	}
-其余可选实现的方法包括：配置section，配置section title，添加删除table rows，整理table rows 等。  
-使用时一般会把 table view 所在view controller设为`delegate`和`dataSource`，在view controller中配置 table view，但是这种写法存在几个问题：第一，每次配置table view都会重复这一套取数据的流程，第二，这些代码会增加 view controller 的代码量。  
+	} 
+使用时一般会把table view所在view controller设为`delegate`和`dataSource`，在view controller中配置 table view，但是这种写法存在几个问题：第一，每次配置table view都会重复这一套，第二，这些代码会增加 view controller 的代码量。  
 为了能够方便地配置 table view ，减少 view controller 的代码量，HeartTouch规范使用 `HTTableViewDataSourceDelegate` 来作为`dataSource` 和 `delegate`。  
 
-下面称 table view 需要展示的数据的集合为"数据列表"。table view 的作用就是将数据列表中的每一条数据展示到对应的`UITableViewCell`上。
+下面称 table view 需要展示的数据集合为"数据列表"。table view 的作用就是将数据列表中的每一条数据展示到对应的`UITableViewCell`上。
 
 ## HTTableViewDataSourceDelegate使用方式
 
@@ -28,7 +34,7 @@ Pods使用方式: `pod 'HTTableViewDataSourceDelegate', :git => 'https://g.hz.ne
 
 ## HTTableViewDataSourceDelegate
 
-`HTTableViewDataSourceDelegate` 可以直接处理数据列表，让使用者在`UITableView`协议接口的实现中，只用关心数据，不需要关心在哪个位置应该使用什么数据，应该怎么设置cell，怎么计算cell高度，最大程度地简化`UITableView`的配置。
+`HTTableViewDataSourceDelegate`可以直接处理数据列表，让使用者在`UITableView`协议接口的实现中，只用关心数据，不需要关心在哪个位置应该使用什么数据，应该怎么设置cell，怎么计算cell高度，最大程度地简化`UITableView`的配置。
 使用时设置好`+ [HTTableViewDataSourceDelegate dataSourceWithModel: cellTypeMap: cellConfiguration:]`需要的参数即可。
 
 参数的详细介绍：
