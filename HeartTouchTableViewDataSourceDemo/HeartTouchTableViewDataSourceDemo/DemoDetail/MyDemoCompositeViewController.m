@@ -62,7 +62,8 @@
                                    cellTypeMap:@{@"MyCellStringModel" : @"MyTableViewCell"}
                              tableViewDelegate:nil
                              cellConfiguration:
-     ^(UITableViewCell *cell, NSIndexPath *indexPath) {
+     ^(MyTableViewCell *cell, id model, NSIndexPath *indexPath) {
+         [cell setModel:model];
          if (indexPath.row % 2 == 0) {
              cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
          } else {
@@ -79,7 +80,8 @@
                                    cellTypeMap:@{@"MyTableViewCellModel" : @"MyTableViewCell"}
                              tableViewDelegate:nil
                              cellConfiguration:
-     ^(UITableViewCell *cell, NSIndexPath *indexPath) {
+     ^(MyTableViewCell *cell, id model, NSIndexPath *indexPath) {
+         [cell setModel:model];
          cell.accessoryType = UITableViewCellAccessoryDetailButton;
      }];
     

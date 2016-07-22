@@ -61,7 +61,8 @@
                                      cellTypeMap:@{@"MyCellStringModel" : @"MyTableViewCell", @"MyTableViewCellModel" : @"MyTableViewCell"}
                                tableViewDelegate:self
                                cellConfiguration:
-       ^(MyDelegateTableViewCell *cell, NSIndexPath *indexPath) {
+       ^(MyDelegateTableViewCell *cell, id model, NSIndexPath *indexPath) {
+           [cell setModel:model];
            if (indexPath.row % 2 == 0) {
                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
            } else {

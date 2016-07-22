@@ -28,26 +28,23 @@
 
 - (NSArray <HTTableViewDataSourceDataModelProtocol> *)arrayCellModels
 {
-    NSMutableArray * models = [NSMutableArray new];
-    for (NSString * arg in @[@"A", @"B", @"C", @"D", @"E", @"F"]) {
-        [models addObject:[MyCellStringModel modelWithTitle:arg]];
-    }
-    return models;
+    return @[@"A", @"B", @"C", @"D", @"E", @"F"];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     //注册cell
-    UINib * nib = [UINib nibWithNibName:@"MyTableViewCell" bundle:[NSBundle mainBundle]];
-    [_tableview registerNib:nib forCellReuseIdentifier:@"MyTableViewCell"];
-    
+//    UINib * nib = [UINib nibWithNibName:@"UITableViewCell" bundle:[NSBundle mainBundle]];
+//    [_tableview registerNib:nib forCellReuseIdentifier:@"UITableViewCell"];
+    [_tableview  registerClass:UITableViewCell.class forCellReuseIdentifier:@"UITableViewCell"];
     id <HTTableViewDataSourceDataModelProtocol> cellModels = [self arrayCellModels];
     id <UITableViewDataSource, UITableViewDelegate> dataSource
     = [HTTableViewDataSourceDelegate dataSourceWithModel:cellModels
-                                     cellTypeMap:@{@"MyCellStringModel" : @"MyTableViewCell"}
+                                     cellTypeMap:@{@"NSString" : @"UITableViewCell"}
                                tableViewDelegate:nil                               cellConfiguration:
-       ^(UITableViewCell *cell, NSIndexPath *indexPath) {
+       ^(UITableViewCell *cell, NSString * model, NSIndexPath *indexPath) {
+           [cell.textLabel setText:model];
            if (indexPath.row % 2 == 0) {
                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
            } else {

@@ -55,7 +55,8 @@
                                      cellTypeMap:@{@"MyCellStringModel" : @"MyTableViewCell", @"MyTableViewCellModel": @"MyDelegateTableViewCell"}
                                tableViewDelegate:nil
                                cellConfiguration:
-       ^(MyDelegateTableViewCell *cell, NSIndexPath *indexPath) {
+       ^(MyDelegateTableViewCell *cell, id model, NSIndexPath *indexPath) {
+           [cell setModel:model];
            if ([cell isKindOfClass:[MyDelegateTableViewCell class]]) {
                cell.delegate = weakSelf;
                cell.fd_enforceFrameLayout = YES;

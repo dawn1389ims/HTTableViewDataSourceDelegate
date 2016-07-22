@@ -24,6 +24,7 @@
 
 @property (nonatomic, weak) id <UITableViewDelegate> tableViewDelegate;
 
+@property (nonatomic, copy) void(^setDataToCellHandler)(id dataItem, id cell);
 @end
 
 @implementation HTTableViewDataSourceDelegate
@@ -77,12 +78,7 @@
         NSAssert1(cellClass, @"Cell with identifier: %@ not find corresponding cell class", identifier);
         cell = [[cellClass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-    NSAssert1([cell respondsToSelector:@selector(setModel:)], @"Cell with class: %@ not implement method 'setModel:'", [cell class]);
-    
-    [cell setModel:model];
-    if (self.cellConfiguration) {
-        self.cellConfiguration(cell, indexPath);
-    }
+    self.cellConfiguration(cell, model, indexPath);
     return (UITableViewCell *)cell;
 }
 
@@ -97,6 +93,9 @@
 {
     id model = [_model ht_itemAtSection:indexPath.section rowIndex:indexPath.row];
     NSString *identifier = [self cellIdentifierForCellModelClass:model];
+    if (NSClassFromString(identifier) == [UITableViewCell class]) {
+        return UITableViewAutomaticDimension;
+    }
     /**
      *  UITableViewCell高度计算接口规范
      *  https://git.hz.netease.com/hzzhangping/heartouch/blob/master/specification/ios/UITableViewCell%E9%AB%98%E5%BA%A6%E8%AE%A1%E7%AE%97%E6%8E%A5%E5%8F%A3%E8%A7%84%E8%8C%83.md
@@ -105,11 +104,7 @@
                                                         configuration:
                              ^(id <HTTableViewCellModelProtocol>cell)
     {
-        NSAssert1([cell respondsToSelector:@selector(setModel:)], @"Cell with class: %@ not implement method 'setModel:'", [cell class]);
-        [cell setModel:model];
-        if (self.cellConfiguration) {
-            self.cellConfiguration(cell, indexPath);
-        }
+        self.cellConfiguration(cell, model, indexPath);
     }];
     return heightResult;
 }
@@ -151,5 +146,10 @@
     struct objc_method_description hasMethod = protocol_getMethodDescription(pro, sel, NO, YES);
     
     return hasMethod.name != NULL;
+}
+
+- (void)registerDataItemSetBlock:(void(^)(id dataItem, id cell))setDataToCellHandler
+{
+    _setDataToCellHandler = [setDataToCellHandler copy];
 }
 @end

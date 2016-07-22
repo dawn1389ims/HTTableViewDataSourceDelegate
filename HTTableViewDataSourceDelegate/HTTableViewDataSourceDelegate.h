@@ -11,7 +11,7 @@
 @protocol HTTableViewDataSourceDataModelProtocol;
 @protocol HTTableViewCellModelProtocol;
 
-typedef void(^HTTableViewConfigBlock)(id cell, NSIndexPath * indexPath);
+typedef void(^HTTableViewConfigBlock)(id cell, id model, NSIndexPath * indexPath);
 
 @interface HTTableViewDataSourceDelegate : NSObject <UITableViewDataSource, UITableViewDelegate>
 
@@ -51,6 +51,8 @@ typedef void(^HTTableViewConfigBlock)(id cell, NSIndexPath * indexPath);
                         cellTypeMap:(NSDictionary < NSString * , NSString *> *)cellTypeMap
                   tableViewDelegate:(id <UITableViewDelegate>)tableViewDelegate
                   cellConfiguration:(HTTableViewConfigBlock)configuration;
+
+- (void)registerDataItemSetBlock:(void(^)(id dataItem, id cell))setDataToCellHandler;
 @end
 
 
