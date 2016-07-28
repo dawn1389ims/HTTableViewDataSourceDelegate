@@ -18,13 +18,14 @@
  */
 @interface HTTableViewDataSourceDelegate()
 
-@property (nonatomic, copy) NSDictionary < NSString * , NSString *> * cellTypeMaps;
+@property (nonatomic, strong) NSDictionary < NSString * , NSString *> * cellTypeMaps;
 
 @property (nonatomic, copy) HTTableViewConfigBlock cellConfiguration;
 
 @property (nonatomic, weak) id <UITableViewDelegate> tableViewDelegate;
 
 @property (nonatomic, copy) void(^setDataToCellHandler)(id dataItem, id cell);
+
 @end
 
 @implementation HTTableViewDataSourceDelegate
@@ -49,7 +50,12 @@
 - (NSString*)cellIdentifierForCellModelClass:(id)cellModel{
     __block NSString * identifier;
     [_cellTypeMaps enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSString * _Nonnull obj, BOOL * _Nonnull stop) {
-        if ([cellModel isKindOfClass:NSClassFromString(key)]) {
+        Class cellClass = NSClassFromString(key);
+        if (cellClass == nil) {
+            //maybe swift class
+            cellClass = [self swiftClassFromString:key];
+        }
+        if ([cellModel isKindOfClass:cellClass]) {
             identifier = obj;
             *stop = YES;
         }
@@ -78,7 +84,9 @@
         NSAssert1(cellClass, @"Cell with identifier: %@ not find corresponding cell class", identifier);
         cell = [[cellClass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-    self.cellConfiguration(cell, model, indexPath);
+    if (self.cellConfiguration) {
+        self.cellConfiguration(cell, model, indexPath);
+    }
     return (UITableViewCell *)cell;
 }
 
@@ -104,7 +112,9 @@
                                                         configuration:
                              ^(id <HTTableViewCellModelProtocol>cell)
     {
-        self.cellConfiguration(cell, model, indexPath);
+        if (self.cellConfiguration) {
+            self.cellConfiguration(cell, model, indexPath);
+        }
     }];
     return heightResult;
 }
@@ -151,5 +161,14 @@
 - (void)registerDataItemSetBlock:(void(^)(id dataItem, id cell))setDataToCellHandler
 {
     _setDataToCellHandler = [setDataToCellHandler copy];
+}
+
+- (Class)swiftClassFromString:(NSString *)className {
+    if ([className isEqualToString:@"String"]) {
+        return NSClassFromString(@"_TtCs19_NSContiguousString");
+    }
+    NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
+    NSString *classStringName = [NSString stringWithFormat:@"_TtC%d%@%d%@", (int)appName.length, appName, (int)className.length, className];
+    return NSClassFromString(classStringName);
 }
 @end

@@ -5,7 +5,7 @@
 1.	`HTTableViewDataSourceDelegate`:抽离view controller中dataSource接口和部分与UI无关的delegate接口，包括cell的高度计算方法。  
 2.	`HTCompositeDataSourceDelegate`:使用组合的方式将复杂的dataSource化繁为简。
 
-使用此文档需要遵守[UITableViewCell设置数据的规范](https://git.hz.netease.com/hzzhangping/heartouch/blob/master/specification/ios/UITableViewCell%E8%AE%BE%E7%BD%AE%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A7%84%E8%8C%83.md)，了解[UITableViewCell高度计算接口规范](https://git.hz.netease.com/hzzhangping/heartouch/blob/master/specification/ios/UITableViewCell%E9%AB%98%E5%BA%A6%E8%AE%A1%E7%AE%97%E6%8E%A5%E5%8F%A3%E8%A7%84%E8%8C%83.md)。
+使用此文档需要遵守[UITableViewCell设置数据的规范](https://g.hz.netease.com/mobile/heartouch/blob/master/specification/ios/UITableViewCell%E8%AE%BE%E7%BD%AE%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A7%84%E8%8C%83.md)，了解[UITableViewCell高度计算接口规范](https://g.hz.netease.com/mobile/heartouch/blob/master/specification/ios/UITableViewCell%E9%AB%98%E5%BA%A6%E8%AE%A1%E7%AE%97%E6%8E%A5%E5%8F%A3%E8%A7%84%E8%8C%83.md)。
 ##常见UITableView dataSource的写法
 
 `UITableView`是UIKit最重要的控件之一，是使用委托模式最经典的例子。  
@@ -69,7 +69,7 @@ NSArray+DataSource.m
 		
 *	cellTypeMap   
 	描述cell model 到cell identifier 或 cell class的对应关系。规范cell identifier和cell class一致。    
-	[UITableViewCell设置数据的规范](https://git.hz.netease.com/hzzhangping/heartouch/blob/master/specification/ios/UITableViewCell%E8%AE%BE%E7%BD%AE%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A7%84%E8%8C%83.md)规定这里用到的UITableViewCell类都应该实现`model`属性。
+	[UITableViewCell设置数据的规范](https://g.hz.netease.com/mobile/heartouch/blob/master/specification/ios/UITableViewCell%E8%AE%BE%E7%BD%AE%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A7%84%E8%8C%83.md)规定这里用到的UITableViewCell类都应该实现`model`属性。
 
 *	tableViewDelegate  
 	传入需要实现UITableViewDelegate接口的view controller，注意高度计算接口已经被实现。
@@ -77,7 +77,7 @@ NSArray+DataSource.m
 *	cellConfiguration   
 在 cell 设置 model 结束后额外的设置cell属性的机会，可根据 indexPath 配置 cell。下面会提到高度计算有可能需要在这里设置cell。
 
-下面演示该方法的使用： `HTTableViewDataSourceDelegate` 根据设置好的cellModel到cell的映射，将一个`NSArray`类型的数据列表，转换为`dataSource`。可在[Demo代码的地址](https://git.hz.netease.com/git/hzzhuzhiqiang/HTTableViewDataSourceDemo.git)中查看MyDemoArrayViewController的代码。  
+下面演示该方法的使用： `HTTableViewDataSourceDelegate` 根据设置好的cellModel到cell的映射，将一个`NSArray`类型的数据列表，转换为`dataSource`。可在[Demo代码的地址](https://g.hz.netease.com/HeartTouchOpen/HTTableViewDataSourceDelegate.git)中查看MyDemoArrayViewController的代码。  
 
 在view controller实现文件中导入头文件
 
@@ -120,10 +120,10 @@ NSArray+DataSource.m
 到这里就完成了一个`UITableView`的接口配置。
 		
 ###继承实现更多UITableViewDataSource配置
-`HTTableViewDataSourceDelegate`只实现了`tableView: cellForRowAtIndexPath:`,`numberOfSectionsInTableView:`,`numberOfSectionsInTableView`三个方法，要实现更多的UITableViewDataSource协议方法，可以继承`HTTableViewDataSourceDelegate`，在继承类中添加实现。
+`HTTableViewDataSourceDelegate`只实现了`tableView:numberOfRowsInSection:`,`tableView: cellForRowAtIndexPath:`,`numberOfSectionsInTableView`三个方法，要实现更多的UITableViewDataSource协议方法，可以继承`HTTableViewDataSourceDelegate`，在继承类中添加实现。
 
 ###Cell的高度计算
-`HTTableViewDataSourceDelegate`默认实现了cell的高度计算处理，实现细节参照[UITableViewCell高度计算接口规范](https://git.hz.netease.com/hzzhangping/heartouch/blob/master/specification/ios/UITableViewCell%E9%AB%98%E5%BA%A6%E8%AE%A1%E7%AE%97%E6%8E%A5%E5%8F%A3%E8%A7%84%E8%8C%83.md)。
+`HTTableViewDataSourceDelegate`默认实现了cell的高度计算处理，实现细节参照[UITableViewCell高度计算接口规范](https://g.hz.netease.com/mobile/heartouch/blob/master/specification/ios/UITableViewCell%E9%AB%98%E5%BA%A6%E8%AE%A1%E7%AE%97%E6%8E%A5%E5%8F%A3%E8%A7%84%E8%8C%83.md)。
 
 下面介绍`HTTableViewDataSourceDelegate`如何处理和view controller关联密切的接口：  
 往往view controller需要在例如`tableView:tableView didSelectRowAtIndexPath:`的接口中修改某些状态，或者触发一个页面的展示，那么这个接口放在 view controller 中就会比较方便。
@@ -157,7 +157,7 @@ NSArray+DataSource.m
 	    [_tableview reloadData];
 
 ##Demo演示内容
-HTTableViewDataSourceDemo演示了如下内容，具体内容参考[Demo](https://git.hz.netease.com/git/hzzhuzhiqiang/HTTableViewDataSourceDemo.git)的代码  
+HTTableViewDataSourceDemo演示了如下内容，具体内容参考[Demo](https://g.hz.netease.com/HeartTouchOpen/HTTableViewDataSourceDelegate.git)的代码  
 Demo的四个Tab页面代表不同的演示内容  
 
 *	"Array" 演示将数组构造成一个`HTTableViewDataSourceDelegate`
@@ -167,6 +167,6 @@ Demo的四个Tab页面代表不同的演示内容
 
 ##HeartTouch UITableView 规范的总结
 -	规范使用`HTTableViewDataSourceDelegate`实例作为`UITableView`的`dataSource` 和 `delegate`。
--	[UITableViewCell设置数据的规范](https://git.hz.netease.com/hzzhangping/heartouch/blob/master/specification/ios/UITableViewCell%E8%AE%BE%E7%BD%AE%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A7%84%E8%8C%83.md)规定自定义`UITableViewCell` 要遵守 `HTTableViewCellModelProtocol`：cell访问数据的接口为 `model`。
+-	[UITableViewCell设置数据的规范](https://g.hz.netease.com/mobile/heartouch/blob/master/specification/ios/UITableViewCell%E8%AE%BE%E7%BD%AE%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A7%84%E8%8C%83.md)规定自定义`UITableViewCell` 要遵守 `HTTableViewCellModelProtocol`：cell访问数据的接口为 `model`。
 -	规范table view cell 的类名和 cell identifier 相同。
--	[UITableViewCell高度计算接口规范](https://git.hz.netease.com/hzzhangping/heartouch/blob/master/specification/ios/UITableViewCell%E9%AB%98%E5%BA%A6%E8%AE%A1%E7%AE%97%E6%8E%A5%E5%8F%A3%E8%A7%84%E8%8C%83.md)。
+-	[UITableViewCell高度计算接口规范](https://g.hz.netease.com/mobile/heartouch/blob/master/specification/ios/UITableViewCell%E9%AB%98%E5%BA%A6%E8%AE%A1%E7%AE%97%E6%8E%A5%E5%8F%A3%E8%A7%84%E8%8C%83.md)。
