@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol HTTableViewDataSourceDataModelProtocol;
 /**
  *  连接多个dataSource对象，合并为一个。
  *  被连接的dataSource的调用没有受到连接的影响
@@ -15,6 +16,11 @@
 @interface HTTableViewCompositeDataSourceDelegate : NSObject < UITableViewDataSource, UITableViewDelegate >
 
 @property (nonatomic, strong) NSArray < UITableViewDataSource, UITableViewDelegate > * dataSourceList;
+
+/**
+ * 使用这个delegate，支持额外 UITableViewDataSource 和 UITableViewDelegate 接口的配置
+ */
+@property (nonatomic, weak) id < UITableViewDataSource, UITableViewDelegate > tableViewDelegate;
 
 /**
  *  将多个dataSource连接成一个新的dataSource

@@ -24,8 +24,6 @@
 
 @property (nonatomic, weak) id <UITableViewDelegate> tableViewDelegate;
 
-@property (nonatomic, copy) void(^setDataToCellHandler)(id dataItem, id cell);
-
 @end
 
 @implementation HTTableViewDataSourceDelegate
@@ -140,7 +138,7 @@
     if (_tableViewDelegate && [self checkProtocol:@protocol(UITableViewDelegate) containSelector:aSelector]) {
         return [(NSObject*)_tableViewDelegate methodSignatureForSelector:aSelector];
     }
-    return [self methodSignatureForSelector:aSelector];
+    return [super methodSignatureForSelector:aSelector];
 }
 
 -(void)forwardInvocation:(NSInvocation *)anInvocation
@@ -156,11 +154,6 @@
     struct objc_method_description hasMethod = protocol_getMethodDescription(pro, sel, NO, YES);
     
     return hasMethod.name != NULL;
-}
-
-- (void)registerDataItemSetBlock:(void(^)(id dataItem, id cell))setDataToCellHandler
-{
-    _setDataToCellHandler = [setDataToCellHandler copy];
 }
 
 - (Class)swiftClassFromString:(NSString *)className {

@@ -83,7 +83,10 @@
 {
     return YES;
 }
-
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 10;
+}
 #pragma mark - UITableViewDelegate
 
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section

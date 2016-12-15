@@ -52,7 +52,6 @@ typedef void(^HTTableViewConfigBlock)(id cell, id model, NSIndexPath * indexPath
                   tableViewDelegate:(id <UITableViewDelegate>)tableViewDelegate
                   cellConfiguration:(HTTableViewConfigBlock)configuration;
 
-- (void)registerDataItemSetBlock:(void(^)(id dataItem, id cell))setDataToCellHandler;
 @end
 
 

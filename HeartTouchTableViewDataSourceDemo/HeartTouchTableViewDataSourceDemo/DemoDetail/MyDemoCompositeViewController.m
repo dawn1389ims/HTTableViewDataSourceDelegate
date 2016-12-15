@@ -7,21 +7,18 @@
 //
 
 #import "MyDemoCompositeViewController.h"
-
 #import "HTTableViewDataSourceDelegate.h"
 #import "HTTableViewCompositeDataSourceDelegate.h"
 #import "NSArray+DataSource.h"
-
 #import "MyCellStringModel.h"
 #import "MyTableViewCellModel.h"
-
 #import "MyTableViewCell.h"
 
 @interface MyDemoCompositeViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 
-@property (nonatomic ,strong) id demoDataSource;
+@property (nonatomic ,strong) HTTableViewCompositeDataSourceDelegate * compositeDataSource;
 
 @property (nonatomic, strong) UIButton * btn;
 
@@ -43,7 +40,7 @@
 - (NSArray <HTTableViewDataSourceDataModelProtocol> *)customClassCellModels
 {
     NSMutableArray * modelList = [NSMutableArray new];
-    for (int index = 0; index < 10; index ++ ) {
+    for (int index = 0; index < 6; index ++ ) {
         [modelList addObject:[MyTableViewCellModel modelWithTitle:[NSString stringWithFormat:@"%d",index] name:@"normal"]];
     }
     return modelList;
@@ -101,12 +98,13 @@
     [dataSourceList addObject:dataSource1];
     [dataSourceList addObject:modelDataSource];
     [dataSourceList addObject:oneItemDataSource];
-    id <UITableViewDataSource, UITableViewDelegate> dataSource
-    = [HTTableViewCompositeDataSourceDelegate dataSourceWithDataSources:dataSourceList];
     
+    HTTableViewCompositeDataSourceDelegate * dataSource
+    = [HTTableViewCompositeDataSourceDelegate dataSourceWithDataSources:dataSourceList];
+    dataSource.tableViewDelegate = self;
     _tableview.dataSource = dataSource;
     _tableview.delegate = dataSource;
-    self.demoDataSource = dataSource;
+    self.compositeDataSource = dataSource;
     [_tableview reloadData];
     
     [self addBtn];
@@ -131,5 +129,52 @@
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return @"Header for mixed by composite dataSource";
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    if (section == 1) {
+        HTTableViewDataSourceDelegate * htDataSource = _compositeDataSource.dataSourceList[section];
+        if ([htDataSource isKindOfClass:[HTTableViewDataSourceDelegate class]] == NO) {
+            return nil;
+        }
+        MyCellStringModel * model = [htDataSource.model ht_itemAtSection:0 rowIndex:0];
+        
+        static NSString *kFootView = @"footerView";
+        UITableViewHeaderFooterView *myFooter = [tableView dequeueReusableHeaderFooterViewWithIdentifier:kFootView];
+        if(!myFooter) {
+            myFooter = [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:kFootView];
+        }
+        
+        myFooter.textLabel.text = [@"Footer" stringByAppendingFormat:@" for %@ by composite delegate",model.title];
+        [myFooter setFrame:CGRectMake(0, 0, tableView.frame.size.width, [self tableView:tableView heightForHeaderInSection:section])];
+        return myFooter;
+    } else {
+        return nil;
+    }
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == 1) {
+        return 30;
+    } else {
+        return 0;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    if (section == 1) {
+        return 30;
+    } else {
+        return 0;
+    }
 }
 @end
