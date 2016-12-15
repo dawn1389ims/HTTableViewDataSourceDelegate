@@ -21,13 +21,13 @@ Pod::Spec.new do |s|
                    支持多个dataSource的组合；
                    DESC
 
-  s.homepage     = "https://g.hz.netease.com/hzzhuzhiqiang/HTTableViewDataSourceDelegate"
+  s.homepage     = "https://github.com/mleasyZhuZhiqiang/HTTableViewDataSourceDelegate"
 
   s.license      = "MIT"
 
-  s.author             = { "hzzhuzhiqiang" => "hzzhuzhiqiang@corp.netease.com" }
+  s.author             = { "zhuyeqing" => "zzq1389xin@163.com" }
 
-  s.source       = { :git => 'https://g.hz.netease.com/hzzhuzhiqiang/HTTableViewDataSourceDelegate.git' }
+  s.source       = { :git => 'https://github.com/mleasyZhuZhiqiang/HTTableViewDataSourceDelegate.git' }
 
   s.platform     = :ios, "7.0"
 

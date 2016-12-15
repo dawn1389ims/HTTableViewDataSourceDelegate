@@ -131,7 +131,7 @@
     return YES;
 }
 
-#pragma mark - UITableViewDelegate
+#pragma mark - UITableViewDelegate & UITableViewDataSource
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
