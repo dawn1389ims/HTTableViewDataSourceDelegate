@@ -61,20 +61,24 @@ typedef id <UITableViewDataSource, UITableViewDelegate> HTDataSourceType;
 - (HTDataSourceType)relativeDataSourceForTableViewSection:(NSUInteger)section
                                               trueSection:(NSUInteger*)trueSection
 {
-    __block NSUInteger dataSourceIndex;
-    __block NSRange currentSectionRange;
+    __block NSInteger dataSourceIndex = -1;
+    __block NSInteger currentSectionLoc = -1;
     [_dataToSectionMap enumerateKeysAndObjectsUsingBlock:^(NSNumber * _Nonnull key, NSValue * _Nonnull obj, BOOL * _Nonnull stop) {
         NSRange range = [obj rangeValue];
         if (NSLocationInRange(section, range)) {
-            currentSectionRange = range;
+            currentSectionLoc = range.location;
             dataSourceIndex = [key integerValue];
             *stop = YES;
         }
     }];
-    NSAssert2(dataSourceIndex >= 0, @"can't get right section: %lu from stage list: %@",section, _dataToSectionMap);
+    
+    if (dataSourceIndex < 0) {
+        NSLog(@"can't get right section: %lu from stage list: %@",section, _dataToSectionMap);
+        return nil;
+    }
     
     HTDataSourceType dataSource = _dataSourceList[dataSourceIndex];
-    *trueSection = section - currentSectionRange.location;
+    *trueSection = section - currentSectionLoc;
     return dataSource;
 }
 
