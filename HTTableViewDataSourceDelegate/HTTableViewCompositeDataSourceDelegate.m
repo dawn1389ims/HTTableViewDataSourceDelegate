@@ -115,18 +115,22 @@ typedef id <UITableViewDataSource, UITableViewDelegate> HTDataSourceType;
     return [dataSource tableView:tableView heightForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:trueSection]];
 }
 
+#define CheckProtocolContainSelector(selArg)\
+(protocol_getMethodDescription(@protocol(UITableViewDelegate), selArg, NO, YES).name != NULL\
+||\
+protocol_getMethodDescription(@protocol(UITableViewDataSource), selArg, NO, YES).name != NULL)
 /**
  *  没有实现的UITableViewDelegate的方法转发给tableViewDelegate
  */
 -(BOOL)respondsToSelector:(SEL)selector
 {
-    if (selector == @selector(tableView:heightForRowAtIndexPath:)) {
-        return YES;
-    }
-    if (_tableViewDelegate
-        && ([self checkProtocol:@protocol(UITableViewDelegate) containSelector:selector]
-            || [self checkProtocol:@protocol(UITableViewDataSource) containSelector:selector]
-            )) {
+#define CheckOverridedSelector(selArg) if (selector == selArg) {return YES;}
+    CheckOverridedSelector(@selector(numberOfSectionsInTableView:))
+    CheckOverridedSelector(@selector(tableView:numberOfRowsInSection:))
+    CheckOverridedSelector(@selector(tableView:cellForRowAtIndexPath:))
+    CheckOverridedSelector(@selector(tableView:heightForRowAtIndexPath:))
+    
+    if (_tableViewDelegate && CheckProtocolContainSelector(selector)) {
         return [_tableViewDelegate respondsToSelector:selector];
     }
     return [super respondsToSelector:selector];
@@ -134,10 +138,7 @@ typedef id <UITableViewDataSource, UITableViewDelegate> HTDataSourceType;
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
 {
-    if (_tableViewDelegate
-        && ([self checkProtocol:@protocol(UITableViewDelegate) containSelector:aSelector]
-            || [self checkProtocol:@protocol(UITableViewDataSource) containSelector:aSelector]
-            )) {
+    if (_tableViewDelegate && CheckProtocolContainSelector(aSelector)) {
         return [(NSObject*)_tableViewDelegate methodSignatureForSelector:aSelector];
     }
     return [super methodSignatureForSelector:aSelector];
@@ -145,21 +146,10 @@ typedef id <UITableViewDataSource, UITableViewDelegate> HTDataSourceType;
 
 -(void)forwardInvocation:(NSInvocation *)anInvocation
 {
-    if (_tableViewDelegate
-        && ([self checkProtocol:@protocol(UITableViewDelegate) containSelector:anInvocation.selector]
-            || [self checkProtocol:@protocol(UITableViewDataSource) containSelector:anInvocation.selector]
-            )) {
+    if (_tableViewDelegate && CheckProtocolContainSelector(anInvocation.selector)) {
         return [anInvocation invokeWithTarget:_tableViewDelegate];
     }
     [anInvocation invokeWithTarget:self];
 }
-
-- (BOOL)checkProtocol:(Protocol*)pro containSelector:(SEL)sel
-{
-    struct objc_method_description hasMethod = protocol_getMethodDescription(pro, sel, NO, YES);
-    
-    return hasMethod.name != NULL;
-}
-
 
 @end

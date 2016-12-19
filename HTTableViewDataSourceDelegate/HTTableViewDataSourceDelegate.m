@@ -63,7 +63,21 @@
     return identifier;
 }
 
+- (Class)swiftClassFromString:(NSString *)className {
+    if ([className isEqualToString:@"String"]) {
+        return NSClassFromString(@"_TtCs19_NSContiguousString");
+    }
+    NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
+    NSString *classStringName = [NSString stringWithFormat:@"_TtC%d%@%d%@", (int)appName.length, appName, (int)className.length, className];
+    return NSClassFromString(classStringName);
+}
+
 #pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return [_model ht_sectionCount];
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -86,11 +100,6 @@
         self.cellConfiguration(cell, model, indexPath);
     }
     return (UITableViewCell *)cell;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return [_model ht_sectionCount];
 }
 
 #pragma mark - UITableViewDelegate
@@ -119,15 +128,22 @@
 
 #pragma mark - 转发 UITableViewDelegate 消息到 tableViewDelegate中
 
+#define CheckProtocolContainSelector(selArg)\
+(protocol_getMethodDescription(@protocol(UITableViewDelegate), selArg, NO, YES).name != NULL\
+||\
+protocol_getMethodDescription(@protocol(UITableViewDataSource), selArg, NO, YES).name != NULL)
 /**
  *  没有实现的UITableViewDelegate的方法转发给tableViewDelegate
  */
 -(BOOL)respondsToSelector:(SEL)selector
 {
-    if (selector == @selector(tableView:heightForRowAtIndexPath:)) {
-        return YES;
-    }
-    if (_tableViewDelegate && [self checkProtocol:@protocol(UITableViewDelegate) containSelector:selector]) {
+#define CheckOverridedSelector(selArg) if (selector == selArg) {return YES;}
+    CheckOverridedSelector(@selector(numberOfSectionsInTableView:))
+    CheckOverridedSelector(@selector(tableView:numberOfRowsInSection:))
+    CheckOverridedSelector(@selector(tableView:cellForRowAtIndexPath:))
+    CheckOverridedSelector(@selector(tableView:heightForRowAtIndexPath:))
+    
+    if (_tableViewDelegate && CheckProtocolContainSelector(selector)) {
         return [_tableViewDelegate respondsToSelector:selector];
     }
     return [super respondsToSelector:selector];
@@ -135,7 +151,7 @@
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
 {
-    if (_tableViewDelegate && [self checkProtocol:@protocol(UITableViewDelegate) containSelector:aSelector]) {
+    if (_tableViewDelegate && CheckProtocolContainSelector(aSelector)) {
         return [(NSObject*)_tableViewDelegate methodSignatureForSelector:aSelector];
     }
     return [super methodSignatureForSelector:aSelector];
@@ -143,25 +159,10 @@
 
 -(void)forwardInvocation:(NSInvocation *)anInvocation
 {
-    if (_tableViewDelegate && [self checkProtocol:@protocol(UITableViewDelegate) containSelector:anInvocation.selector]) {
+    if (_tableViewDelegate && CheckProtocolContainSelector(anInvocation.selector)) {
         return [anInvocation invokeWithTarget:_tableViewDelegate];
     }
     [anInvocation invokeWithTarget:self];
 }
 
-- (BOOL)checkProtocol:(Protocol*)pro containSelector:(SEL)sel
-{
-    struct objc_method_description hasMethod = protocol_getMethodDescription(pro, sel, NO, YES);
-    
-    return hasMethod.name != NULL;
-}
-
-- (Class)swiftClassFromString:(NSString *)className {
-    if ([className isEqualToString:@"String"]) {
-        return NSClassFromString(@"_TtCs19_NSContiguousString");
-    }
-    NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
-    NSString *classStringName = [NSString stringWithFormat:@"_TtC%d%@%d%@", (int)appName.length, appName, (int)className.length, className];
-    return NSClassFromString(classStringName);
-}
 @end
